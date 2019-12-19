@@ -1,13 +1,13 @@
 <template>
-  <login-form></login-form>
+  <register-form></register-form>
 </template>
 
 <script>
 
-import LoginForm from '~/components/LoginForm.vue';
+import registerForm from '~/components/RegisterForm.vue';
 
 export default {
-  created() {
+    created() {
         if(this.$auth.loggedIn) {
             this.$router.push({
                 path: '/'
@@ -15,7 +15,7 @@ export default {
         }
     },
     components: {
-        LoginForm
+        registerForm
     }
 }
 </script>

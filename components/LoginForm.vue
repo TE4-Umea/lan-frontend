@@ -54,12 +54,8 @@ export default {
     methods: {
       onSubmit(evt) {
             evt.preventDefault();
-            console.log(evt);
             this.$auth.loginWith('local', {
-                data: {
-                    email: this.form.email,
-                    password: this.form.password
-                }
+                data: this.form,
             });
       },
       onReset(evt) {

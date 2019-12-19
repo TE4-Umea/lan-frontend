@@ -3,7 +3,7 @@
   <div>
     <div v-if="$auth.loggedIn">
       {{ $auth.user.email }}
-      <v-btn text @click="$auth.logout()">Logout</v-btn>
+      <b-button text @click="$auth.logout()">Logout</b-button>
     </div>
     <nuxt />
   </div>

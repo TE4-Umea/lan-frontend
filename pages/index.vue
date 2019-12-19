@@ -15,13 +15,12 @@
         >
           Login
         </nuxt-link>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
+        <nuxt-link
+          to="/login"
           class="button--grey"
         >
-          GitHub
-        </a>
+          Register
+        </nuxt-link>
       </div>
     </div>
   </div>
