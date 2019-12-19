@@ -9,13 +9,12 @@
         Lan organizer frontend
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
+        <nuxt-link
+          to="/login"
           class="button--green"
         >
-          Documentation
-        </a>
+          Login
+        </nuxt-link>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
