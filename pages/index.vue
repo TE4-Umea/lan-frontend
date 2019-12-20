@@ -9,20 +9,30 @@
         Lan organizer frontend
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
+        <nuxt-link
+          to="/login"
           class="button--green"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
+          Login
+        </nuxt-link>
+        <nuxt-link
+          to="/register"
           class="button--grey"
         >
-          GitHub
-        </a>
+          Register
+        </nuxt-link>
+        <nuxt-link
+          to="/admin"
+          class="button--grey"
+        >
+          Admin page
+        </nuxt-link>
+        <nuxt-link
+          to="/dashboard"
+          class="button--grey"
+        >
+         auth protected
+        </nuxt-link>
       </div>
     </div>
   </div>

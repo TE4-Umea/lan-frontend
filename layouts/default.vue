@@ -1,5 +1,10 @@
 <template>
+  
   <div>
+    <div v-if="$auth.loggedIn">
+      {{ $auth.user.email }}
+      <b-button text @click="$auth.logout()">Logout</b-button>
+    </div>
     <nuxt />
   </div>
 </template>

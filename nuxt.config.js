@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 export default {
   mode: 'universal',
@@ -43,14 +44,41 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { 
+            url: '/auth/login', 
+            method: 'post', 
+            propertyName: 'access_token' 
+          },
+          logout: { 
+            url: '/auth/logout', 
+            method: 'post' 
+          },
+          user: { 
+            url: '/auth/user', 
+            method: 'get', 
+            propertyName: 'user' 
+          }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://localhost/',
   },
   /*
   ** Build configuration
