@@ -7,13 +7,6 @@
 import LoginForm from '~/components/LoginForm.vue';
 
 export default {
-  created() {
-        if(this.$auth.loggedIn) {
-            this.$router.push({
-                path: '/'
-            })
-        }
-    },
     components: {
         LoginForm
     }

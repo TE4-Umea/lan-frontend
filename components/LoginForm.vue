@@ -52,11 +52,17 @@ export default {
       }
     },
     methods: {
-      onSubmit(evt) {
+        onSubmit(evt) {
             evt.preventDefault();
+            
             this.$auth.loginWith('local', {
-                data: this.form,
+                data: this.form
+            }).then(res => {
+
+                this.$router.push('/');
+                console.log("this happens");
             });
+            // this.$store.dispatch('snackbar/setSnackbar', {text: `Thanks for signing in, ${this.$auth.user.name}`});
       },
       onReset(evt) {
         evt.preventDefault()

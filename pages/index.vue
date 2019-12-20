@@ -16,10 +16,22 @@
           Login
         </nuxt-link>
         <nuxt-link
-          to="/login"
+          to="/register"
           class="button--grey"
         >
           Register
+        </nuxt-link>
+        <nuxt-link
+          to="/admin"
+          class="button--grey"
+        >
+          Admin page
+        </nuxt-link>
+        <nuxt-link
+          to="/dashboard"
+          class="button--grey"
+        >
+         auth protected
         </nuxt-link>
       </div>
     </div>
