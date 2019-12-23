@@ -10,17 +10,22 @@ export default {
     middleware: ['guest'],
     data() {
         return {
-            token: this.$route.query.token ? this.$route.query.token : null
+            token: this.$route.query.token ? this.$route.query.token : null,
+            provider: this.$route.query.provider ? this.$route.query.provider : null
         }
     },
     mounted() {
+        if(this.provider){
+            localStorage.setItem("provider", this.provider);
+        }
         this.$auth.setToken('local', 'Bearer ' + this.token);
         this.$auth.setStrategy('local');
-        this.$auth.fetchUser().then( () => {
-            return this.$router.push('/');
+        // console.log("we got so far but we failed so bad");
+        this.$auth.fetchUser().then( (res) => {
         }).catch( (e) => {
+            localStorage.removeItem('provider');
             this.$auth.logout();
-            this.$router.push(`/auth/${this.$route.query.origin ? this.$route.query.origin : 'register'}?error=1`);
+            this.$router.push(`/login`);
         });
     }
 }

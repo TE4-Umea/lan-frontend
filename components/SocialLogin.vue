@@ -10,7 +10,10 @@
 export default {
     methods: {
         socialLogin(service) {
-            window.location.href = `${process.env.baseUrl}auth/login/${service}`;
+            window.location.replace("http://localhost/auth/" + service + "/redirect");
+        },
+        callback(any) {
+            console.log(any);
         }
     }
 }
