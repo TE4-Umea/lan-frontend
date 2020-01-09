@@ -3,12 +3,21 @@
   <div>
     <div v-if="$auth.loggedIn">
       {{ $auth.user.email }}
-      <b-button text @click="$auth.logout()">Logout</b-button>
+      <b-button text @click="authLogout()">Logout</b-button>
     </div>
     <nuxt />
   </div>
 </template>
-
+<script>
+export default {
+    methods: {
+        authLogout() {
+            localStorage.removeItem('provider');
+            this.$auth.logout();
+        }
+    }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

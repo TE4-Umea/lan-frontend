@@ -10,13 +10,13 @@
       </h2>
       <div class="links">
         <nuxt-link
-          to="/login"
+          to="/auth/login"
           class="button--green"
         >
           Login
         </nuxt-link>
         <nuxt-link
-          to="/register"
+          to="/auth/register"
           class="button--grey"
         >
           Register
