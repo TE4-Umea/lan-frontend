@@ -10,6 +10,7 @@
 export default {
     methods: {
         socialLogin(service) {
+            //TODO: Change this to real backend later.
             window.location.replace("http://localhost/auth/" + service + "/redirect");
         },
     }
