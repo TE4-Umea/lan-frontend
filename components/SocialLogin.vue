@@ -1,7 +1,7 @@
 <template>
     <div class="social-login">
         <button @click="socialLogin('google')" class="social-login-btn google">
-            <i class="fab fa-google"></i>
+            <i class="fab fa-google">G</i>
         </button>
     </div>
 </template>

@@ -31,9 +31,9 @@
             ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Password:" label-for="input-2">
+        <b-form-group id="input-group-3" label="Password:" label-for="input-2">
             <b-form-input
-            id="input-2"
+            id="input-3"
             v-model="form.password"
             type="password"
             required
