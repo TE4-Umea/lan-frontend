@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        lan_organizer
+        lan
       </h1>
       <h2 class="subtitle">
-        Lan organizer frontend
+        Lan
       </h2>
       <div class="links">
         <nuxt-link

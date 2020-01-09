@@ -1,20 +1,17 @@
 <template>
   
   <div>
-    <div v-if="$auth.loggedIn">
-      {{ $auth.user.email }}
-      <b-button text @click="authLogout()">Logout</b-button>
-    </div>
+    <navbar />
     <nuxt />
   </div>
 </template>
 <script>
+import Navbar from '~/components/navbar/Navbar.vue';
+
 export default {
-    methods: {
-        authLogout() {
-            localStorage.removeItem('provider');
-            this.$auth.logout();
-        }
+    
+    components: {
+      Navbar,
     }
 }
 </script>
