@@ -17,14 +17,15 @@ export default {
     mounted() {
         if(this.provider){
             localStorage.setItem("provider", this.provider);
+            // console.log("we got so far but we failed so bad");
         }
         this.$auth.setToken('local', 'Bearer ' + this.token);
         this.$auth.setStrategy('local');
-        // console.log("we got so far but we failed so bad");
-        this.$auth.fetchUser().then( (res) => {
-        }).catch( (e) => {
-            localStorage.removeItem('provider');
+        this.$auth.fetchUser().then(res => {}
+        ).catch(e => {
+            // console.log(e);
             this.$auth.logout();
+            localStorage.removeItem('provider');
             this.$router.push(`/login`);
         });
     }

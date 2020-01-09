@@ -23,7 +23,7 @@
             label-for="input-1"
         >
             <b-form-input
-            id="input-1"
+            id="input-2"
             v-model="form.name"
             type="text"
             required
