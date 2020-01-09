@@ -12,9 +12,6 @@ export default {
         socialLogin(service) {
             window.location.replace("http://localhost/auth/" + service + "/redirect");
         },
-        callback(any) {
-            console.log(any);
-        }
     }
 }
 </script>
