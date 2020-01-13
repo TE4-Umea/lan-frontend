@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main">
     <div>
 
         <h1 
@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+    padding-top: 75px;
+}
 .title {
     text-transform: uppercase;
     font-weight: 800;

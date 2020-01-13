@@ -1,11 +1,24 @@
 <template>
-    <center-wrapper>
+<center-wrapper>
 
-        <wrapper title="Inloggning"> 
+    <wrapper title="Inloggning"> 
+        <div class="form">
 
-            <input-field title="E-post" type="email" placeholder="john.doe@example.com"/>
-        </wrapper>
-    </center-wrapper>
+            <input-field 
+                title="E-post" 
+                type="email" 
+                placeholder="john.doe@example.com"
+
+            />
+            <input-field 
+                title="Lösenord" 
+                type="password"
+                placeholder="********"
+                
+            />
+        </div>
+    </wrapper>
+</center-wrapper>
         <!-- <social-login /> -->
         <!-- <login-form></login-form> -->
 </template>
@@ -31,6 +44,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.form {
+    margin-top: 53px;
+}
 </style>
