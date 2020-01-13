@@ -2,7 +2,7 @@
     <center-wrapper >
         <div>
         <image-layout
-            url="~assets/icons/checkmark.svg"
+            icon="checkmark.svg"
             title="Success!"
             paragraph="This was a success!"
         />
@@ -23,9 +23,5 @@
 
 <style lang="scss" scoped>
 
-.image {
-  height: 400px;
-  width: 400px;
-}
 </style>
 
