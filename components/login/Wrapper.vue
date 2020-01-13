@@ -1,7 +1,6 @@
 <template>
 <div class="main">
     <div>
-
         <h1 
         v-if="title" 
         v-text="title"

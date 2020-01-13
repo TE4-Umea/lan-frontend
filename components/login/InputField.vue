@@ -4,11 +4,13 @@
       <div class="field-wrapper">
 
         <input class="field primary-color"
+            :tabindex="tabIndex"
             :type="type" 
             :placeholder="placeholder" 
             :maxlength="maxlength"
             v-on:focus="setActive(true)"
             v-on:blur="setActive(false)"
+            @input="handleInput"
         >
         <div :class='{"active": active}' class="line gradient--background" />
       </div>
@@ -18,11 +20,13 @@
 <script>
 export default {
     props: [
+        'value',
         'input',
         'title',
         'type',
         'placeholder',
-        'maxlength'
+        'maxlength',
+        'tabIndex'
     ],
     data() {
         return {
@@ -32,6 +36,10 @@ export default {
     methods: {
         setActive(bool) {
             this.active = bool; 
+        },
+        handleInput(e) {
+            // console.log(e);
+            this.$emit('input', e.data);
         }
     }
 }
