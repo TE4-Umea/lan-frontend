@@ -13,9 +13,10 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { 
+      {
         rel: 'icon', type: 'image/x-icon', href: '/favicon.ico',
-        rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"' }
+        rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Titillium+Web&display=swap',
+        rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap' },
     ]
   },
   /*
@@ -57,19 +58,19 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { 
-            url: '/auth/login', 
-            method: 'post', 
-            propertyName: 'access_token' 
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: 'access_token'
           },
-          logout: { 
-            url: '/auth/logout', 
-            method: 'post' 
+          logout: {
+            url: '/auth/logout',
+            method: 'post'
           },
-          user: { 
-            url: '/auth/user', 
-            method: 'get', 
-            propertyName: 'user' 
+          user: {
+            url: '/auth/user',
+            method: 'get',
+            propertyName: 'user'
           }
         },
         // tokenRequired: true,
