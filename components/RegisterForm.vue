@@ -55,6 +55,7 @@
 </template>
 
 <script>
+// TODO: Should be removed later.
 export default {
     data() {
       return {

@@ -3,6 +3,7 @@
 </template>
 <style scoped>
   .logo {
-    max-width: 300px;
+    width: 216px;
+    
   }
 </style>
