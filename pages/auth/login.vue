@@ -3,7 +3,7 @@
 
         <wrapper title="Inloggning"> 
 
-            <h1>test</h1>
+            <input-field title="E-post" type="email" placeholder="john.doe@example.com"/>
         </wrapper>
     </center-wrapper>
         <!-- <social-login /> -->
@@ -17,6 +17,7 @@ import SocialLogin from '~/components/SocialLogin';
 import Wrapper from '~/components/login/Wrapper.vue';
 import CenterWrapper from '~/components/CenterWrapper.vue';
 import ActionButton from '~/components/buttons/Button.vue';
+import InputField from '~/components/login/InputField.vue';
 
 export default {
     components: {
@@ -24,7 +25,8 @@ export default {
         SocialLogin,
         Wrapper,
         ActionButton,
-        CenterWrapper
+        CenterWrapper,
+        InputField
     }
 }
 </script>
