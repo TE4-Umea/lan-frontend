@@ -1,41 +1,19 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        lan
-      </h1>
-      <h2 class="subtitle">
-        Lan
-      </h2>
-      <div class="links">
-        <nuxt-link
-          to="/auth/login"
-          class="button--green"
-        >
-          Login
-        </nuxt-link>
-        <nuxt-link
-          to="/auth/register"
-          class="button--grey"
-        >
-          Register
-        </nuxt-link>
-        <nuxt-link
-          to="/admin"
-          class="button--grey"
-        >
-          Admin page
-        </nuxt-link>
-        <nuxt-link
-          to="/dashboard"
-          class="button--grey"
-        >
-         auth protected
-        </nuxt-link>
-      </div>
-    </div>
-  </div>
+    <b-container>
+        <b-row align-h="center"> 
+            <b-col cols="3" align-self="center">
+                <logo />
+            </b-col>
+        </b-row>
+        <b-row align-h="center"> 
+            <b-col cols="3">
+
+                <p>Logga in för att få tillgång till appens funktioner</p>
+            </b-col>
+        </b-row>
+        
+    </b-container>
+
 </template>
 
 <script>
@@ -48,35 +26,14 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style scoped>
+ p {
+    font-family: Titillium Web;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+    color: rgba(0, 0, 0, 0.6);
+ }
 </style>
