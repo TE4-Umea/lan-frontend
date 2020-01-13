@@ -1,19 +1,22 @@
 <template>
-    <center-wrapper>
+    <center-wrapper >
         <div>
-        <img src="~/assets/icons/checkmark.svg" class="image" alt="Dropdown">
-        <h1> Här var det tomt! </h1>
-        <p> För nuvarande finns det inget event. Kolla tillbaka senare! </p>
+        <image-layout
+            url="~assets/icons/checkmark.svg"
+            title="Success!"
+            paragraph="This was a success!"
+        />
         </div>
     </center-wrapper>
 
 </template>
 <script>
     import CenterWrapper from '~/components/CenterWrapper.vue';
-
+    import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
     components: {
-        CenterWrapper
+        CenterWrapper,
+        ImageLayout
         }
     }
 </script>
