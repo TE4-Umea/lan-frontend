@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -26,6 +26,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/variables'
   ],
   /*
   ** Plugins to load before mounting the App

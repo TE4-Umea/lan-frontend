@@ -1,0 +1,15 @@
+$primaryColor: #4D4D4D;
+$gradientColor: linear-gradient(90deg, #DD0890 0%, #DD0890 0.01%, #4B0082 100%);
+.primary-color {
+    color: $primaryColor;
+}
+.primary-color--background {
+    background-color: $primaryColor;
+}
+
+.gradient {
+    color: $gradientColor;
+}
+.gradient--background {
+    background: $gradientColor;
+}
