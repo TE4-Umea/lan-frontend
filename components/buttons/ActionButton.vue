@@ -1,6 +1,6 @@
 <template>
 <div tabindex=0 
-    class="clickable outer-box gradient--animation--hover"
+    class="clickable outer-box gradient-animation-hover"
     :class="{'p-0': primary}"
     @click="onAction()"
 >
