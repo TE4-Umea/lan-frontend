@@ -53,9 +53,8 @@ export default {
     max-width: 339px;
 }
 .box {
-    border-radius: 6px;
+    border-radius: 6px;  
 }
-
 
 .text {
     font-style: normal;

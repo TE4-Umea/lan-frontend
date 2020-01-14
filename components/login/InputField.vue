@@ -11,6 +11,9 @@
             v-on:focus="setActive(true)"
             v-on:blur="setActive(false)"
             @input="handleInput"
+            v-model="data"
+            :name="name"
+            :id="id"
         >
         <div :class='{"active": active}' class="line gradient--background" />
       </div>
@@ -26,12 +29,18 @@ export default {
         'type',
         'placeholder',
         'maxlength',
-        'tabIndex'
+        'tabIndex',
+        'name',
+        'id'
     ],
     data() {
         return {
             active: false,
+            data: '',
         }
+    },
+    mounted() {
+        this.data = this.value;
     },
     methods: {
         setActive(bool) {
@@ -39,7 +48,7 @@ export default {
         },
         handleInput(e) {
             // console.log(e);
-            this.$emit('input', e.data);
+            this.$emit('input', this.data);
         }
     }
 }

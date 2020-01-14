@@ -20,11 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .main {
     padding-top: 75px;
 }
-
 .title {
     text-transform: uppercase;
     font-weight: 800;
