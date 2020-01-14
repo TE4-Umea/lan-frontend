@@ -3,7 +3,7 @@
     <nuxt-link
           to="/"
     >
-    <img src="~/assets/nti_logo_black.svg" class="logo" alt="Dropdown">
+    <img src="~/assets/images/nti_logo_black.svg" class="logo" alt="Dropdown">
     </nuxt-link>
 </div>
 </template>
