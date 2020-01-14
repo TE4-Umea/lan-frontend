@@ -1,8 +1,38 @@
 $primaryColor: #4D4D4D;
+$bgColor: #FDFDFD;
 $gradientColor: linear-gradient(90deg, #DD0890 0%, #DD0890 0.01%, #4B0082 100%);
 $titleFont: "Open Sans";
 $bodyFont: "Titillium Web";
 
+.primary-color {
+    color: $primaryColor;
+}
+.primary-color--background {
+    background-color: $primaryColor;
+}
+
+.bg-color {
+    color: $bgColor;
+}
+
+.bg-color--background {
+    background-color: $bgColor;
+}
+
+.gradient {
+    color: $gradientColor;
+}
+.gradient--background {
+    background: $gradientColor;
+}
+
+.underline {
+    text-decoration-line: underline;
+    color: rgba(0, 0, 0, 0.7);
+}
+.clickable {
+    cursor: pointer;
+}
 h1 {
     font-family: $titleFont, sans-serif;
     font-style: normal;
@@ -15,7 +45,7 @@ h1 {
 }
 
 p {
-    font-family: $bodyFont;
+    font-family: $bodyFont, sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
@@ -23,16 +53,9 @@ p {
     color: $primaryColor
 }
 
-.primary-color {
-    color: $primaryColor;
-}
-.primary-color--background {
-    background-color: $primaryColor;
-}
-
-.gradient {
-    color: $gradientColor;
-}
-.gradient--background {
-    background: $gradientColor;
+small {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
 }
