@@ -14,6 +14,7 @@
             v-model="data"
             :name="name"
             :id="id"
+            :key="id"
         >
         <div :class='{"active": active}' class="line gradient--background" />
       </div>
