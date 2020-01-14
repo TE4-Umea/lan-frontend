@@ -41,7 +41,6 @@ h1 {
     line-height: 40px;
     text-transform: uppercase;
     color: $primaryColor;
-
 }
 
 p {
@@ -58,4 +57,20 @@ small {
     font-weight: 300;
     font-size: 16px;
     line-height: 24px;
+}
+
+.primary-color {
+    color: $primaryColor;
+}
+
+.primary-color--background {
+    background-color: $primaryColor;
+}
+
+.gradient {
+    color: $gradientColor;
+}
+
+.gradient--background {
+    background: $gradientColor;
 }

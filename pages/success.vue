@@ -1,28 +1,28 @@
 <template>
-    <center-wrapper>
+    <center-wrapper >
         <div>
-        <img src="~/assets/icons/checkmark.svg" class="image" alt="Dropdown">
-        <h1> Här var det tomt! </h1>
-        <p> För nuvarande finns det inget event. Kolla tillbaka senare! </p>
+        <image-layout
+            icon="checkmark.svg"
+            alt="Du är nu anmäld!"
+            title="Du är nu anmäld!"
+            paragraph="Kolla din mail för att kunna logga in!"
+        />
         </div>
     </center-wrapper>
 
 </template>
 <script>
     import CenterWrapper from '~/components/CenterWrapper.vue';
-
+    import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
     components: {
-        CenterWrapper
+        CenterWrapper,
+        ImageLayout
         }
     }
 </script>
 
 <style lang="scss" scoped>
 
-.image {
-  height: 400px;
-  width: 400px;
-}
 </style>
 
