@@ -1,39 +1,76 @@
 <template>
-    <b-container>
-        <b-row align-h="center"> 
-            <b-col cols="3" align-self="center">
-                <logo />
-            </b-col>
-        </b-row>
-        <b-row align-h="center"> 
-            <b-col cols="3">
-
-                <p>Logga in för att få tillgång till appens funktioner</p>
-            </b-col>
-        </b-row>
-        
-    </b-container>
+    <center-wrapper >
+        <div>
+            <image-layout
+                icon="nti_small_black.svg"
+                alt="Bild på NTIs logga, Välkommen!"
+                title="Välkommen!"
+                paragraph="Logga in nedan för att komma vidare i appen."
+            />
+              <div class="justify-content-center d-flex">
+                <div>
+                  
+                  <div class="google-button" >
+                    <a href="http://localhost/auth/google/redirect" class="text-decoration-none">
+                        <span class="google-inner">
+                        <img src="~/assets/images/google_button.svg" class="image"/>
+                        <p>Logga in med google</p>
+                        </span>
+                    </a>
+                  </div>
+                  <div class="pt-2">
+                    <small>eller
+                      <nuxt-link to="/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
+                    </small>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </center-wrapper>
 
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
-  }
-}
+    import CenterWrapper from '~/components/CenterWrapper.vue';
+    import ImageLayout from '~/components/layouts/ImageLayout'
+    export default {
+        middleware: 'guest',
+        components: {
+            CenterWrapper,
+            ImageLayout
+        }
+    }
 </script>
 
-<style scoped>
- p {
-    font-family: Titillium Web;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 30px;
+<style lang="scss" scoped>
 
-    color: rgba(0, 0, 0, 0.6);
- }
+.google-button {
+    max-width: 343px;
+
+    background: #FFFFFF;
+    /* Shadow-button */
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.google-button:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+.google-inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 10px;
+    p {
+      margin: 0;
+      padding-top: 10px;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+}
+
+.image {
+  margin: 10px;
+}
+
+
 </style>
+

@@ -16,8 +16,8 @@
     import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
     components: {
-        CenterWrapper,
-        ImageLayout
+            CenterWrapper,
+            ImageLayout
         }
     }
 </script>

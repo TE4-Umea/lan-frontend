@@ -4,6 +4,7 @@
         <div v-if="!lastStep">
             <div class="form">
                 <input-field
+                    class="form--short"
                     :tabIndex="1"
                     title="Fullständigt namn" 
                     type="fullname"
@@ -112,6 +113,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form--short {
+    max-width: 160px;
+}
 .form {
     margin-top: 53px;
     padding-bottom: 75px;
