@@ -7,7 +7,6 @@
       title="Här var det tomt!"
       paragraph="För nuvarande finns det inget event. Kolla tillbaka senare!"
       />
-
     </div>
   </center-wrapper>
 </template>
