@@ -5,16 +5,33 @@
                 <h1> Information </h1>
                 <form>
                     <div class="form-group">
-                        <v-date-picker
+                      <label for="lan-start">Lanet börjar:</label>
+                        <v-date-picker id="lan-start"
                             :min-date='new Date()'
-                            v-model="date"
+                            v-model="eventDates.dates"
                             mode="range"
+                            placeholder="Välj datum"
 
                         />
-                        <!-- <label for="lan-time">Lanet pågår under tiden</label>
-                        <input type="text" id="lan-time" class="form-control" placeholder="Datum">
-                        <label for="registration-date">Senaste anmälningstid är</label>
-                        <input type="text" id="registration-date" class="form-control" placeholder="Datum"> -->
+                        <time-picker
+                            hide-disabled-items
+                            :minute-interval="5"
+                            hour-label="Timme" minute-label="Minut"
+                            v-model="eventDates.startTime"
+                        />
+                        <label for="last-registration-date">Sista anmälningsdatum.</label>
+                        <v-date-picker id="last-registration-date"
+                            :min-date='new Date()'
+                            v-model="registerClosure.date"
+                            placeholder="Välj datum"
+
+                        />
+                        <time-picker
+                            hide-disabled-items
+                            :minute-interval="5"
+                            hour-label="Timme" minute-label="Minut"
+                            v-model="registerClosure.time"
+                        />
                     </div>
                 </form>
             </div>
@@ -36,14 +53,29 @@
 </template>
 
 <script>
+import timePicker from 'vue2-timepicker'
     export default {
     components: {
+      timePicker,
     },
     data(){
       return {
-        date: {
-          start: null, // From the beginning of time
-          end: null // Until today
+        eventDates: {
+          dates:  {
+            start: undefined,
+            end: undefined
+          },
+          startTime: {
+              HH: '16',
+              mm: '30',
+          }
+        },
+        registerClosure: {
+          date: new Date(),
+          time: {
+            HH: '15',
+            mm: '00'
+          }
         }
       }
 
@@ -51,12 +83,20 @@
   }
 </script>
 
+<style lang="sass">
+@import 'vue2-timepicker/dist/VueTimepicker.css'
+</style>
 
 <style lang="scss" scoped>
+
 .container {
     margin-top: 50px;
 }
 .col-md-3 {
     margin-right: 100px;
+
+}
+.form-group {
+  display: inline-block;
 }
 </style>
