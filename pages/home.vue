@@ -8,13 +8,21 @@
                 paragraph="Logga in nedan för att komma vidare i appen."
             />
               <div class="justify-content-center d-flex">
+                <div>
 
-                <div class="google-button" >
-                  <span class="google-inner">
+                  <div class="google-button" >
+                    <span class="google-inner">
 
-                    <img src="~/assets/images/google_button.svg" class="image"> </img>
-                    <p>Logga in med google</p>
-                  </span>
+                      <img src="~/assets/images/google_button.svg" class="image"> </img>
+                      <p>Logga in med google</p>
+                    </span>
+                  </div>
+                  <div class="pt-2">
+
+                    <small>eller
+                      <nuxt-link to="/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
+                    </small>
+                  </div>
                 </div>
               </div>
 
@@ -27,8 +35,8 @@
     import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
     components: {
-        CenterWrapper,
-        ImageLayout
+          CenterWrapper,
+          ImageLayout
         }
     }
 </script>

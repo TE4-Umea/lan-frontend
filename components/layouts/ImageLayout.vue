@@ -1,8 +1,14 @@
 <template>
-<div>
+<div class="wrap">
+  <div class="d-flex justify-content-center">
+
   <img :src="url" :alt="alt" class="icon">
+  </div>
+  <div class="text-wrap">
+
   <h1 class="text-center" v-text="title"/>
   <p class="text-center" v-text="paragraph"/>
+  </div>
   <slot/>
 </div>
 
@@ -27,9 +33,16 @@
 </script>
 
 <style lang="scss" scoped>
+.text-wrap {
+    padding-top: 34px;
+}
 .icon {
-  height: 400px;
-  width: 400px;
+  width: 60%;
+  max-width: 400px;
+}
+.wrap {
+  margin-top: 128px;
+
 }
 
 </style>
