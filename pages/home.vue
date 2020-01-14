@@ -1,8 +1,9 @@
 <template>
     <center-wrapper >
-        <div>
+        <div class="text-center">
             <image-layout
                 icon="nti_small_black.svg"
+                alt="Bild på NTIs logga, Välkommen!"
                 title="Välkommen!"
                 paragraph="Logga in nedan för att komma vidare i appen."
             />

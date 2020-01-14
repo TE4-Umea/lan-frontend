@@ -3,12 +3,11 @@
     <div>
       <image-layout
       icon="404_image.svg"
+      alt="Inget event hittades."
       title="Här var det tomt!"
       paragraph="För nuvarande finns det inget event. Kolla tillbaka senare!"
       />
-        <!-- <img src="~/assets/icons/404_image.svg" class="logo" alt="Dropdown">
-        <h1> Här var det tomt! </h1>
-        <p> För nuvarande finns det inget event. Kolla tillbaka senare! </p> -->
+
     </div>
   </center-wrapper>
 </template>
@@ -23,3 +22,7 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+
+</style>

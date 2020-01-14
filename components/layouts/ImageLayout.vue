@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img :src="url" alt="" class="icon">
+  <img :src="url" :alt="alt" class="icon">
   <h1 class="text-center" v-text="title"/>
   <p class="text-center" v-text="paragraph"/>
   <slot/>
@@ -14,6 +14,7 @@
   export default {
     props: {
       icon: String,
+      alt: String,
       title: String,
       paragraph: String,
     },
