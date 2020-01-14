@@ -1,8 +1,8 @@
 <template>
 <div>
   <img :src="url" alt="" class="icon">
-  <h1 v-text="title"/>
-  <p v-text="paragraph"/>
+  <h1 class="text-center" v-text="title"/>
+  <p class="text-center" v-text="paragraph"/>
   <slot/>
 </div>
 
