@@ -3,8 +3,9 @@
         <div>
         <image-layout
             icon="checkmark.svg"
-            title="Success!"
-            paragraph="This was a success!"
+            alt="Du är nu anmäld!"
+            title="Du är nu anmäld!"
+            paragraph="Kolla din mail för att kunna logga in!"
         />
         </div>
     </center-wrapper>

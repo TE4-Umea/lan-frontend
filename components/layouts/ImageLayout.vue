@@ -1,8 +1,14 @@
 <template>
-<div>
-  <img :src="url" alt="" class="icon">
-  <h1 v-text="title"/>
-  <p v-text="paragraph"/>
+<div class="wrap">
+  <div class="d-flex justify-content-center">
+
+  <img :src="url" :alt="alt" class="icon">
+  </div>
+  <div class="text-wrap">
+
+  <h1 class="text-center" v-text="title"/>
+  <p class="text-center" v-text="paragraph"/>
+  </div>
   <slot/>
 </div>
 
@@ -14,6 +20,7 @@
   export default {
     props: {
       icon: String,
+      alt: String,
       title: String,
       paragraph: String,
     },
@@ -26,9 +33,15 @@
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  height: 400px;
-  width: 400px;
+.text-wrap {
+    padding-top: 34px;
 }
-
+.icon {
+  width: 60%;
+  max-width: 400px;
+}
+.wrap {
+  margin-top: 128px;
+}
 </style>
+

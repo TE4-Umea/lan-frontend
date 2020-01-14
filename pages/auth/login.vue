@@ -1,11 +1,40 @@
 <template>
-    <center-wrapper>
+<center-wrapper>
+    <wrapper title="Inloggning"> 
+        <div class="form">
 
-        <wrapper title="Inloggning"> 
+            <input-field 
+                :tabIndex="1"
+                title="E-post" 
+                type="email" 
+                placeholder="john.doe@example.com"
 
-            <h1>test</h1>
-        </wrapper>
-    </center-wrapper>
+            />
+            <input-field
+                :tabIndex="1"
+                title="Lösenord" 
+                type="password"
+                placeholder="********"
+                
+            />
+        </div>
+        <div class="">
+            <p>Har du ingen användare?
+
+                <nuxt-link class="underline" tabindex=2 to="/auth/register">
+                    Registrera dig.
+                </nuxt-link>
+            </p>
+            <action-button
+                tabIndex="1"
+                @onAction="onClick" 
+                icon="meeting_room" 
+                title="Logga in" 
+                primary="true"
+            />
+        </div>
+    </wrapper>
+</center-wrapper>
         <!-- <social-login /> -->
         <!-- <login-form></login-form> -->
 </template>
@@ -16,19 +45,31 @@ import LoginForm from '~/components/LoginForm.vue';
 import SocialLogin from '~/components/SocialLogin';
 import Wrapper from '~/components/login/Wrapper.vue';
 import CenterWrapper from '~/components/CenterWrapper.vue';
-import ActionButton from '~/components/buttons/Button.vue';
+import InputField from '~/components/login/InputField.vue';
+import ActionButton from '~/components/buttons/ActionButton.vue';
 
 export default {
     components: {
         LoginForm,
         SocialLogin,
         Wrapper,
-        ActionButton,
-        CenterWrapper
+        CenterWrapper,
+        InputField,
+        ActionButton
+    },
+    methods: {
+        onClick() {
+            console.log("click");
+        }
     }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+
+.form {
+    margin-top: 53px;
+    padding-bottom: 75px;
+}
 </style>
