@@ -1,6 +1,7 @@
 $primaryColor: #4D4D4D;
 $bgColor: #FDFDFD;
 $gradientColor: linear-gradient(90deg, #DD0890 0%, #DD0890 0.01%, #4B0082 100%);
+$animationGradiant: linear-gradient(-90deg,#dd0890 0,#200c9c 30%,#4a0082 70%,#dd0890 100%);
 $titleFont: "Open Sans";
 $bodyFont: "Titillium Web";
 
@@ -24,6 +25,20 @@ $bodyFont: "Titillium Web";
 }
 .gradient--background {
     background: $gradientColor;
+}
+.gradient-animation, .gradient-animation-hover {
+    background-image: $animationGradiant;
+    background-size: 300% 100%;
+    -webkit-transition: background-position .4s ease-in-out;
+    -o-transition: background-position .4s ease-in-out;
+    transition: background-position .4s ease-in-out;
+}
+
+.gradient-animation-active, .gradient-animation-hover:hover {
+    background-position: 100% 0;
+    -webkit-transition: background-position .4s ease-in-out;
+    -o-transition: background-position .4s ease-in-out;
+    transition: background-position .4s ease-in-out;
 }
 
 .underline {
