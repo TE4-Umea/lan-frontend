@@ -43,7 +43,7 @@
 <script>
 import Wrapper from '~/components/layouts/positioning/Wrapper.vue';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper.vue';
-import InputField from '~/components/login/InputField.vue';
+import InputField from '~/components/form/InputField.vue';
 import ActionButton from '~/components/buttons/ActionButton.vue';
 
 export default {

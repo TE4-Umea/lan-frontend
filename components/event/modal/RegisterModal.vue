@@ -7,7 +7,8 @@
                 <div>
                     <h1>ANMÄLAN</h1>
                     <input-field title="Gruppkod" />
-                    <input-field title="PlatsTyp"/>
+                    
+                    <input-select title="PlatsTyp"/>
                     <small>Härmed har jag läst och förstått <small class="clickable underline" @click="$emit('openRules')">reglerna.</small></small>
                     <action-button 
                         primary="true" 
@@ -23,7 +24,7 @@
 
 <script>
 import ActionButton from '~/components/buttons/ActionButton.vue';
-import InputField from '~/components/login/InputField.vue';
+import InputField from '~/components/form/InputField.vue';
 
 export default {
     components: {

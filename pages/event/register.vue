@@ -23,7 +23,7 @@
 <script>
 import Wrapper from '~/components/layouts/positioning/Wrapper.vue';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper.vue';
-import InputField from '~/components/login/InputField.vue';
+import InputField from '~/components/form/InputField.vue';
 import Important from '~/components/event/fields/important';
 import ActionButton from '~/components/buttons/ActionButton.vue';
 import RulesModal from '~/components/event/modal/RulesModal.vue';
