@@ -9,10 +9,10 @@
             <div>
                 <h3>Innan du anmäler dig</h3>
                 <p class="d-inline">Se till att du läser </p>
-                <p class="d-inline clickable underline">lanets regler</p>
+                <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
                 <p class="d-inline">innan du anmäler dig, reglerna går även att läsa efter du anmält dig.</p>
             </div>
-            <action-button title="TILL ANMÄLAN"></action-button>
+            <action-button class="mt-3" title="TILL ANMÄLAN"></action-button>
         </div>
     </wrapper>
 </center-wrapper>
@@ -24,6 +24,7 @@ import CenterWrapper from '~/components/layouts/positioning/CenterWrapper.vue';
 import InputField from '~/components/login/InputField.vue';
 import Important from '~/components/event/fields/important';
 import ActionButton from '~/components/buttons/ActionButton.vue';
+import RulesModal from '~/components/event/modal/RulesModal.vue';
 
 export default {
     components: {
@@ -33,6 +34,17 @@ export default {
         ActionButton,
         Important
     },
+    methods: {
+        openRulesModal() {
+            this.$modal.show(RulesModal, {}, {
+                draggable: false,
+                resizable: false,
+                width: '90%',
+                height: 'auto',
+                adaptive: false
+            });
+        }
+    }
 }
 </script>
 
