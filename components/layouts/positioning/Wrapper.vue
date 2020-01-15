@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 .main {
     padding-top: 75px;
+    max-width: 334px;
 }
 .title {
     text-transform: uppercase;

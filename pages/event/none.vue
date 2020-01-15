@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import CenterWrapper from '~/components/CenterWrapper.vue';
+import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import ImageLayout from '~/components/layouts/ImageLayout'
 export default {
   components: {
