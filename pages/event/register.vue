@@ -2,6 +2,7 @@
 <center-wrapper>
     <wrapper title="NU ÄR DET DAGS FÖR LAN!">
         <div>
+
             <p>Nu är det dags för lan! För externer (icke elever) kostar det 50kr</p>
             <important title="Lanet öppnar: ">16:30</important>
             <important title="När:">2019-12-12 - 2020-01-01</important>
@@ -12,9 +13,10 @@
                 <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
                 <p class="d-inline">innan du anmäler dig, reglerna går även att läsa efter du anmält dig.</p>
             </div>
-            <action-button class="mt-3" title="TILL ANMÄLAN"></action-button>
+            <action-button class="mt-3" title="TILL ANMÄLAN" @onAction="showRegister=true"></action-button>
         </div>
     </wrapper>
+    <register-modal :class="{'d-none': !showRegister}"  @openRules="openRulesModal" @close="showRegister=false"/>
 </center-wrapper>
 </template>
 
@@ -25,14 +27,21 @@ import InputField from '~/components/login/InputField.vue';
 import Important from '~/components/event/fields/important';
 import ActionButton from '~/components/buttons/ActionButton.vue';
 import RulesModal from '~/components/event/modal/RulesModal.vue';
+import RegisterModal from '~/components/event/modal/RegisterModal';
 
 export default {
+    data() {
+        return {
+            showRegister: false
+        }
+    },
     components: {
         Wrapper,
         CenterWrapper,
         InputField,
         ActionButton,
-        Important
+        Important,
+        RegisterModal
     },
     methods: {
         openRulesModal() {
@@ -41,13 +50,13 @@ export default {
                 resizable: false,
                 width: '90%',
                 height: 'auto',
-                adaptive: false
+                adaptive: false,
             });
         }
     }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
