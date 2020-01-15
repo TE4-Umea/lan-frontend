@@ -27,7 +27,7 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/variables'
+    '@/assets/css/style.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -35,6 +35,7 @@ export default {
   plugins: [
     '~/plugins/axios',
     '~/plugins/datePicker',
+    '~/plugins/modals',
   ],
   /*
   ** Nuxt.js dev-modules

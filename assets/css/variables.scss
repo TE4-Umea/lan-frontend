@@ -23,9 +23,11 @@ $bodyFont: "Titillium Web";
 .gradient {
     color: $gradientColor;
 }
+
 .gradient--background {
     background: $gradientColor;
 }
+
 .gradient-animation, .gradient-animation-hover {
     background-image: $animationGradiant;
     background-size: 300% 100%;
@@ -44,34 +46,6 @@ $bodyFont: "Titillium Web";
 .underline {
     text-decoration-line: underline;
     color: rgba(0, 0, 0, 0.7);
-}
-.clickable {
-    cursor: pointer;
-}
-h1 {
-    font-family: $titleFont, sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 40px;
-    text-transform: uppercase;
-    color: $primaryColor;
-}
-
-p {
-    font-family: $bodyFont, sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 30px;
-    color: $primaryColor
-}
-
-small {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 24px;
 }
 
 .primary-color {
