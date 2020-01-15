@@ -1,7 +1,7 @@
 <template>
 <center-wrapper>
     <wrapper title="Registrera dig">
-        <div v-if="!lastStep">
+        <div :class="{ 'd-none': lastStep }" >
             <div class="form">
                 <input-field
                     class="form--short"
@@ -31,7 +31,7 @@
                 />
             </div>
         </div> 
-        <div v-else>
+        <div :class="{ 'd-none': !lastStep }">
             <small>Namn: {{form.name}}</small><br>
             <small>E-post: {{ form.email }}</small><br>
             <small @click="previous" class="clickable underline">Redigera</small>
@@ -94,8 +94,7 @@ export default {
         previous() {
             this.lastStep = false;
         },
-        onSubmit(evt) {
-            evt.preventDefault();
+        onSubmit() {
             this.$axios.post('/auth/register', this.form).then(res => {
                 this.$auth.loginWith('local', {
                     data: this.form
