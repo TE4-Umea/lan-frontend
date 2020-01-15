@@ -6,9 +6,16 @@
             <div class="py-4 d-flex justify-content-center">
                 <div>
                     <h1>ANMÄLAN</h1>
-                    <input-field title="Gruppkod" />
+                    <input-field 
+                        title="Gruppkod" 
+                        v-model="form.group_code"
+                    />
                     
-                    <input-select title="PlatsTyp"/>
+                    <input-select
+                        v-model="form.setup_type"
+                        title="Platstyp"
+                        :options="['Stationär', 'Laptop', 'Ingen']"
+                    />
                     <small>Härmed har jag läst och förstått <small class="clickable underline" @click="$emit('openRules')">reglerna.</small></small>
                     <action-button 
                         primary="true" 
@@ -25,17 +32,27 @@
 <script>
 import ActionButton from '~/components/buttons/ActionButton.vue';
 import InputField from '~/components/form/InputField.vue';
+import InputSelect from '~/components/form/InputSelect.vue';
 
 export default {
-    components: {
-        ActionButton,
-        InputField,
+    data() {
+        return {
+            form: {
+                group_code: '',
+                setup_type: '' 
+            }
+        }
     },
     methods: {
         onSubmit() {
             console.log('clicked');
         }
-    }
+    },
+    components: {
+        ActionButton,
+        InputField,
+        InputSelect
+    },
 }
 </script>
 

@@ -12,10 +12,11 @@
             v-on:blur="setActive(false)"
             @input="handleInput"
             v-model="data"
+            :options="options"
             :name="name"
             :id="id"
             :key="id"
-        >
+        />
         <div :class='{"gradient-animation-active": active}' class="line gradient-animation" />
       </div>
   </div>
@@ -25,6 +26,7 @@
 export default {
     props: [
         'value',
+        'options',
         'input',
         'title',
         'type',
@@ -78,7 +80,7 @@ export default {
     padding: 7px 0;
 }
 .field:focus{
-    outline: none;
+    box-shadow: none;
 }
 .field::placeholder {
     color: rgba(0, 0, 0, 0.3);
