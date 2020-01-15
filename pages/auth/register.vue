@@ -94,8 +94,7 @@ export default {
         previous() {
             this.lastStep = false;
         },
-        onSubmit(evt) {
-            evt.preventDefault();
+        onSubmit() {
             this.$axios.post('/auth/register', this.form).then(res => {
                 this.$auth.loginWith('local', {
                     data: this.form
