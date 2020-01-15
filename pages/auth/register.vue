@@ -1,47 +1,58 @@
 <template>
 <center-wrapper>
     <wrapper title="Registrera dig">
-        <div v-if="!lastStep">
+        <div :class="{ 'd-none': lastStep }" >
             <div class="form">
                 <input-field
+                    class="form--short"
                     :tabIndex="1"
-                    title="Fullständigt namn" 
+                    title="Fullständigt namn"
                     type="fullname"
                     placeholder="John doe"
-                    
+                    v-model="form.name"
+                    name="name"
+                    id="name"
                 />
-                <input-field 
+                <input-field
                     :tabIndex="1"
-                    title="E-post" 
-                    type="email" 
+                    title="E-post"
+                    type="email"
                     placeholder="john.doe@example.com"
-
+                    v-model="form.email"
+                    name="email"
+                    id="email"
                 />
             </div>
             <div class="">
                 <action-button
                     tabIndex="1"
-                    @onAction="next"  
+                    @onAction="next"
                     title="Nästa"
                 />
             </div>
-        </div> 
-        <div v-else>
-            <small>Namn: John Doe</small><br>
-            <small>E-post: typo@example.com</small><br>
+        </div>
+        <div :class="{ 'd-none': !lastStep }">
+            <small>Namn: {{form.name}}</small><br>
+            <small>E-post: {{ form.email }}</small><br>
             <small @click="previous" class="clickable underline">Redigera</small>
             <div class="form">
                 <input-field
                     :tabIndex="1"
-                    title="Lösenord" 
+                    title="Lösenord"
                     type="password"
-                    placeholder="************" 
+                    placeholder=""
+                    v-model="form.password"
+                    name="password"
+                    id="password"
                 />
                 <input-field
                     :tabIndex="1"
-                    title="Bekräfta lösenord" 
+                    title="Bekräfta lösenord"
                     type="password"
-                    placeholder="************" 
+                    placeholder=""
+                    v-model="form.password_confirmation"
+                    name="password_confirm"
+                    id="password_confirm"
                 />
             </div>
             <div class="">
@@ -53,17 +64,12 @@
                     primary="true"
                 />
             </div>
-        </div> 
+        </div>
     </wrapper>
 </center-wrapper>
-        <!-- <social-login /> -->
-        <!-- <login-form></login-form> -->
 </template>
 
 <script>
-
-import LoginForm from '~/components/LoginForm.vue';
-import SocialLogin from '~/components/SocialLogin';
 import Wrapper from '~/components/login/Wrapper.vue';
 import CenterWrapper from '~/components/CenterWrapper.vue';
 import InputField from '~/components/login/InputField.vue';
@@ -73,12 +79,15 @@ export default {
     data() {
         return {
             lastStep: false,
+            form: {
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
+            },
         }
     },
     methods: {
-        onClick() {
-            console.log("click");
-        },
         next() {
             this.lastStep = true;
         },
@@ -86,12 +95,14 @@ export default {
             this.lastStep = false;
         },
         onSubmit() {
-            console.log("sending register request");
+            this.$axios.post('/auth/register', this.form).then(res => {
+                this.$auth.loginWith('local', {
+                    data: this.form
+                });
+            });
         }
     },
     components: {
-        LoginForm,
-        SocialLogin,
         Wrapper,
         CenterWrapper,
         InputField,
@@ -101,6 +112,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form--short {
+    max-width: 160px;
+}
 .form {
     margin-top: 53px;
     padding-bottom: 75px;

@@ -1,18 +1,21 @@
 <template>
-<div tabindex=0 
-    class="clickable outer-box gradient--background"
+<div tabindex=0
+    class="clickable outer-box gradient-animation-hover"
+    :class="{'p-0': primary}"
     @click="onAction()"
 >
-    <div class="box" :class="primary ? 'gradient--background' : 'bg-color--background'">
-    <!-- <img :src="icon" alt="icon"> -->
-    
-    <p 
-        class="text"
-        :class="primary ? 'bg-color' : 'gradient--background text-primary'"     
+    <div class="box"
+        :class="{'gradient-animation-hover' : primary, 'bg-color--background': !primary, 'box-padding': primary }"
     >
-    <i class="icon material-icons" 
-        :class="primary ? 'bg-color' : 'gradient--background text-primary'" 
-        v-text="icon" 
+    <!-- <img :src="icon" alt="icon"> -->
+
+    <p
+        class="text"
+        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
+    >
+    <i class="icon material-icons"
+        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
+        v-text="icon"
     />
     {{title}}
     </p>
@@ -41,6 +44,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+.gradient:hover {
+
+}
+
 .icon {
     font-size: 30px;
     vertical-align: sub;
@@ -51,12 +59,14 @@ export default {
     border-radius: 8px;
     width: 100%;
     max-width: 339px;
+
 }
 .box {
     border-radius: 6px;
 }
-
-
+.box-padding {
+    padding: 4px;
+}
 .text {
     font-style: normal;
     font-weight: bold;
@@ -66,7 +76,7 @@ export default {
     text-transform: uppercase;
     margin: 0;
     padding: 10px;
-    
+
 }
 .text-primary {
     -webkit-background-clip: text;

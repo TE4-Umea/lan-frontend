@@ -1,8 +1,8 @@
 <template>
 <div class="main">
     <div>
-        <h1 
-        v-if="title" 
+        <h1
+        v-if="title"
         v-text="title"
         class="primary-color"
         />
@@ -20,11 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .main {
     padding-top: 75px;
 }
-
 .title {
     text-transform: uppercase;
     font-weight: 800;
