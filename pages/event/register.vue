@@ -2,7 +2,6 @@
 <center-wrapper>
     <wrapper title="NU ÄR DET DAGS FÖR LAN!">
         <div>
-
             <p>Nu är det dags för lan! För externer (icke elever) kostar det 50kr</p>
             <important title="Lanet öppnar: ">16:30</important>
             <important title="När:">2019-12-12 - 2020-01-01</important>
