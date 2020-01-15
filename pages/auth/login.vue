@@ -1,19 +1,19 @@
 <template>
 <center-wrapper>
-    <wrapper title="Inloggning"> 
+    <wrapper title="Inloggning">
         <div class="form">
 
-            <input-field 
+            <input-field
                 :tabIndex="1"
-                title="E-post" 
-                type="email" 
+                title="E-post"
+                type="email"
                 placeholder="john.doe@example.com"
                 v-model="form.email"
 
             />
             <input-field
                 :tabIndex="1"
-                title="Lösenord" 
+                title="Lösenord"
                 type="password"
                 placeholder="********"
                 v-model="form.password"
@@ -28,9 +28,9 @@
             </p>
             <action-button
                 tabIndex="1"
-                @onAction="onSubmit" 
-                icon="meeting_room" 
-                title="Logga in" 
+                @onAction="onSubmit"
+                icon="meeting_room"
+                title="Logga in"
                 primary="true"
             />
         </div>
@@ -66,7 +66,7 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
-            
+
             this.$auth.loginWith('local', {
                 data: this.form
             }).then(res => {

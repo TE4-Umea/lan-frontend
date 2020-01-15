@@ -6,17 +6,17 @@
                 <input-field
                     class="form--short"
                     :tabIndex="1"
-                    title="Fullständigt namn" 
+                    title="Fullständigt namn"
                     type="fullname"
                     placeholder="John doe"
                     v-model="form.name"
                     name="name"
                     id="name"
                 />
-                <input-field 
+                <input-field
                     :tabIndex="1"
-                    title="E-post" 
-                    type="email" 
+                    title="E-post"
+                    type="email"
                     placeholder="john.doe@example.com"
                     v-model="form.email"
                     name="email"
@@ -26,11 +26,11 @@
             <div class="">
                 <action-button
                     tabIndex="1"
-                    @onAction="next"  
+                    @onAction="next"
                     title="Nästa"
                 />
             </div>
-        </div> 
+        </div>
         <div :class="{ 'd-none': !lastStep }">
             <small>Namn: {{form.name}}</small><br>
             <small>E-post: {{ form.email }}</small><br>
@@ -38,7 +38,7 @@
             <div class="form">
                 <input-field
                     :tabIndex="1"
-                    title="Lösenord" 
+                    title="Lösenord"
                     type="password"
                     placeholder=""
                     v-model="form.password"
@@ -47,7 +47,7 @@
                 />
                 <input-field
                     :tabIndex="1"
-                    title="Bekräfta lösenord" 
+                    title="Bekräfta lösenord"
                     type="password"
                     placeholder=""
                     v-model="form.password_confirmation"
@@ -64,7 +64,7 @@
                     primary="true"
                 />
             </div>
-        </div> 
+        </div>
     </wrapper>
 </center-wrapper>
 </template>
