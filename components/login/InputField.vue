@@ -15,7 +15,7 @@
             :name="name"
             :id="id"
         >
-        <div :class='{"active": active}' class="line gradient--background" />
+        <div :class='{"gradient-animation-active": active}' class="line gradient-animation" />
       </div>
   </div>
 </template>
@@ -55,9 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.active {
-    background: #E1259C !important;
-}
 
 .y-margin {
     padding: 10px 0;
