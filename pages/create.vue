@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-md-4">
             <h1>Tider</h1>
-            <p for="name" class="m-0" >Namn på event </p>
-            <input type="text" id="name" v-model="form.title" placeholder="ntilan">
+            <p for="name" class="m-0 mb-1" >Namn på event </p>
+            <input type="text" v-model="form.title" placeholder="NTI Lan!">
             <p for="lan-start" class="m-0">Lanet pågår: </p>
 
             <div class="d-flex">
-                <v-date-picker id="lan-start"
+                <v-date-picker
                         :min-date='new Date()'
                         v-model="eventDates.dates"
                         mode="range"
@@ -51,7 +51,6 @@
             <h1>Information </h1>
             <textarea class="form-control" rows="10" v-model="form.short_info" ></textarea>
             <div class="m-0 py-4 d-flex justify-content-center">
-
                 <action-button
                     title="Publicera Event"
                     icon="done"
