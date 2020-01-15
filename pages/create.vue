@@ -4,25 +4,27 @@
     <div class="row">
         <div class="col-md-4">
             <h1>Tider</h1>
-            <label for="lan-start">Lanet börjar:</label>
-            <div class="d-flex">
+            <p for="name" class="m-0 mb-1" >Namn på event </p>
+            <input type="text" v-model="form.title" placeholder="NTI Lan!">
+            <p for="lan-start" class="m-0">Lanet pågår: </p>
 
-                <v-date-picker id="lan-start"
+            <div class="d-flex">
+                <v-date-picker
                         :min-date='new Date()'
                         v-model="eventDates.dates"
                         mode="range"
                         placeholder="Välj datum"
 
                 />
-                <time-picker
+            </div>
+            <p class="m-0"> lanet öppnar kl.</p>
+            <time-picker
                     hide-disabled-items
                     :minute-interval="5"
                     hour-label="Timme" minute-label="Minut"
                     v-model="eventDates.startTime"
                 />
-            </div>
-
-            <label for="last-registration-date">Sista anmälningsdatum.</label>
+            <p for="last-registration-date">Sista anmälningsdatum.</p>
             <div class="d-flex">
 
                 <v-date-picker id="last-registration-date"
@@ -47,10 +49,8 @@
         </div>
         <div class="col-md-4">
             <h1>Information </h1>
-            <textarea class="form-control" rows="10"></textarea>
-
+            <textarea class="form-control" rows="10" v-model="form.short_info" ></textarea>
             <div class="m-0 py-4 d-flex justify-content-center">
-
                 <action-button
                     title="Publicera Event"
                     icon="done"
@@ -75,6 +75,10 @@ import ActionButton from '~/components/buttons/ActionButton'
     },
     data(){
       return {
+        form: {
+          short_info:'',
+          title:'',
+        },
         eventDates: {
           dates:  {
             start: undefined,
