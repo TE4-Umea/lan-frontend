@@ -5,8 +5,8 @@
 
         <input class="field primary-color"
             :tabindex="tabIndex"
-            :type="type" 
-            :placeholder="placeholder" 
+            :type="type"
+            :placeholder="placeholder"
             :maxlength="maxlength"
             v-on:focus="setActive(true)"
             v-on:blur="setActive(false)"
@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         setActive(bool) {
-            this.active = bool; 
+            this.active = bool;
         },
         handleInput(e) {
             // console.log(e);
@@ -77,7 +77,7 @@ export default {
     border: none;
     padding: 7px 0;
 }
-.field:focus{   
+.field:focus{
     outline: none;
 }
 .field::placeholder {

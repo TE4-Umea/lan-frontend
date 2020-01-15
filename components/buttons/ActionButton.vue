@@ -1,21 +1,21 @@
 <template>
-<div tabindex=0 
+<div tabindex=0
     class="clickable outer-box gradient-animation-hover"
     :class="{'p-0': primary}"
     @click="onAction()"
 >
-    <div class="box" 
+    <div class="box"
         :class="{'gradient-animation-hover' : primary, 'bg-color--background': !primary, 'box-padding': primary }"
     >
     <!-- <img :src="icon" alt="icon"> -->
-    
-    <p 
+
+    <p
         class="text"
-        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"     
+        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
     >
-    <i class="icon material-icons" 
-        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'" 
-        v-text="icon" 
+    <i class="icon material-icons"
+        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
+        v-text="icon"
     />
     {{title}}
     </p>
@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 
 .gradient:hover {
-    
+
 }
 
 .icon {
@@ -59,7 +59,7 @@ export default {
     border-radius: 8px;
     width: 100%;
     max-width: 339px;
-    
+
 }
 .box {
     border-radius: 6px;
@@ -76,7 +76,7 @@ export default {
     text-transform: uppercase;
     margin: 0;
     padding: 10px;
-    
+
 }
 .text-primary {
     -webkit-background-clip: text;
