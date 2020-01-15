@@ -24,7 +24,6 @@
                     hour-label="Timme" minute-label="Minut"
                     v-model="eventDates.startTime"
                 />
-
             <p for="last-registration-date">Sista anmälningsdatum.</p>
             <div class="d-flex">
 
@@ -51,7 +50,6 @@
         <div class="col-md-4">
             <h1>Information </h1>
             <textarea class="form-control" rows="10" v-model="form.short_info" ></textarea>
-
             <div class="m-0 py-4 d-flex justify-content-center">
 
                 <action-button
@@ -81,8 +79,6 @@ import ActionButton from '~/components/buttons/ActionButton'
         form: {
           short_info:'',
           title:'',
-
-
         },
         eventDates: {
           dates:  {
@@ -117,8 +113,5 @@ h1 {
 }
 textarea {
   resize: none;
-}
-#name {
-  margin-bottom: 5px;
 }
 </style>
