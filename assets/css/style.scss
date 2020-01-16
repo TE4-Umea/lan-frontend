@@ -11,6 +11,14 @@ h1 {
     text-transform: uppercase;
     color: $primaryColor;
 }
+h2 {
+    font-family: $titleFont, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 46px;
+    color: $primaryColor;
+}
 
 h3 {
     font-family: $titleFont, sans-serif;

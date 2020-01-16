@@ -3,11 +3,11 @@
     <div>
         <div class="p-3">
 
-          <div class="d-flex justify-content-between">
-              <h1>Din biljett</h1>
+          <div class="pt-1 pt-md-2 d-flex justify-content-between">
+              <h3 class="">DIN BILJETT</h3>
               <i
                   class="pt-2 icon material-icons clickable"
-                  @click="close()"
+                  @click="$emit('close')"
 
               >close</i>
           </div>
@@ -32,7 +32,7 @@ export default {
             value: 'https://eastereggsuwu.com',
             size: 300,
             client: {
-                name:'Ludde',
+                name:'John Doe',
                 type:'Elev',
           }
         }
@@ -42,15 +42,8 @@ export default {
     },
     mounted() {
         let x = this.$refs.ticket.offsetWidth;
-        this.size = Math.floor(x) -40;
+        this.size = Math.floor(x) -60;
     },
-    methods: {
-        close() {
-            console.log("close");
-            this.$emit('close');
-        }
-    }
-
 }
 </script>
 
@@ -58,7 +51,7 @@ export default {
 
 .dotted {
     position: relative;
-    margin: 20px -7%;
+    margin: 20px -10%;
     border-top: 7px dotted;
     color: gray;
 }
