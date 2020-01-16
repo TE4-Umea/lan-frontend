@@ -59,6 +59,9 @@ export default {
   ],
 
   auth: {
+    plugins: [
+      '~/plugins/event',
+    ],
     strategies: {
       local: {
         endpoints: {

@@ -15,6 +15,9 @@
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import ImageLayout from '~/components/layouts/ImageLayout'
 export default {
+  middleware: [
+      'auth'
+  ],
   components: {
       CenterWrapper,
       ImageLayout
