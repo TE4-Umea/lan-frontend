@@ -7,8 +7,8 @@
             title="Lyckades!"
             paragraph=""
         >
-        <p class="d-inline ">
-            Du är anmäld till lanet som elev mellan </p> <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p>, lanet börjar <p class="d-inline font-weight-bold">kl 16:30</p>
+        <p class="d-inline">
+            Du är anmäld till lanet som elev mellan </p> <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p><p class="d-inline">, lanet börjar </p><p class="d-inline font-weight-bold">kl 16:30</p>
         </image-layout>
         <div class="pt-4 d-flex justify-content-center">
             <action-button
