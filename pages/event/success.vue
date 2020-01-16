@@ -15,6 +15,7 @@
                 title="Din biljett"
                 icon="local_play"
                 primary="true"
+                @onAction="openTicket"
             />
 
         </div>
@@ -26,12 +27,26 @@
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
     import ActionButton from '~/components/buttons/ActionButton'
+    import TicketModal from '../../components/event/modal/TicketModal.vue';
     export default {
     components: {
             CenterWrapper,
             ImageLayout,
             ActionButton,
-        }
+        },
+        methods: {
+            openTicket() {
+                this.$modal.show(TicketModal, {}, {
+                    draggable: true,
+                    resizable: false,
+                    width: '90%',
+                    height: 'auto',
+                    maxWidth: 350,
+                    maxHeight: 500,
+                    adaptive: true,
+                });
+            }
+        },
     }
 </script>
 
