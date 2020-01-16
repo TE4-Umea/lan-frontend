@@ -8,7 +8,6 @@
         :class="{'gradient-animation-hover' : primary, 'bg-color--background': !primary, 'box-padding': primary }"
     >
     <!-- <img :src="icon" alt="icon"> -->
-
     <p
         class="text"
         :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
