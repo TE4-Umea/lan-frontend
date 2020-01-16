@@ -29,6 +29,9 @@ import RulesModal from '~/components/event/modal/RulesModal.vue';
 import RegisterModal from '~/components/event/modal/RegisterModal';
 
 export default {
+    middleware: [
+        // 'no-event'
+    ],
     data() {
         return {
             showRegister: false
