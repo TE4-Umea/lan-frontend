@@ -1,5 +1,5 @@
 <template>
-<div class="d-flex justify-content-center" ref="ticket">
+<div class="d-flex justify-content-center fadein" ref="ticket">
     <div>
         <div class="p-3">
 
