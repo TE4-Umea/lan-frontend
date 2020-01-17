@@ -3,7 +3,7 @@
 <div class="container pt-4">
     <div class="row">
         <div class="col-md-4">
-            <h1>Tider</h1>
+            <h1 class="pb-2">Tider</h1>
             <p for="name" class="m-0 mb-1" >Namn på event </p>
             <input type="text" v-model="form.title" placeholder="NTI Lan!">
             <p for="lan-start" class="m-0">Lanet pågår: </p>
@@ -42,23 +42,23 @@
             </div>
         </div>
         <div class="col-md-4 order-md-last">
-            <h1>Regler <br> </h1>
+            <h1 class="pb-2">Regler</h1>
             <div style="height:100%">
                 <rules-input> </rules-input>
             </div>
         </div>
         <div class="col-md-4">
-            <h1>Information </h1>
+            <h1 class="pb-2">Information </h1>
             <textarea class="form-control" rows="10" v-model="form.short_info" ></textarea>
             <div class="m-0 py-4 d-flex justify-content-center">
                 <action-button
                     title="Publicera Event"
                     icon="done"
                     primary="true"
+                    @onAction="submit"
                 />
             </div>
         </div>
-
     </div>
 </div>
 </template>
@@ -67,39 +67,48 @@
 import timePicker from 'vue2-timepicker'
 import RulesInput from '~/components/event/RulesInput'
 import ActionButton from '~/components/buttons/ActionButton'
-    export default {
+export default {
+    data() {
+        return {
+            form: {
+                short_info:'',
+                title:'',
+            },
+            eventDates: {
+                dates:  {
+                    start: undefined,
+                    end: undefined
+                },
+            startTime: {
+                    HH: '16',
+                    mm: '30',
+                }
+            },
+            registerClosure: {
+                date: new Date(),
+                time: {
+                    HH: '15',
+                    mm: '00'
+                }
+            }
+        }
+    },
+    methods: {
+        submit() {
+            console.log(this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime));
+        },
+        parseDateTime(date, time) {
+            date.setHours(time.HH, time.mm);
+            // date.setMinutes(time.mm);
+            return date;
+        }
+    },
     components: {
       timePicker,
       RulesInput,
       ActionButton,
     },
-    data(){
-      return {
-        form: {
-          short_info:'',
-          title:'',
-        },
-        eventDates: {
-          dates:  {
-            start: undefined,
-            end: undefined
-          },
-          startTime: {
-              HH: '16',
-              mm: '30',
-          }
-        },
-        registerClosure: {
-          date: new Date(),
-          time: {
-            HH: '15',
-            mm: '00'
-          }
-        }
-      }
-
-    }
-  }
+}
 </script>
 
 <style lang="sass">
@@ -107,9 +116,6 @@ import ActionButton from '~/components/buttons/ActionButton'
 </style>
 
 <style lang="scss" scoped>
-h1 {
-  padding: 10px 0;
-}
 textarea {
   resize: none;
 }
