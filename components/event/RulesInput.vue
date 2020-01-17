@@ -1,5 +1,11 @@
 <template>
-	<textarea class="form-control input" rows="24" v-model="model.body" @input="onInput"> </textarea>
+    <div>
+        <i v-if="!loading" class='icon material-icons gradient-animation-hover text-primary'
+            v-text="icon"
+        />
+        <!-- TODO: Lägg till en loading spinner på v-else -->
+	    <textarea class="form-control input" rows="24" v-model="model.body" @input="onInput"> </textarea>
+    </div>
 </template>
 
 <script>
@@ -9,6 +15,8 @@ export default {
 	data() {
 		return {
             debouncedDoneTyping: undefined,
+            icon: 'eco',
+            loading: false,
             model: {
                 id: 1,
                 body: ''  
@@ -26,7 +34,7 @@ export default {
 		if(!this.model.id) {
 			return;
 		}
-		this.$axios.get('/event/rules/' + this.model.id + '/get').then(res => {
+		this.$axios.get('/event/rules/' + this.model.id + '/read').then(res => {
 			this.model = res.data;
 		}).catch(err => {
             console.log(err);
@@ -35,18 +43,34 @@ export default {
     },
     methods: {
         onInput() {
+            this.icon = 'autorenew';
+            this.loading = true;
             this.debouncedDoneTyping();
         },
         doneTyping() {
-            console.log("done typing");
-            this.$auth.$axios.patch()
+            this.$axios.put('/admin/event/rules/update', {
+                id: this.model.id,
+                body: this.model.body,
+            }).then(res => {
+                this.icon = 'done';
+                this.loading = false;
+            }).catch(err =>  {
+                this.icon = 'close';
+                this.loading = false;
+                console.log(err)
+            });
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-.input  {
-  box-sizing:border-box;
+.input {
+    box-sizing:border-box;
+}
+.text-primary {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 </style>
