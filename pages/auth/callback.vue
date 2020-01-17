@@ -25,7 +25,7 @@ export default {
         ).catch(e => {
             this.$auth.logout();
             localStorage.removeItem('provider');
-            this.$router.push(`/`);
+            this.$router.push(`/login`);
         });
     }
 }
