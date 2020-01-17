@@ -59,6 +59,7 @@ export default {
   auth: {
     plugins: [
       '~/plugins/event',
+      // '~/plugins/authAxios'
     ],
     strategies: {
       local: {

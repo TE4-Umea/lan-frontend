@@ -1,14 +1,16 @@
 <template>
-	<textarea class="form-control input" rows="24" v-model="model.body"> </textarea>
+	<textarea class="form-control input" rows="24" v-model="model.body" @input="onInput"> </textarea>
 </template>
 
 <script>
+let _  = require('lodash');
 export default {
 	middleware: 'auth-admin',
 	data() {
 		return {
+            debouncedDoneTyping: undefined,
             model: {
-                id: this.$store.event.rules_id,
+                id: 1,
                 body: ''  
             },
             typing: {
@@ -16,8 +18,12 @@ export default {
                 timer: undefined
             }
     	}
-	},
+    },
+    created() {
+        this.debouncedDoneTyping = _.debounce(this.doneTyping, 500);
+    },
 	mounted() {
+
 		if(!this.model.id) {
 			return;
 		}
@@ -30,13 +36,13 @@ export default {
     },
     methods: {
         onInput() {
-            clearTimeout(this.timer);
-            this.typing.timer = setTimeout(this.doneTyping, this.typing.timeout);
+            this.debouncedDoneTyping();
         },
         doneTyping() {
             console.log("done typing");
+            this.$auth.$axios.patch()
         }
-    }
+    },
 }
 </script>
 

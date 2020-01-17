@@ -23,10 +23,9 @@ export default {
         this.$auth.setStrategy('local');
         this.$auth.fetchUser().then(res => {}
         ).catch(e => {
-            // console.log(e);
             this.$auth.logout();
             localStorage.removeItem('provider');
-            this.$router.push(`/login`);
+            this.$router.push(`/`);
         });
     }
 }
