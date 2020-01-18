@@ -30,7 +30,8 @@ import RegisterModal from '~/components/event/modal/RegisterModal';
 
 export default {
     middleware: [
-        // 'no-event'
+        'event/none',
+        'registration/exists'
     ],
     data() {
         return {

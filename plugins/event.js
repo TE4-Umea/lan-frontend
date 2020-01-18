@@ -1,6 +1,6 @@
-export default ({$auth, store}) => {
-    if (!$auth.loggedIn) {
-        return
+export default async ({$auth, store})  => {
+    if ($auth.loggedIn) {
+        await store.dispatch('event/GET');
+        await store.dispatch('event/GET_REGISTRATION');
     }
-    store.dispatch('GET_EVENT');
 }

@@ -9,7 +9,9 @@
 export default {
     middleware: [
         'auth',
-        'no-event'
+        'event/none',
+        'registration/none',
+        'registration/not-checked-in',
     ],
 }
 </script>

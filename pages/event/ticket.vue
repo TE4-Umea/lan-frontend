@@ -20,7 +20,12 @@
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
-    components: {
+        middleware: [
+            'registration/none',
+            'registration/checked-in',
+
+        ],
+        components: {
             CenterWrapper,
             ImageLayout
         }
