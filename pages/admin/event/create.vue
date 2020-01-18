@@ -95,11 +95,23 @@ export default {
     },
     methods: {
         submit() {
-            console.log(this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime));
+            let payload = {
+                title: this.form.title,
+                short_info: this.form.short_info,
+                rules_id: 1,
+                start_date: this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime),
+                end_date: this.eventDates.dates.end,
+                registration_closes_at: this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime)
+
+            };
+            console.log("payload", payload);
+            this.$axios.post('/admin/event/create', payload).then(res => {
+                console.log(res)
+                this.$router.push(`/admin`);
+            }).catch(err => console.log(err));
         },
         parseDateTime(date, time) {
             date.setHours(time.HH, time.mm);
-            // date.setMinutes(time.mm);
             return date;
         }
     },
