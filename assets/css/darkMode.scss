@@ -1,0 +1,16 @@
+@import "~/assets/css/variables.scss";
+.dark-mode {
+
+    background: $bgColorDark;
+    
+    h1,h2,h3,p,small,a {
+        color: $primaryColorDark;
+    }
+    .bg-color {
+        color: $bgColorDark;
+    }
+    .bg-color--background {
+        background-color: $bgColorDark;
+    }
+    
+}
