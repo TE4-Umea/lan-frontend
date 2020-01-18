@@ -45,8 +45,6 @@
 
 .google-button {
     max-width: 343px;
-
-    background: #FFFFFF;
     /* Shadow-button */
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;

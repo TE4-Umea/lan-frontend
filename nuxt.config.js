@@ -28,7 +28,7 @@ export default {
   */
   css: [
     '@/assets/css/style.scss',
-    '@/assets/css/darkMode.scss',
+    '@/assets/css/darkmode.scss',
   ],
   /*
   ** Plugins to load before mounting the App

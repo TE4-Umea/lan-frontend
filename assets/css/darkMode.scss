@@ -2,7 +2,9 @@
 .dark-mode {
 
     background: $bgColorDark;
-    
+    ul {
+        background: $bgColorDark
+    }
     h1,h2,h3,p,small,a {
         color: $primaryColorDark;
     }

@@ -1,7 +1,7 @@
 <template>
     
 <div>
-    <b-dropdown size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
+    <b-dropdown text="dark" size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
         <template v-slot:button-content>
             <img src="~/assets/icons/verical_dot.svg" class="dropdown" alt="Dropdown" >
         </template>
