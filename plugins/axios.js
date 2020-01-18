@@ -5,7 +5,7 @@ export default function ({ $axios, redirect }) {
         if (process.browser) {
             let provider = localStorage.getItem('provider');
             if(provider) {
-                $axios.setHeader('provider', provider);
+                config.headers.common['provider'] = provider;
             }
           }
     });
