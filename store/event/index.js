@@ -20,7 +20,6 @@ export const actions = {
     async GET_REGISTRATION ({ commit, state }) {
         if(state.details) {
             try {
-
                 const { data } = await this.$axios.get('/event/' + state.details.id + '/registration');
                 commit('SET_REGISTRATION', data);
             } catch(e){
