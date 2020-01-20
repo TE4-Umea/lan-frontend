@@ -1,7 +1,7 @@
 <template>
-    <div :class="{'d-none': !showRegister, 'slideup': showRegister}">
+    <div :class="{'d-none': !showRegister}">
         <div class="shadow" @click="$emit('close')"/>
-        <div class="main bg-color--background register-event">
+        <div class="main bg-color--background register-event" :class="{'slideup': showRegister}">
             <div class="py-4 d-flex justify-content-center">
                 <div>
                     <h1>ANMÄLAN</h1>
@@ -83,7 +83,12 @@ export default {
 }
 .register-event {
   position: fixed;
-  bottom: 0;
   left: 0;
+  transition: bottom 1s;
+  bottom: -100%;
+}
+.slideup {
+  bottom: 0%;
+
 }
 </style>
