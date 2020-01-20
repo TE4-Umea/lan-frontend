@@ -12,10 +12,11 @@ export const mutations = {
 }
 export const actions = {
     async GET ({ commit, state, dispatch }) {
-        const { data } = await this.$axios.get('/event/latest');
-        if(data !== undefined) {
-            commit('SET', data);
-        }
+        this.$axios.get('/event/latest').then(res => {
+            commit('SET', res.data);
+        }).catch(e => {
+            console.log('There are currently no events found');
+        });
     },
     async GET_REGISTRATION ({ commit, state }) {
         if(state.details) {

@@ -4,7 +4,10 @@
 
 <script>
 export default {
-
+    middleware: [
+        'auth-admin',
+        'event/none'
+    ]
 }
 </script>
 
