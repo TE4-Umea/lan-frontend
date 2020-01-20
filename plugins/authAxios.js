@@ -1,6 +1,5 @@
 export default function ({$auth, $axios, redirect }) {
     // Temporary solution
-    console.log("this happes", $auth.loggedIn);
     if($auth.loggedIn) {
         
         $axios.onRequest((config) => {
