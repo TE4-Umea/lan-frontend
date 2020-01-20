@@ -2,12 +2,14 @@
     <center-wrapper>
         <wrapper>
           <h1> Check in </h1>
-            <div class ="d-flex">
+            <div class ="d-flex align-items-center">
                 <input type="text" class="form-control"   placeholder="Lägg till ID manuellt...." v-model="result">
-                <i class="icon material-icons clickable primary-color"
-                    v-text="icon"
-                    v-on:click= "handleClick"
-                />
+                <div class="box gradient-animation-hover box-padding">
+                    <i class="icon material-icons clickable primary-color"
+                        v-text="icon"
+                        v-on:click= "handleClick"
+                    />
+                </div>
             </div>
             <qrcode-stream v-if="showCamera" @decode="onDecode"></qrcode-stream>
         </wrapper>
@@ -58,6 +60,19 @@ export default {
 
 <style lang="scss" scoped>
 
+.box {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 6p;
+}
+
+.wrapper {
+    margin-top: 25px;
+}
+
+.icon {
+  color: white;
+}
 
 
 </style>
