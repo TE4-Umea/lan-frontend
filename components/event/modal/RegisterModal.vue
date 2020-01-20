@@ -1,6 +1,6 @@
 <template>
-    <div :class="{'d-none': !showRegister}">
-        <div class="shadow" @click="$emit('close')"/>
+    <div>
+        <div class="shadow" :class="{'fadein': showRegister}" @click="$emit('close')"/>
         <div class="main bg-color--background register-event" :class="{'slideup': showRegister}">
             <div class="py-4 d-flex justify-content-center">
                 <div>
@@ -67,6 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .shadow {
     position: absolute;
     left: 0;
@@ -74,21 +75,35 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
 }
+
+.fadein {
+  opacity: 1;
+  visibility: visible;
+}
+
 .main {
     position: absolute;
     width: 100%;
     left: 0;
     bottom: 0;
 }
+
 .register-event {
   position: fixed;
   left: 0;
-  transition: bottom 1s;
   bottom: -100%;
-}
-.slideup {
-  bottom: 0%;
+  transition: all 0.3s;
+
+  &.slideup {
+    bottom: 0;
+  }
 
 }
+
+
+
 </style>

@@ -1,5 +1,9 @@
 @import "~/assets/css/variables.scss";
 
+html {
+  min-height: 100vh;
+}
+
 .clickable {
     cursor: pointer;
 }
