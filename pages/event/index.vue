@@ -7,7 +7,12 @@
 <script>
 //TODO: Make this the no event exists at the moment page.
 export default {
-    middleware: 'auth',
+    middleware: [
+        'auth',
+        'event/none',
+        'registration/none',
+        'registration/not-checked-in',
+    ],
 }
 </script>
 

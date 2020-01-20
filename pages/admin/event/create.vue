@@ -68,6 +68,10 @@ import timePicker from 'vue2-timepicker'
 import RulesInput from '~/components/event/RulesInput'
 import ActionButton from '~/components/buttons/ActionButton'
 export default {
+    middleware: [
+        'auth-admin',
+        'event/exists'
+    ],
     data() {
         return {
             form: {
@@ -104,10 +108,9 @@ export default {
                 registration_closes_at: this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime)
 
             };
-            console.log("payload", payload);
             this.$axios.post('/admin/event/create', payload).then(res => {
                 console.log(res)
-                this.$router.push(`/admin`);
+                this.$router.push(`/admin/event/checkin`);
             }).catch(err => console.log(err));
         },
         parseDateTime(date, time) {
