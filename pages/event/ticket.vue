@@ -8,7 +8,7 @@
             paragraph=""
         >
         <p class="d-inline ">
-            Du är anmäld till lanet som elev mellan <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p>, lanet börjar <p class="d-inline font-weight-bold">kl 16:30</p>
+            Du är anmäld till lanet som elev mellan <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p><p class="d-inline">, lanet börjar </p><p class="d-inline font-weight-bold">kl 16:30</p>
         </p>
         </image-layout>
         
