@@ -1,52 +1,34 @@
 <template>
     <center-wrapper >
-
+        <div>
         <image-layout
             icon="checkmark.svg"
             alt="Lyckades!"
             title="Lyckades!"
             paragraph=""
         >
-        <p class="d-inline">
-            Du är anmäld till lanet som elev mellan </p> <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p><p class="d-inline">, lanet börjar </p><p class="d-inline font-weight-bold">kl 16:30</p>
+        <p class="d-inline ">
+            Du är anmäld till lanet som elev mellan <p class="d-inline font-weight-bold">2019-12-12 - 2020-01-01</p>, lanet börjar <p class="d-inline font-weight-bold">kl 16:30</p>
+        </p>
         </image-layout>
-        <div class="pt-4 d-flex justify-content-center">
-            <action-button
-                title="Din biljett"
-                icon="local_play"
-                primary="true"
-                @onAction="openTicket"
-            />
-
+        
         </div>
-
     </center-wrapper>
 
 </template>
 <script>
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
-    import ActionButton from '~/components/buttons/ActionButton'
-    import TicketModal from '../../components/event/modal/TicketModal.vue';
     export default {
-    components: {
+        middleware: [
+            'registration/none',
+            'registration/checked-in',
+
+        ],
+        components: {
             CenterWrapper,
-            ImageLayout,
-            ActionButton,
-        },
-        methods: {
-            openTicket() {
-                this.$modal.show(TicketModal, {}, {
-                    draggable: true,
-                    resizable: false,
-                    width: '90%',
-                    height: 'auto',
-                    maxWidth: 350,
-                    maxHeight: 500,
-                    adaptive: true,
-                });
-            }
-        },
+            ImageLayout
+        }
     }
 </script>
 
