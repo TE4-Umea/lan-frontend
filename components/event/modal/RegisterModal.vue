@@ -9,6 +9,11 @@
                         title="Gruppkod"
                         v-model="form.group_code"
                     />
+                    <input-field
+                        v-if="!$auth.user.student"
+                        title="Ansvarig elev"
+                        v-model="form.guardian"
+                    />
 
                     <input-select
                         v-model="form.setup_type"
@@ -41,21 +46,30 @@ export default {
     },
     data() {
         return {
+            sending: false,
             form: {
                 group_code: '',
-                setup_type: ''
+                guardian: '',
+                setup_type: 'Stationär'
             }
         }
     },
     methods: {
         onSubmit() {
-            this.$axios.post(
-                '/event/register',
-                {
-                    event_id: this.$store.event.rules_id,
-                    ...this.form
-                }
-            );
+            if (!this.sending) {
+
+                this.sending = true;
+                this.$axios.post(
+                    '/event/register',
+                    {
+                        event_id: this.$store.state.event.details.id,
+                        ...this.form
+                    }
+                ).then(res => {
+                    this.$router.push(`/event/ticket`);
+                    this.sending = false;
+                });
+            }
         }
     },
     components: {
