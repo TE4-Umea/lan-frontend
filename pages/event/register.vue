@@ -15,7 +15,7 @@
             <action-button class="mt-3" title="TILL ANMÄLAN" @onAction="showRegister=true"></action-button>
         </div>
     </wrapper>
-    <register-modal :class="{'d-none': !showRegister}"  @openRules="openRulesModal" @close="showRegister=false"/>
+    <register-modal :showRegister="showRegister" @openRules="openRulesModal" @close="showRegister=false"/>
 </center-wrapper>
 </template>
 
