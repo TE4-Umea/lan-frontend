@@ -11,12 +11,12 @@
 
               >close</i>
           </div>
-          <p class="mb-0" v-text="client.name"/>
-          <p class="mb-0" v-text="client.type"/>
+          <p class="mb-0" v-text="name"/>
+          <p class="mb-0" v-text="account_type_str"/>
         </div>
         <hr class="dotted"  />
         <div class="py-2">
-            <qrcode-vue :value="value" :size="size" level="H"></qrcode-vue>
+            <qrcode-vue :value="qrCode" :size="size" level="H"></qrcode-vue>
         </div>
 
 
@@ -29,12 +29,7 @@ import QrcodeVue from 'qrcode.vue';
 export default {
     data() {
         return {
-            value: 'https://eastereggsuwu.com',
             size: 300,
-            client: {
-                name:'John Doe',
-                type:'Elev',
-          }
         }
       },
     components: {
@@ -44,6 +39,17 @@ export default {
         let x = this.$refs.ticket.offsetWidth;
         this.size = Math.floor(x) -60;
     },
+    computed: {
+        account_type_str() {
+            return this.$auth.$state.user.student ? 'Elev' : 'Extern' ;
+        },
+        name() {
+            return this.$auth.$state.user.name;
+        },
+        qrCode() {
+            return "registration_id:" + this.$store.state.event.registration.hashid;
+        }
+    }
 }
 </script>
 
