@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <h1>Index page for event</h1>
-    </div>
+    <center-wrapper>
+        <div>
+            <h1>Index page for event</h1>
+        </div>
+    </center-wrapper>
 </template>
 
 <script>
-//TODO: Make this the no event exists at the moment page.
+
+import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
+import CenterWrapperVue from '../../components/layouts/positioning/CenterWrapper.vue';
 export default {
     middleware: [
         'auth',
@@ -13,6 +17,8 @@ export default {
         'registration/none',
         'registration/not-checked-in',
     ],
+    components:
+        CenterWrapper,
 }
 </script>
 
