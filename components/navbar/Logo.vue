@@ -3,14 +3,17 @@
     <nuxt-link
           to="/"
     >
-    <img src="~/assets/images/nti_logo_black.svg" class="logo" alt="Dropdown">
+        <logo class="logo" />
     </nuxt-link>
 </div>
 </template>
 
 <script>
+import Logo from '~/components/logo/Logo.vue';
 export default {
-
+    components: {
+        Logo,
+    }
 }
 </script>
 
