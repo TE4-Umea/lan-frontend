@@ -2,10 +2,10 @@
     <center-wrapper>
         <wrapper>
             <div>
-                <h4> Information kring lanet </h4>
+                <generalInfo/>
             </div>
             <div>
-                <h4> Personlig information </h4>
+                <personalInfo/>
             </div>
             <div>
                 <h4> Notiser </h4>
@@ -17,9 +17,12 @@
 
 <script>
 
+import personalInfo from '~/components/textfields/personalInfo'
+import generalInfo from '~/components/textfields/generalInfo'
 import Notifications from '~/components/notifications/notifications'
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import Wrapper from '~/components/layouts/positioning/Wrapper';
+
 export default {
     middleware: [
         'auth',
@@ -29,11 +32,13 @@ export default {
     ],
     components: {
 
+        personalInfo,
+        generalInfo,
         Notifications,
         Wrapper,
         CenterWrapper,
-    }
 
+    },
 }
 </script>
 
