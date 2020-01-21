@@ -1,6 +1,7 @@
 @import "~/assets/css/variables.scss";
 .primary-color {
   color: $primaryColor;
+  fill: $primaryColor;
 }
 .primary-color--background {
   background-color: $primaryColor;
