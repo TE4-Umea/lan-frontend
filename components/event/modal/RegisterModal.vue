@@ -7,6 +7,7 @@
                     <h1>ANMÄLAN</h1>
                     <input-field
                         title="Gruppkod"
+                        placeholder="Jörgens änglar"
                         v-model="form.group_code"
                     />
                     <input-field
@@ -22,6 +23,7 @@
                     />
                     <small>Härmed har jag läst och förstått <small class="clickable underline" @click="$emit('openRules')">reglerna.</small></small>
                     <action-button
+                        class="mt-1"
                         primary="true"
                         title="ANMÄL"
                         icon="done"

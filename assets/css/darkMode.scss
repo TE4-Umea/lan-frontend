@@ -1,7 +1,14 @@
 @import "~/assets/css/variables.scss";
+$contrast: #1F1F1F;
 .dark-mode {
 
     background: $bgColorDark;
+    option {
+        background:  $bgColorDark
+    }
+    .v--modal {
+        background:  $contrast;
+    }
     ul {
         background: $bgColorDark
     }
@@ -28,7 +35,7 @@
     }
 
     .d-contrast {
-        background: #1F1F1F;
+        background: $contrast;
     }
       
 }
