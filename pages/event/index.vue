@@ -1,7 +1,16 @@
 <template>
     <center-wrapper>
         <wrapper>
-            <notifications></notifications>
+            <div>
+                <h4> Information kring lanet </h4>
+            </div>
+            <div>
+                <h4> Personlig information </h4>
+            </div>
+            <div>
+                <h4> Notiser </h4>
+                <notifications/>
+            </div>
         </wrapper>
     </center-wrapper>
 </template>
