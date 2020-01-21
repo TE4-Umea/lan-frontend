@@ -14,5 +14,13 @@
     .bg-color--background {
         background-color: $bgColorDark;
     }
-    
+    .primary-color {
+        color: $primaryColorDark;
+        fill: $primaryColorDark;
+      }
+      
+      .primary-color--background {
+        background-color: $primaryColorDark;
+      }
+      
 }
