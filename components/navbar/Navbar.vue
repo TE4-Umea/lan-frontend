@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
       <div class="line gradient--background"></div>
       <div class="content">
-          <logo class="logo"  />
+          <logo class="logo"/>
           <client-only>
             <dropdown />
           </client-only>
