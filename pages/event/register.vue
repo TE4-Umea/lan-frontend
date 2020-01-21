@@ -1,11 +1,11 @@
 <template>
 <center-wrapper>
-    <wrapper title="NU ÄR DET DAGS FÖR LAN!">
+    <wrapper :title="$store.state.event.details.title">
         <div>
-            <p>Nu är det dags för lan! För externer (icke elever) kostar det 50kr</p>
-            <important title="Lanet öppnar: ">16:30</important>
-            <important title="När:">2019-12-12 - 2020-01-01</important>
-            <important title="Anmälan stänger:">2019-12-10 14:05</important>
+            <p v-text="$store.state.event.details.short_info"/>
+            <important title="Lanet öppnar: ">{{opensAt}}</important>
+            <important title="När:">{{betweenDates}}</important>
+            <important title="Anmälan stänger: ">{{closesAt}}</important>
             <div>
                 <h3>Innan du anmäler dig</h3>
                 <p class="d-inline">Se till att du läser </p>
@@ -15,7 +15,7 @@
             <action-button class="mt-3" title="TILL ANMÄLAN" @onAction="showRegister=true"></action-button>
         </div>
     </wrapper>
-    <register-modal :class="{'d-none': !showRegister}"  @openRules="openRulesModal" @close="showRegister=false"/>
+    <register-modal :showRegister="showRegister" @openRules="openRulesModal" @close="showRegister=false"/>
 </center-wrapper>
 </template>
 
@@ -29,6 +29,10 @@ import RulesModal from '~/components/event/modal/RulesModal.vue';
 import RegisterModal from '~/components/event/modal/RegisterModal';
 
 export default {
+    middleware: [
+        'event/none',
+        'registration/exists'
+    ],
     data() {
         return {
             showRegister: false
@@ -51,6 +55,24 @@ export default {
                 height: 'auto',
                 adaptive: false,
             });
+        },
+        format_two_digits(n) {
+            return n < 10 ? '0' + n : n;
+        },
+        formatDate(d) {
+            return new Date(d).toLocaleDateString('sv-SE');
+        }
+    },
+    computed: {
+        opensAt() {
+            return new Date(this.$store.state.event.details.start_date).toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
+        },
+        betweenDates() {
+            return this.formatDate(this.$store.state.event.details.start_date) +
+                " - " + this.formatDate(this.$store.state.event.details.end_date);
+        },
+        closesAt() {
+            return new Date(this.$store.state.event.details.registration_closes_at).toLocaleString('sv-SE', {dateStyle: 'short', timeStyle: 'short'});
         }
     }
 }

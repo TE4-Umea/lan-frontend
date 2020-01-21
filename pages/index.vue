@@ -1,42 +1,41 @@
 <template>
-    <center-wrapper >
-        <div>
-            <image-layout
-                icon="nti_small_black.svg"
-                alt="Bild på NTIs logga, Välkommen!"
-                title="Välkommen!"
-                paragraph="Logga in nedan för att komma vidare i appen."
-            />
-              <div class="justify-content-center d-flex">
+<center-wrapper >
+        <image-layout
+            icon="logo"
+            alt="Bild på NTIs logga, Välkommen!"
+            title="Välkommen!"
+            paragraph="Logga in nedan för att komma vidare i appen."
+        >
+            <div class="justify-content-center d-flex">
                 <div>
-                  
-                  <div class="google-button" >
+                    <div class="google-button" >
                     <a href="http://localhost/auth/google/redirect" class="text-decoration-none">
                         <span class="google-inner">
                         <img src="~/assets/images/google_button.svg" class="image"/>
                         <p>Logga in med google</p>
                         </span>
                     </a>
-                  </div>
-                  <div class="pt-2">
+                    </div>
+                    <div class="pt-2">
                     <small>eller
-                      <nuxt-link to="/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
+                        <nuxt-link to="/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
                     </small>
-                  </div>
+                    </div>
                 </div>
-              </div>
-        </div>
+            </div>
+        </image-layout>
     </center-wrapper>
 
 </template>
 <script>
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
+    
     export default {
         middleware: 'guest',
         components: {
             CenterWrapper,
-            ImageLayout
+            ImageLayout,
         }
     }
 </script>

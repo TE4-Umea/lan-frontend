@@ -1,35 +1,38 @@
 <template>
-<div class="wrap">
-  <div class="d-flex justify-content-center">
+<div class="wrap px-3 px-md-0">
+    <div class="d-flex justify-content-center">
+        <img v-if="icon && icon != 'logo'" :src="url" :alt="alt" class="icon">
+        <logo-square v-else />
+    </div>
+    <div class="text-wrap">
 
-  <img :src="url" :alt="alt" class="icon">
-  </div>
-  <div class="text-wrap">
-
-  <h1 class="text-center" v-text="title"/>
-  <p class="text-center" v-text="paragraph"/>
-  </div>
-  <slot/>
+        <h1 class="text-center" v-text="title"/>
+        <p class="text-center" v-text="paragraph"/>
+    </div>
+    <slot/>
 </div>
 
 
 </template>
 
 <script>
-
-  export default {
+import LogoSquare from '~/components/logo/LogoSquare';
+export default {
     props: {
-      icon: String,
-      alt: String,
-      title: String,
-      paragraph: String,
+        icon: String,
+        alt: String,
+        title: String,
+        paragraph: String,
+    },
+    components: {
+        LogoSquare
     },
     computed: {
-      url() {
-        return require('~/assets/images/' + this.icon);
-      }
+        url() {
+            return require('~/assets/images/' + this.icon);
+        }
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +44,7 @@
   max-width: 400px;
 }
 .wrap {
+  max-width: 320px;
   margin-top: 128px;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="nav-wrapper">
-      <div class="line"></div>
+      <div class="line gradient--background"></div>
       <div class="content">
-          <logo class="logo"  />
+          <logo class="logo"/>
           <client-only>
             <dropdown />
           </client-only>
@@ -32,7 +32,6 @@ export default {
         justify-content: space-between;
     }
     .line {
-        background: linear-gradient(90deg, #DD0890 0%, #DD0890 0.01%, #4B0082 100%);
         height: 6px;
     }
     .nav-wrapper {

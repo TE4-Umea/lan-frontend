@@ -27,6 +27,8 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/animations.scss',
+    '@/assets/css/colors.scss',
     '@/assets/css/style.scss',
     '@/assets/css/darkmode.scss',
   ],
@@ -59,6 +61,9 @@ export default {
   ],
 
   auth: {
+    plugins: [
+      '~/plugins/event',
+    ],
     strategies: {
       local: {
         endpoints: {

@@ -99,7 +99,6 @@ export default {
     },
     methods: {
         submit() {
-            let self = this;
             let payload = {
                 title: this.form.title,
                 short_info: this.form.short_info,
@@ -111,7 +110,7 @@ export default {
             };
             this.$axios.post('/admin/event/create', payload).then(res => {
                 console.log(res)
-                self.$router.push({ path: `/admin/event/checkin`});
+                this.$router.push(`/admin/event/checkin`);
             }).catch(err => console.log(err));
         },
         parseDateTime(date, time) {
