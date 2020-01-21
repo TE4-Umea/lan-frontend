@@ -1,15 +1,16 @@
 <template>
     <center-wrapper>
-        <div>
-            <h1>Index page for event</h1>
-        </div>
+        <wrapper>
+            <notifications></notifications>
+        </wrapper>
     </center-wrapper>
 </template>
 
 <script>
 
+import Notifications from '~/components/notifications/notifications'
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
-import CenterWrapperVue from '../../components/layouts/positioning/CenterWrapper.vue';
+import Wrapper from '~/components/layouts/positioning/Wrapper';
 export default {
     middleware: [
         'auth',
@@ -17,8 +18,13 @@ export default {
         'registration/none',
         'registration/not-checked-in',
     ],
-    components:
+    components: {
+
+        Notifications,
+        Wrapper,
         CenterWrapper,
+    }
+
 }
 </script>
 
