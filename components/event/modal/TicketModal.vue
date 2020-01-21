@@ -41,10 +41,10 @@ export default {
     },
     computed: {
         account_type_str() {
-            return this.$auth.state.user.student ? 'Elev' : 'Extern' ;
+            return this.$auth.$state.user.student ? 'Elev' : 'Extern' ;
         },
         name() {
-            return this.$auth.state.user.name;
+            return this.$auth.$state.user.name;
         },
         qrCode() {
             return "registration_id:" + this.$store.state.event.registration.hashid;

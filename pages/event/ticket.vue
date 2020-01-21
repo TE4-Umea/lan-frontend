@@ -64,10 +64,10 @@ export default {
     },
     computed: {
         account_type_str() {
-            return this.$auth.state.user.student ? 'Elev' : 'Extern' ;
+            return this.$auth.$state.user.student ? 'Elev' : 'Extern' ;
         },
         name() {
-            return this.$auth.state.user.name;
+            return this.$auth.$state.user.name;
         },
         opensAt() {
             return new Date(this.$store.state.event.details.start_date).toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
