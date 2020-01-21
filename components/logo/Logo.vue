@@ -1,5 +1,5 @@
 <template>
-<svg :fill="color" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 49">
+<svg class="primary-color" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 49">
     
     <title>nti_logo</title>
     <g id="Logo">
@@ -20,12 +20,3 @@
     </g>
 </svg>
 </template>
-<script>
-export default {
-    props: {
-        color: {
-            default: 'black'
-        }
-    }
-}
-</script>

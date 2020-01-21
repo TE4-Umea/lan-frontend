@@ -1,7 +1,8 @@
 <template>
 <div class="wrap px-3 px-md-0">
     <div class="d-flex justify-content-center">
-        <img :src="url" :alt="alt" class="icon">
+        <img v-if="icon && icon != 'logo'" :src="url" :alt="alt" class="icon">
+        <logo-square v-else />
     </div>
     <div class="text-wrap">
 
@@ -15,20 +16,23 @@
 </template>
 
 <script>
-
-  export default {
+import LogoSquare from '~/components/logo/LogoSquare';
+export default {
     props: {
-      icon: String,
-      alt: String,
-      title: String,
-      paragraph: String,
+        icon: String,
+        alt: String,
+        title: String,
+        paragraph: String,
+    },
+    components: {
+        LogoSquare
     },
     computed: {
-      url() {
-        return require('~/assets/images/' + this.icon);
-      }
+        url() {
+            return require('~/assets/images/' + this.icon);
+        }
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
