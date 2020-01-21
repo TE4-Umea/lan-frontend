@@ -1,11 +1,28 @@
 <template>
-    <div>
-        <h1>Index page for event</h1>
-    </div>
+    <center-wrapper>
+        <wrapper>
+            <div>
+                <generalInfo/>
+            </div>
+            <div>
+                <personalInfo/>
+            </div>
+            <div>
+                <h4> Notiser </h4>
+                <notifications/>
+            </div>
+        </wrapper>
+    </center-wrapper>
 </template>
 
 <script>
-//TODO: Make this the no event exists at the moment page.
+
+import personalInfo from '~/components/textfields/personalInfo'
+import generalInfo from '~/components/textfields/generalInfo'
+import Notifications from '~/components/notifications/notifications'
+import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
+import Wrapper from '~/components/layouts/positioning/Wrapper';
+
 export default {
     middleware: [
         'auth',
@@ -13,6 +30,15 @@ export default {
         'registration/none',
         'registration/not-checked-in',
     ],
+    components: {
+
+        personalInfo,
+        generalInfo,
+        Notifications,
+        Wrapper,
+        CenterWrapper,
+
+    },
 }
 </script>
 

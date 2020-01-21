@@ -1,37 +1,37 @@
 @import "~/assets/css/variables.scss";
 
-html {
-  min-height: 100vh;
+body {
+    background-color: $bgColor;
 }
 
 .clickable {
     cursor: pointer;
 }
+h1,h2,h3,h4 {
+  font-family: $titleFont, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $primaryColor;
+}
 h1 {
-    font-family: $titleFont, sans-serif;
-    font-style: normal;
     font-weight: 800;
     font-size: 30px;
     line-height: 40px;
-    text-transform: uppercase;
-    color: $primaryColor;
 }
 h2 {
-    font-family: $titleFont, sans-serif;
-    font-style: normal;
-    font-weight: 600;
     font-size: 30px;
     line-height: 46px;
-    color: $primaryColor;
 }
 
 h3 {
-    font-family: $titleFont, sans-serif;
-    font-style: normal;
-    font-weight: 600;
     font-size: 24px;
     line-height: 37px;
     color: $primaryColor;
+}
+h4 {
+    font-size: 18px;
+    line-height: 37px;
 }
 p {
     font-family: $bodyFont, sans-serif;
