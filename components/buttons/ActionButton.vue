@@ -10,10 +10,10 @@
     <!-- <img :src="icon" alt="icon"> -->
     <p
         class="text"
-        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
+        :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
     >
     <i class="icon material-icons"
-        :class="primary ? 'bg-color' : 'gradient-animation-hover text-primary'"
+        :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
         v-text="icon"
     />
     {{title}}
@@ -43,10 +43,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
-.gradient:hover {
-
-}
 
 .icon {
     font-size: 30px;

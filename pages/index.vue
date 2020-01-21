@@ -8,13 +8,13 @@
         >
             <div class="justify-content-center d-flex">
                 <div>
-                    <div class="google-button" >
-                    <a href="http://localhost/auth/google/redirect" class="text-decoration-none">
-                        <span class="google-inner">
-                        <img src="~/assets/images/google_button.svg" class="image"/>
-                        <p>Logga in med google</p>
-                        </span>
-                    </a>
+                    <div class="google-button d-contrast">
+                        <a href="http://localhost/auth/google/redirect" class="text-decoration-none">
+                            <span class="google-inner">
+                            <img src="~/assets/images/google_button.svg" class="image"/>
+                            <p>Logga in med google</p>
+                            </span>
+                        </a>
                     </div>
                     <div class="pt-2">
                     <small>eller

@@ -1,11 +1,9 @@
 <template>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper d-contrast">
       <div class="line gradient--background"></div>
       <div class="content">
-          <logo class="logo"/>
-          <client-only>
+            <logo class="logo"/>
             <dropdown />
-          </client-only>
       </div>
   </div>
 </template>

@@ -2,8 +2,8 @@
     
 <div>
     <b-dropdown text="dark" size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
-        <template v-slot:button-content>
-            <img src="~/assets/icons/verical_dot.svg" class="dropdown" alt="Dropdown" >
+        <template v-slot:button-content class="">
+            <i class="material-icons primary-color">more_vert</i>
         </template>
         <b-dropdown-item v-if="!$store.state.darkmode.value" @click="toggleDarkmode()">
            Toggle darkmode
@@ -39,11 +39,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    a {
-        color: black;
-        text-decoration: unset;
+    a,a:hover {
+        color: inherit;
+        text-decoration: none;
     }
-    .dropdown {
-        cursor: pointer;
+    i {
+        font-size: 25px;
     }
 </style>

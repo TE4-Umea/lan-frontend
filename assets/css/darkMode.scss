@@ -19,8 +19,12 @@
         fill: $primaryColorDark;
       }
       
-      .primary-color--background {
+    .primary-color--background {
         background-color: $primaryColorDark;
-      }
+    }
+
+    .d-contrast {
+        background: #1F1F1F;
+    }
       
 }
