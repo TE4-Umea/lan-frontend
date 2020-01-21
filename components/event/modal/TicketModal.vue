@@ -15,8 +15,8 @@
           <p class="mb-0" v-text="account_type_str"/>
         </div>
         <hr class="dotted"  />
-        <div class="py-2">
-            <qrcode-vue :value="qrCode" :size="size" level="H"></qrcode-vue>
+        <div class="p-2 white--background">
+            <qrcode-vue :value="qrCode" :size="size" :foreground="'#1F1F1F'" :background="'#FFF'" level="H"></qrcode-vue>
         </div>
 
 
@@ -29,6 +29,8 @@ import QrcodeVue from 'qrcode.vue';
 export default {
     data() {
         return {
+            color: this.$store.state.darkmode.value ?  '#FFF' : '#1F1F1F',
+            bgColor: this.$store.state.darkmode.value ? '#1F1F1F' : '#FFF',
             size: 300,
         }
       },
@@ -57,7 +59,7 @@ export default {
 
 .dotted {
     position: relative;
-    margin: 20px -10%;
+    margin: 20px -7.5%;
     border-top: 7px dotted;
     color: gray;
 }
