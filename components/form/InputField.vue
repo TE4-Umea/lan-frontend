@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .y-margin {
     padding: 10px 0;
 }
@@ -76,6 +75,7 @@ export default {
     width: 100%;
     border: none;
     padding: 7px 0;
+    background-color: unset;
 }
 .field:focus{
     outline: none;

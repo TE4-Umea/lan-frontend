@@ -8,6 +8,10 @@
     h1,h2,h3,p,small,a {
         color: $primaryColorDark;
     }
+    ::placeholder {
+        color: $primaryColorDark !important;
+        opacity: 1;
+    }
     .bg-color {
         color: $bgColorDark;
     }
