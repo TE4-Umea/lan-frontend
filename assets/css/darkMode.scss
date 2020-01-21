@@ -1,0 +1,34 @@
+@import "~/assets/css/variables.scss";
+.dark-mode {
+
+    background: $bgColorDark;
+    ul {
+        background: $bgColorDark
+    }
+    h1,h2,h3,p,small,a {
+        color: $primaryColorDark;
+    }
+    ::placeholder {
+        color: $primaryColorDark !important;
+        opacity: 0.3;
+    }
+    .bg-color {
+        color: $bgColorDark;
+    }
+    .bg-color--background {
+        background-color: $bgColorDark;
+    }
+    .primary-color {
+        color: $primaryColorDark;
+        fill: $primaryColorDark;
+      }
+      
+    .primary-color--background {
+        background-color: $primaryColorDark;
+    }
+
+    .d-contrast {
+        background: #1F1F1F;
+    }
+      
+}

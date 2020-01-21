@@ -30,6 +30,7 @@ export default {
     '@/assets/css/animations.scss',
     '@/assets/css/colors.scss',
     '@/assets/css/style.scss',
+    '@/assets/css/darkmode.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -38,6 +39,7 @@ export default {
     '~/plugins/axios',
     '~/plugins/datePicker',
     '~/plugins/modals',
+    '~/plugins/darkmode',
   ],
   /*
   ** Nuxt.js dev-modules

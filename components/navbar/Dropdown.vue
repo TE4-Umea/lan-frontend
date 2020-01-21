@@ -1,11 +1,11 @@
 <template>
     
 <div>
-    <b-dropdown size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
-        <template v-slot:button-content>
-            <img src="~/assets/icons/verical_dot.svg" class="dropdown" alt="Dropdown" >
+    <b-dropdown text="dark" size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
+        <template v-slot:button-content class="">
+            <i class="material-icons primary-color">more_vert</i>
         </template>
-        <b-dropdown-item v-if="!darkmode" @click="toggleDarkmode()">
+        <b-dropdown-item v-if="!$store.state.darkmode.value" @click="toggleDarkmode()">
            Toggle darkmode
         </b-dropdown-item>
         <b-dropdown-item v-else @click="toggleDarkmode()">
@@ -27,35 +27,23 @@
 
 <script>
 export default {
-    data() {
-        return {
-            darkmode: localStorage.getItem("darkmode"),
-        }
-    },
     methods: {
         authLogout() {
             localStorage.removeItem('provider');
             this.$auth.logout();
         },
         toggleDarkmode() {
-            //TODO: Darkmode toggle is W.I.P and does not work. And will most likely have to change its persistent storage method.
-            if(this.darkmode == null ) {
-                localStorage.setItem('darkmode', true);
-                this.darkmode = true;  
-            } else {
-                this.darkmode = !this.darkmode;
-                localStorage.setItem('darkmode', this.darkmode);
-            }
+            this.$store.commit('darkmode/toggle');
         }
     },
 }
 </script>
 <style lang="scss" scoped>
-    a {
-        color: black;
-        text-decoration: unset;
+    a,a:hover {
+        color: inherit;
+        text-decoration: none;
     }
-    .dropdown {
-        cursor: pointer;
+    i {
+        font-size: 25px;
     }
 </style>

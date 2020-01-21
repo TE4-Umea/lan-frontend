@@ -7,10 +7,17 @@
   background-color: $primaryColor;
 }
 
+.white {
+  color: $bgColor !important;
+}
+
+.white--background {
+  background-color: $bgColor !important;
+}
+
 .bg-color {
   color: $bgColor;
 }
-
 .bg-color--background {
   background-color: $bgColor;
 }
