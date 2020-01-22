@@ -3,7 +3,12 @@
         <wrapper>
           <h1> Check in </h1>
             <div class ="d-flex align-items-center">
-                <input type="text" class="form-control"   placeholder="Lägg till ID manuellt...." v-model="result">
+                <input 
+                    type="text" class="form-control" 
+                    placeholder="Lägg till ID manuellt...."
+                    v-model="result"
+                    @blur="sendRequest"
+                >
                 <div class="box gradient-animation-hover box-padding">
                     <i class="icon material-icons clickable primary-color"
                         v-text="icon"
@@ -11,7 +16,7 @@
                     />
                 </div>
             </div>
-            <qrcode-stream v-if="showCamera" @decode="onDecode"></qrcode-stream>
+            <qrcode-stream v-if="showCamera" :camera="camera" @decode="onDecode"></qrcode-stream>
         </wrapper>
     </center-wrapper>
 </template>
@@ -25,17 +30,22 @@ export default {
         'auth-admin',
         'event/none'
     ],
-
     data () {
         return {
             showCamera: false,
             result: '',
             noStreamApiSupport: false,
-            icon: 'camera_enhance'
+            icon: 'camera_enhance',
+            camera: 'auto',
         }
     },
-
-
+    created() {
+        let code = this.$route.query.qr;
+        if(code && code.length > 1) {
+            this.result = code;
+            this.sendRequest();
+        }  
+    },
     components: {
         Wrapper,
         CenterWrapper,
@@ -44,15 +54,43 @@ export default {
         QrcodeCapture,
     },
     methods: {
-        onDecode (result) {
-            this.result = result
+        turnCameraOn () {
+            this.camera = 'auto'
         },
-        handleClick: function(event) {
+
+        turnCameraOff () {
+            this.camera = 'off'
+        },
+        onDecode (result) {
+            this.result = this.parseInput(result);
+            if(this.result !== '') {
+                this.sendRequest();
+            }
+        },
+        handleClick(event) {
             if(!this.showCamera)  {
                 this.showCamera = true;
             }else {
               this.showCamera = false;
             }
+        },
+        sendRequest() {
+            this.turnCameraOff();
+            this.$axios.put('/admin/event/registration/' + this.result + '/update').then(res => {
+                this.turnCameraOn();
+                this.result = '';
+            }).catch(e => {
+                this.turnCameraOn();
+                this.result = '';
+            })
+        },
+        parseInput(input) {
+            let x = input.split('?qr=');
+            console.log(x[1]);
+            if(x.length > 1) {
+                return x[1];
+            }
+            return '';
         }
     },
   }

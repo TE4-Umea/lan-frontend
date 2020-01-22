@@ -49,7 +49,7 @@ export default {
             return this.$auth.$state.user.name;
         },
         qrCode() {
-            return "registration_id:" + this.$store.state.event.registration.hashid;
+            return "https://" + window.location.host + "/admin/event/checkin?qr=" + this.$store.state.event.registration.hashid;
         }
     }
 }
