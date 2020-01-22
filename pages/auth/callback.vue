@@ -17,18 +17,14 @@ export default {
     async mounted()  {
         if(this.provider){
             localStorage.setItem("provider", this.provider);
-            // console.log("we got so far but we failed so bad");
         }
-        this.$auth.setToken('local', 'Bearer ' + this.token);
-        this.$auth.setStrategy('local');
         this.$auth.setUserToken(this.token)
         .then(async res => {
-            console.log(res);
             await this.$store.dispatch('event/GET');
             await this.$store.dispatch('event/GET_REGISTRATION');
             this.$router.push({ path: "/event/"});
         }).catch(e => {
-            console.log(e);
+            console.log("login error");
         })
     }
 }
