@@ -45,7 +45,23 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+      // With options
+    ['@nuxtjs/laravel-echo', {
+        broadcaster: 'pusher',
+        key: process.env.MIX_PUSHER_APP_KEY,
+        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+        encrypted: false,
+        wsHost: process.env.WEBSOCKET_BASE_URL,
+        wsPort: 6001,
+        disableStats: true,
+        authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth'
+    }],
   ],
+  echo: {
+    authModule: true,
+    connectOnLogin: true,
+    disconnectOnLogout: true
+  },
   /*
   ** Nuxt.js modules
   */
