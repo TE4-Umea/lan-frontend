@@ -54,7 +54,8 @@ export default {
         wsHost: process.env.WEBSOCKET_BASE_URL,
         wsPort: 6001,
         disableStats: true,
-        authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth'
+        authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
+        enabledTransports: ['ws', 'wss']
     }],
   ],
   echo: {
