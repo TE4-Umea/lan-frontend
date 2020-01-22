@@ -28,9 +28,10 @@
 <script>
 export default {
     methods: {
-        authLogout() {
+        async authLogout() {
             localStorage.removeItem('provider');
-            this.$auth.logout();
+            await this.$auth.logout();
+            this.$router.push({ path: "/"});
         },
         toggleDarkmode() {
             this.$store.commit('darkmode/toggle');

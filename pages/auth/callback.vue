@@ -14,19 +14,22 @@ export default {
             provider: this.$route.query.provider ? this.$route.query.provider : null
         }
     },
-    mounted() {
+    async mounted()  {
         if(this.provider){
             localStorage.setItem("provider", this.provider);
             // console.log("we got so far but we failed so bad");
         }
         this.$auth.setToken('local', 'Bearer ' + this.token);
         this.$auth.setStrategy('local');
-        this.$auth.fetchUser().then(res => {}
-        ).catch(e => {
-            this.$auth.logout();
-            localStorage.removeItem('provider');
-            this.$router.push(`/`);
-        });
+        this.$auth.setUserToken(this.token)
+        .then(async res => {
+            console.log(res);
+            await this.$store.dispatch('event/GET');
+            await this.$store.dispatch('event/GET_REGISTRATION');
+            this.$router.push({ path: "/event/"});
+        }).catch(e => {
+            console.log(e);
+        })
     }
 }
 </script>
