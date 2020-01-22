@@ -91,7 +91,6 @@ export default {
                 return x[1];
             }
             return '';
-            // https://localhost:3000/admin/event/checkin?qr=wAPNpk8Zx6bnBeYR
         }
     },
   }
