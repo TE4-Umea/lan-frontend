@@ -90,7 +90,8 @@ export default {
       login: '/',
       logout: '/',
       home: '/event'
-    }
+    },
+    watchLoggedIn: false,
   },
   /*
   ** Axios module configuration

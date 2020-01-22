@@ -36,8 +36,6 @@
         </div>
     </wrapper>
 </center-wrapper>
-        <!-- <social-login /> -->
-        <!-- <login-form></login-form> -->
 </template>
 
 <script>
@@ -66,16 +64,12 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
-
             this.$auth.loginWith('local', {
                 data: this.form
             }).then(res => {
-
-                this.$router.push('/');
-                // console.log("this happens");
+                this.$router.push({ path: "/event/"});
             });
-            // this.$store.dispatch('snackbar/setSnackbar', {text: `Thanks for signing in, ${this.$auth.user.name}`});
-      },
+        },
     }
 }
 </script>

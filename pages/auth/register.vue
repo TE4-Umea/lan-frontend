@@ -98,6 +98,8 @@ export default {
             this.$axios.post('/auth/register', this.form).then(res => {
                 this.$auth.loginWith('local', {
                     data: this.form
+                }).then(response => {
+                    this.$router.push({ path: "/event/"});
                 });
             });
         }
