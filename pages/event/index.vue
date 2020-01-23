@@ -19,7 +19,7 @@
 
 import personalInfo from '~/components/textfields/personalInfo'
 import generalInfo from '~/components/textfields/generalInfo'
-import Notifications from '~/components/notifications/notifications'
+import Notifications from '~/components/notifications/Notifications'
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import Wrapper from '~/components/layouts/positioning/Wrapper';
 

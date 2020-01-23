@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Notification from '~/components/notifications/notification'
+import Notification from '~/components/notifications/Notification'
 export default {
 
   data() {
