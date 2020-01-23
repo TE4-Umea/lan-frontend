@@ -40,6 +40,7 @@ export default {
     '~/plugins/datePicker',
     '~/plugins/modals',
     '~/plugins/darkmode',
+    
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,6 +61,7 @@ export default {
     '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+
     ['@nuxtjs/laravel-echo', {
       broadcaster: 'pusher',
       key: process.env.MIX_PUSHER_APP_KEY,
@@ -70,6 +72,11 @@ export default {
       disableStats: true,
       authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
     }],
+    { handler: function() {
+      this.nuxt.hook('builder:extendPlugins', (plugins) => {
+        plugins.push('~/plugins/broadcasting')
+      })
+    }}
   ],
   echo: {
     authModule: true,
@@ -79,7 +86,6 @@ export default {
   auth: {
     plugins: [
       '~/plugins/event',
-      '~/plugins/broadcasting/eventChange',
     ],
     strategies: {
       local: {

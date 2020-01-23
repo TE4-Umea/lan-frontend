@@ -76,6 +76,12 @@ export default {
             return this.formatDate(this.$store.state.event.details.start_date) +
                 " - " + this.formatDate(this.$store.state.event.details.end_date);
         },
+    },
+    mounted() {
+      this.$echo.private('event.1')
+        .listen('RegistrationUpdated', (e) => {
+            console.log("wow holy shit this works!", e);
+        });
     }
 }
 </script>
