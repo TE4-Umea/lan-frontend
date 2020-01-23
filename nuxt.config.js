@@ -46,23 +46,8 @@ export default {
   */
   buildModules: [
       // With options
-    ['@nuxtjs/laravel-echo', {
-        broadcaster: 'pusher',
-        key: process.env.MIX_PUSHER_APP_KEY,
-        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-        encrypted: false,
-        wsHost: process.env.WEBSOCKET_BASE_URL,
-        wsPort: 6001,
-        disableStats: true,
-        authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
-        // enabledTransports: ['ws', 'wss']
-    }],
   ],
-  echo: {
-    authModule: true,
-    connectOnLogin: true,
-    disconnectOnLogout: true
-  },
+  
   /*
   ** Nuxt.js modules
   */
@@ -75,11 +60,26 @@ export default {
     '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    ['@nuxtjs/laravel-echo', {
+      broadcaster: 'pusher',
+      key: process.env.MIX_PUSHER_APP_KEY,
+      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+      encrypted: false,
+      wsHost: process.env.WEBSOCKET_BASE_URL,
+      wsPort: 6001,
+      disableStats: true,
+      authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
+    }],
   ],
-
+  echo: {
+    authModule: true,
+    connectOnLogin: true,
+    disconnectOnLogout: true,
+  },
   auth: {
     plugins: [
       '~/plugins/event',
+      '~/plugins/broadcasting/eventChange',
     ],
     strategies: {
       local: {
