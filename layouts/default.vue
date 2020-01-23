@@ -13,8 +13,8 @@ export default {
       Navbar,
     },
     mounted() {
-      this.$echo.channel('orders')
-        .listen('OrderShipped', (e) => {
+      this.$echo.channel('event')
+        .listen('RegistrationChange', (e) => {
             console.log("wow holy shit this works!", e);
         });
     }

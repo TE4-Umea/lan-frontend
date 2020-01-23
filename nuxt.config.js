@@ -55,7 +55,7 @@ export default {
         wsPort: 6001,
         disableStats: true,
         authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
-        enabledTransports: ['ws', 'wss']
+        // enabledTransports: ['ws', 'wss']
     }],
   ],
   echo: {
