@@ -121,7 +121,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://localhost',
+    baseURL: process.env.BACKEND_BASE_URL,
   },
   /*
   ** Build configuration
