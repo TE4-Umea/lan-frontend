@@ -18,7 +18,7 @@
                     </div>
                     <div class="pt-2">
                     <small>eller
-                        <nuxt-link to="/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
+                        <nuxt-link to="{{$axios.defaults.baseURL}}/auth/login" class="underline" tabindex=2>logga in som gäst</nuxt-link>
                     </small>
                     </div>
                 </div>
