@@ -12,6 +12,7 @@
                 <notifications/>
             </div>
         </wrapper>
+    <modals-container/>
     </center-wrapper>
 </template>
 

@@ -9,7 +9,6 @@ export default function subscribe($auth, $echo, store, $router) {
             });
         $echo.private('User.' + $auth.user.id)
             .listen('RegistrationUpdated', e => {
-                console.log(e);
                 store.commit("event/SET_REGISTRATION", e.registration);
                 $router.push({ path: "/event/"});
             });
