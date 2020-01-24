@@ -27,6 +27,7 @@
 
             </div>
         </div>
+    <modals-container/>
     </center-wrapper>
 
 </template>
@@ -46,9 +47,14 @@ export default {
         ImageLayout,
         ActionButton
     },
+    data() {
+        return {
+            modal: undefined,
+        }
+    },
     methods: {
         openTicket() {
-            this.$modal.show(TicketModal, {}, {
+            this.modal = this.$modal.show(TicketModal, {}, {
                 draggable: true,
                 resizable: false,
                 width: '90%',
@@ -57,6 +63,10 @@ export default {
                 maxHeight: 500,
                 adaptive: true,
             });
+        },
+        closeTicket() {
+            this.$emit('close');
+            // this.$modal.close(TicketModal);
         },
         formatDate(d) {
             return new Date(d).toLocaleDateString('sv-SE');

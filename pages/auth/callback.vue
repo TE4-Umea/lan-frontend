@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import subscribe from '~/assets/echoSubscribe';
 export default {
     middleware: ['guest'],
     data() {
@@ -20,6 +21,8 @@ export default {
         }
         this.$auth.setUserToken(this.token)
         .then(async res => {
+            subscribe(this.$auth, this.$echo, this.$store, this.$router);
+            
             await this.$store.dispatch('event/GET');
             await this.$store.dispatch('event/GET_REGISTRATION');
             this.$router.push({ path: "/event/"});

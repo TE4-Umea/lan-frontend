@@ -1,5 +1,4 @@
 export default function ({ $axios, redirect }) {
-    // Temporary solution
     $axios.onRequest((config) => {
         // console.log(config); // Använd detta för att kolla på alla requests som skickas i systemet
         if (process.browser) {

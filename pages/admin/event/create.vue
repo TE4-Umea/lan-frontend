@@ -109,10 +109,9 @@ export default {
                 registration_closes_at: this.parseDateTime(this.eventDates.dates.start, this.eventDates.startTime)
 
             };
-            this.$axios.post('/admin/event/create', payload).then(res => {
-                console.log(res)
-                self.$router.push({ path: `/admin/event/checkin`});
-            }).catch(err => console.log(err));
+            this.$axios.post('/admin/event/create', payload)
+                .then(res => {})
+                .catch(err => console.log(err));
         },
         parseDateTime(date, time) {
             date.setHours(time.HH, time.mm);
