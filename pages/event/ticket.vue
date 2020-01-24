@@ -8,14 +8,14 @@
                 paragraph=""
             >
             <p class="d-inline ">
-            Du är anmäld till lanet som</p> 
+            Du är anmäld till lanet som</p>
             <p class="d-inline font-weight-bold" v-text="account_type_str" />
             <p class="d-inline"> mellan </p>
             <p class="d-inline font-weight-bold">{{betweenDates}}</p>
             <p class="d-inline">, lanet börjar </p>
             <p class="d-inline font-weight-bold">{{ 'kl ' + opensAt}}</p>
-            
-            
+
+
             </image-layout>
             <div class="pt-4 d-flex justify-content-center">
                 <action-button

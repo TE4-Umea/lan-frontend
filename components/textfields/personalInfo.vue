@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h4> Information kring lanet </h4>
+        <h4>Personlig information </h4>
         <p class="mb-0"> Din gruppkod är </p>
-        <important class="mb-0" v-text="$store.state.event.registration.group_code"/>
+        <p class="mb-0" v-text="$store.state.event.registration.group_code"/>
         <p class="mb-0" v-text="$store.state.event.registration.room_id"/>
         <p class="d-inline clickable underline" @click="openRulesModal">Här finns lanets regler.</p>
     </div>
