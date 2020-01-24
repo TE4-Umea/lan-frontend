@@ -66,8 +66,8 @@ export default {
                         event_id: this.$store.state.event.details.id,
                         ...this.form
                     }
-                ).then(res => {
-                    this.$store.commit('event/SET_REGISTRATION', res.data);
+                ).then(async res => {
+                    await this.$store.commit('event/SET_REGISTRATION', res.data.data);
                     this.$router.push({
                         path: '/event/ticket'
                     })
