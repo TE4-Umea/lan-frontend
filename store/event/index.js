@@ -1,6 +1,7 @@
 export const state = () => ({
     details: undefined,
     registration: undefined,
+    notifications: undefined,
 });
 export const mutations = {
     SET(state, data) {
@@ -8,6 +9,14 @@ export const mutations = {
     },
     SET_REGISTRATION(state, data) {
         state.registration = data;
+    },
+
+    SET_NOTIFICATIONS(state, data) {
+        state.notifications = data;
+    },
+
+    ADD_NOTIFICATION(state, data) {
+        state.notifications.push(data);
     },
 }
 export const actions = {
@@ -29,4 +38,14 @@ export const actions = {
             }
         }
     },
+    async GET_NOTIFICATIONS({ commit, state}) {
+        if(state.details) {
+            try {
+                const { data } = await this.$axios.get(`/event/${state.details.id}/notifications/read`)
+                commit('SET_NOTIFICATIONS', data);
+            } catch(e) {
+                console.log("no notifications found");
+            }
+        }
+    }
   }

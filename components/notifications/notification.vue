@@ -28,7 +28,7 @@ export default {
             this.timestamp = this.calculate_timestamp();
         },
         calculate_timestamp() {
-            let now = (new Date()).getTime() / 1000 ;
+            let now = Math.ceil((new Date()).getTime() / 1000);
             let past = (new Date(this.data.created_at)).getTime() / 1000;
             let diff = Math.floor((now - past) / 60);
             if(diff > 1441) {
