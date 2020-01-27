@@ -1,10 +1,24 @@
 <template>
-    <div>
-        <h4>Personlig information </h4>
-        <p class="mb-0"> Din gruppkod är </p>
-        <p class="mb-0" v-text="$store.state.event.registration.group_code"/>
-        <p class="mb-0" v-text="$store.state.event.registration.room_id"/>
-        <p class="d-inline clickable underline" @click="openRulesModal">Här finns lanets regler.</p>
+    <div class="box my-2 p-2 d-contrast bg-color--background w-100">
+        <div 
+            @click="expanded = !expanded" 
+            class="d-flex justify-content-between "
+        >
+            <h4 class="mb-0">Personlig information</h4>
+            <i 
+                class="clickable icon material-icons gradient-animation-hover text-primary" 
+                v-text="expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'"
+            />
+        </div>
+        <div :class="{'d-none': !expanded}">
+            <p 
+                v-if="$store.state.event.registration.group_code"
+                class="mb-0" 
+                v-text="'Din gruppkod är ' + $store.state.event.registration.group_code"
+            />
+            <p class="mb-0" v-text="'har din plats i Sapfo. ' + $store.state.event.registration.room_id"/>
+            <p class="d-inline clickable underline" @click="openRulesModal">Här kommer ni åt reglerna!</p>
+        </div>
     </div>
 
 </template>
@@ -13,10 +27,14 @@
 import important from '~/components/event/fields/important';
 import RulesModal from '~/components/event/modal/RulesModal.vue';
 export default {
+    data() {
+        return {
+            expanded: false,
+        }
+    },
     components: {
-    important,
-
-  },
+        important,
+    },
     methods: {
         openRulesModal() {
             this.$modal.show(RulesModal, {}, {
@@ -27,13 +45,25 @@ export default {
                 adaptive: false,
             });
         },
-    }
+    },
+
 }
 </script>
 
 <style lang="scss" scoped>
-    p {
-        font-size: 16px;
-    }
+.box {
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.icon {
+    font-size: 30px;
+    vertical-align: sub;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+p {
+    font-size: 16px;
+}
 
 </style>
