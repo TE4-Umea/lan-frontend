@@ -59,7 +59,6 @@ export default {
     methods: {
         onSubmit() {
             if (!this.sending) {
-                let self = this;
                 this.sending = true;
                 this.$axios.post(
                     '/event/register',
@@ -67,11 +66,12 @@ export default {
                         event_id: this.$store.state.event.details.id,
                         ...this.form
                     }
-                ).then(res => {
-                    self.$router.push({
+                ).then(async res => {
+                    await this.$store.commit('event/SET_REGISTRATION', res.data.data);
+                    this.$router.push({
                         path: '/event/ticket'
                     })
-                    self.sending = false;
+                    this.sending = false;
                 });
             }
         }
