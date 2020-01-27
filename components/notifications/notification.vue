@@ -1,5 +1,5 @@
 <template>
-    <div class="notification my-2 p-2 d-contrast bg-color--background ">
+    <div class="notification my-2 p-2 d-contrast bg-color--background w-100">
         <div class="d-flex justify-content-between align-items-center">
             <h4 class="mb-0" v-text="data.title" />
             <small v-text="timestamp"/>
@@ -28,8 +28,8 @@ export default {
             this.timestamp = this.calculate_timestamp();
         },
         calculate_timestamp() {
-            let now = (new Date()).getTime() / 1000 ;
-            let past = (new Date(this.data.created_at)).getTime() / 1000;
+            let now = Math.ceil(Date.now() / 1000);
+            let past = (new Date(this.data.created_at + 'Z')).getTime() / 1000;
             let diff = Math.floor((now - past) / 60);
             if(diff > 1441) {
               let days = Math.floor(diff / 1440);
