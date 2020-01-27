@@ -1,9 +1,9 @@
 <template>
 <div class="w-100">
-    <!-- <div v-if="$store.state.event.notifications.length > 0">
+    <div v-if="$store.state.event.notifications.length == 0">
         <h4>Laddar..</h4>
         <div class="spinner" />
-    </div> -->
+    </div>
     <notification v-for="(row, i) in $store.state.event.notifications" :key="i" :data="row"/>
 </div>
 </template>

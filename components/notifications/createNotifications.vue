@@ -8,20 +8,20 @@
 
         <div>
             <input type="text" 
-                class="field mb-1 p-1 text-fields" 
+                class="field mb-1 p-1 text-fields primary-color" 
                 placeholder="Titel...."
                 v-model="form.title"
             >
             <textarea name="" 
                 cols="5" 
                 rows="5"
-                class="field text-fields p-1"
+                class="field text-fields p-1 primary-color"
                 placeholder="Meddelande...."
                 v-model="form.body"
                 maxlength="255"
             />
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between flex-wrap">
 
             <b-button 
                 class="gradient-animation-hover border-0" 

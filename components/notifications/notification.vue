@@ -28,7 +28,6 @@ export default {
             this.timestamp = this.calculate_timestamp();
         },
         calculate_timestamp() {
-            console.log(this.data.created_at, Date.now(), new Date(this.data.created_at + 'Z').getTime());
             let now = Math.ceil(Date.now() / 1000);
             let past = (new Date(this.data.created_at + 'Z')).getTime() / 1000;
             let diff = Math.floor((now - past) / 60);
