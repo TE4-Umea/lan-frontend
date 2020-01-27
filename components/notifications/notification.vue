@@ -1,5 +1,5 @@
 <template>
-    <div class="notification my-2 p-2 bg-color--background">
+    <div class="notification my-2 p-2 bg-color--background d-contrast">
         <div class="d-flex justify-content-between align-items-center">
             <h4 class="mb-0" v-text="data.title" />
             <small v-text="timestamp"/>

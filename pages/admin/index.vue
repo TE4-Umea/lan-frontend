@@ -2,8 +2,8 @@
   	<div class="container pt-4">
         <div class="row">
             <div class="col-md-5">
-                <div class="header gradient--background d-flex">
-                    <p class="align-self-center m-0 ml-3 title">Statistik</p>
+                <div class="gradient--background d-flex p-2">
+                    <p class="align-self-center m-0 ml-3 white">Statistik</p>
                 </div>
                 <div class="stats">
                 </div>
@@ -12,17 +12,7 @@
             <div class="col-md-3">
                 <div>
 
-                    <div class="header gradient--background d-flex">
-                        <p class="align-self-center m-0 ml-3 title">Skapa ny pushnotis</p>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control mb-1" placeholder="Titel....">
-                        <textarea name="" cols="5" rows="5" class="form-control" placeholder="Meddelande...."/>
-                    </div>
-                    <div class="d-flex">
-                      <action-button class="my-2 mt-md-4 mr-4" primary="true" title="Förhandsgranska"/>
-                      <action-button class="my-2 mt-md-4" primary="true" title="Skicka"/>
-                    </div>
+                    <create-notifications />
 
                     <div class="notifications d-flex">
                         <notifications/>
@@ -31,8 +21,8 @@
             </div>
 
             <div class="col-md-4">
-                <div class="header gradient--background d-flex">
-                    <p class="align-self-center m-0 ml-3 title">Regler</p>
+                <div class="gradient--background d-flex p-2">
+                    <p class="align-self-center m-0 ml-3 white">Regler</p>
                 </div>
                 <div class="rules">
                     <rules-input/>
@@ -44,10 +34,11 @@
 </template>
 
 <script>
-import ActionButton from '~/components/buttons/ActionButton'
-import Wrapper from '~/components/layouts/positioning/Wrapper'
-import Notifications from '~/components/notifications/Notifications'
-import RulesInput from '~/components/event/RulesInput'
+import ActionButton from '~/components/buttons/ActionButton';
+import Wrapper from '~/components/layouts/positioning/Wrapper';
+import Notifications from '~/components/notifications/Notifications';
+import RulesInput from '~/components/event/RulesInput';
+import createNotifications from '~/components/notifications/createNotifications';
 export default {
   middleware: 'auth-admin',
 
@@ -57,6 +48,7 @@ components: {
     Wrapper,
     Notifications,
     RulesInput,
+    createNotifications,
   }
 }
 
@@ -66,12 +58,8 @@ components: {
 
     .header {
         height: 50px;
-        border: 1px solid #E5E5E5;
         border-radius: 4px;
         box-sizing: border-box;
-    }
-    .title {
-        color: white;
     }
     .stats {
         background-color: #eee;
@@ -81,9 +69,6 @@ components: {
 
     textarea {
         resize: none;
-    }
-    .rules {
-      background-color: white;
     }
     .buttons {
       width: 100px;
