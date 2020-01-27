@@ -1,7 +1,7 @@
 export const state = () => ({
     details: undefined,
     registration: undefined,
-    notifications: undefined,
+    notifications: [],
 });
 export const mutations = {
     SET(state, data) {

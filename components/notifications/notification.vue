@@ -28,8 +28,9 @@ export default {
             this.timestamp = this.calculate_timestamp();
         },
         calculate_timestamp() {
-            let now = Math.ceil((new Date()).getTime() / 1000);
-            let past = (new Date(this.data.created_at)).getTime() / 1000;
+            console.log(this.data.created_at, Date.now(), new Date(this.data.created_at + 'Z').getTime());
+            let now = Math.ceil(Date.now() / 1000);
+            let past = (new Date(this.data.created_at + 'Z')).getTime() / 1000;
             let diff = Math.floor((now - past) / 60);
             if(diff > 1441) {
               let days = Math.floor(diff / 1440);
