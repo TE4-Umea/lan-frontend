@@ -14,7 +14,6 @@ export default function subscribe($auth, $echo, store, $router) {
         });
         $echo.private('Event.' + store.state.event.details.id)
             .listen('NotificationCreated', e => {
-                console.log("a new notification was sent", e);
                 store.commit("event/ADD_NOTIFICATION", e.notification);
                 //TODO: Skicka snackbar.    
         });
