@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="w-100">
     <div v-if="$store.state.event.notifications == undefined">
         <h4>Laddar..</h4>
         <div class="spinner" />
@@ -11,7 +11,7 @@
 <script>
 import Notification from '~/components/notifications/Notification';
 export default {
-  created() {
+  mounted() {
         if(this.$store.state.event.notifications == undefined) {
             this.$store.dispatch('event/GET_NOTIFICATIONS');
         }
