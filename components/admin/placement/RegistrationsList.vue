@@ -8,13 +8,14 @@
         :busy="$store.state.admin.registrations.length == 0"
     >
         <template v-slot:cell(room_id)="row">
-            {{ getRoomName(row.item.room_id).name }}
+            <room-dropdown :row="row" />
         </template>
     </b-table>
 </div>
 </template>
 
 <script>
+import RoomDropdown from '~/components/admin/placement/registrationslist/RoomDropdown';
 export default {
     data() {
         return {
@@ -34,11 +35,10 @@ export default {
             validInput: false
         }
     },
-    methods: {
-        getRoomName(id) {
-            return this.$store.state.admin.placement.rooms[this.$store.state.admin.placement.rooms.findIndex(x => x.id === id)]
-        }
+    components: {
+        RoomDropdown
     }
+    
 }
 </script>
 

@@ -1,6 +1,15 @@
 export const state = () => ({
     registrations: [],
 });
+export const getters = () => ({
+    registrationsString () {
+      return state.registrations.filter(index => {
+          console.log(index);
+            return index;
+      });
+    }
+    
+});
 export const mutations = {
     
     SET_REGISTRATIONS(state, data) {
