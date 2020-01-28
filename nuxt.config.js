@@ -40,7 +40,7 @@ export default {
     '~/plugins/datePicker',
     '~/plugins/modals',
     '~/plugins/darkmode',
-    
+    '~/plugins/snackbar'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -48,7 +48,7 @@ export default {
   buildModules: [
       // With options
   ],
-  
+
   /*
   ** Nuxt.js modules
   */

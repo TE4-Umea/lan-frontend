@@ -1,4 +1,4 @@
-export default function subscribe($auth, $echo, store, $router) {
+export default function subscribe($auth, $echo, store, $router, $snack) {
     if ($auth.loggedIn) {
         hookProviderHeader($echo);
 
@@ -15,9 +15,12 @@ export default function subscribe($auth, $echo, store, $router) {
         $echo.private('Event.' + store.state.event.details.id)
             .listen('NotificationCreated', e => {
                 store.commit("event/ADD_NOTIFICATION", e.notification);
-                //TODO: Skicka snackbar.    
+                // this.$snack.success({
+                //   text: e.notification.title + "\n" + e.notification.body,
+                //   button: 'stäng',
+                // });
         });
-    }    
+    }
 }
 function hookProviderHeader($echo) {
     let provider = localStorage.getItem('provider');
