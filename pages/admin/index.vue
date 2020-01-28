@@ -38,7 +38,7 @@ import ActionButton from '~/components/buttons/ActionButton';
 import Wrapper from '~/components/layouts/positioning/Wrapper';
 import Notifications from '~/components/notifications/Notifications';
 import RulesInput from '~/components/event/RulesInput';
-import createNotifications from '~/components/notifications/createNotifications';
+import CreateNotifications from '~/components/notifications/CreateNotifications';
 export default {
   middleware: 'auth-admin',
 
@@ -48,7 +48,7 @@ components: {
     Wrapper,
     Notifications,
     RulesInput,
-    createNotifications,
+    CreateNotifications,
   }
 }
 
