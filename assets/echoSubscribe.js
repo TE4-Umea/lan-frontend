@@ -1,4 +1,11 @@
-export default function subscribe($auth, $echo, store, $router) {
+function eventSubScribe($echo, store,) {
+    $echo.private('Event.' + store.state.event.details.id)
+        .listen('NotificationCreated', e => {
+            store.commit("event/ADD_NOTIFICATION", e.notification);
+            //TODO: Skicka snackbar.    
+        });
+}
+function subscribe($auth, $echo, store, $router) {
     if ($auth.loggedIn) {
         hookProviderHeader($echo);
 
@@ -12,11 +19,9 @@ export default function subscribe($auth, $echo, store, $router) {
                 store.commit("event/SET_REGISTRATION", e.registration);
                 $router.push({ path: "/event/"});
         });
-        $echo.private('Event.' + store.state.event.details.id)
-            .listen('NotificationCreated', e => {
-                store.commit("event/ADD_NOTIFICATION", e.notification);
-                //TODO: Skicka snackbar.    
-        });
+        if(store.state.event.details) {
+            eventSubScribe($echo, store);
+        }
     }    
 }
 function hookProviderHeader($echo) {
@@ -26,3 +31,7 @@ function hookProviderHeader($echo) {
         $echo.connector.pusher.config.auth.headers['Accept'] = 'application/json';
     }
 }
+export default [
+    eventSubScribe,
+    subscribe
+];

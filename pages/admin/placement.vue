@@ -1,12 +1,23 @@
 <template>
-  <h1>Placement</h1>
+    <div class="container row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            <room-crud />
+        </div>
+    </div>
 </template>
 
 <script>
+import RoomCrud from '~/components/admin/placement/RoomCrud';
 export default {
+    components: {
+        RoomCrud,
+    }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
