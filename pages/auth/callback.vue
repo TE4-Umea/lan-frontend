@@ -21,13 +21,13 @@ export default {
         }
         this.$auth.setUserToken(this.token)
         .then(async res => {
-            subscribe(this.$auth, this.$echo, this.$store, this.$router);
             
             await this.$store.dispatch('event/GET');
             await this.$store.dispatch('event/GET_REGISTRATION');
+            subscribe(this.$auth, this.$echo, this.$store, this.$router);
             this.$router.push({ path: "/event/"});
         }).catch(e => {
-            console.log("login error");
+            console.log(e, "login error");
         })
     }
 }
