@@ -1,7 +1,7 @@
 <template>
     <div class="container row">
         <div class="col-md-8">
-
+            <registrations-list />
         </div>
         <div class="col-md-4">
             <room-crud />
@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import RegistrationsList from '~/components/admin/placement/RegistrationsList';
 import RoomCrud from '~/components/admin/placement/RoomCrud';
 export default {
     components: {
         RoomCrud,
+        RegistrationsList
     },
     mounted() {
         this.$store.dispatch('admin/placement/GET_ROOMS');

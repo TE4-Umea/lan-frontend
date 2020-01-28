@@ -46,7 +46,6 @@ export default {
                 {label: 'Namn', key: 'name', sortable: true},
                 {label: 'Platser kvar', key: 'used_capcity', sortable: false},
                 {label: 'Platser max', key: 'max_capacity', sortable: true},
-                {label: 'åtgärder', key: 'actions', sortable: false},
             ],
             form: {
                 name: '',
@@ -61,17 +60,24 @@ export default {
             this.$axios.post("/admin/placement/room/create", this.form)
                 .then(res => {
                     this.$store.commit('admin/placement/ADD_ROOM', res.data.data);
-                    // this.$snack.success()
+                    this.$snack.success({
+                        text: 'Ett Rum har lagts till!',
+                        button: 'OK',
+                    });
+                    this.form.name = '';
+                    this.form.max_capacity = null;
                 }).catch(err => {
-                    //TODO: Send error snackbar message
+                    this.$snack.error({
+                        text: 'Något gick fel!',
+                        button: 'Försök igen',
+                        action: this.submit(),
+                    });
                 })
-            this.form.name = '';
-            this.form.max_capacity = null;   
+            
         },
         count_used_capcity(id) {
             let counter = 0;
             for (let index of this.$store.state.admin.registrations) {
-                console.log(id);
                 if(index.room_id == id) {
                     counter ++;
                 }
