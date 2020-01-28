@@ -1,3 +1,4 @@
+
 <template>
 <div class="d-contrast outline-border">
 
@@ -7,13 +8,13 @@
     <div class="p-2">
 
         <div>
-            <input type="text" 
-                class="field mb-1 p-1 text-fields primary-color" 
+            <input type="text"
+                class="field mb-1 p-1 text-fields primary-color"
                 placeholder="Titel...."
                 v-model="form.title"
             >
-            <textarea name="" 
-                cols="5" 
+            <textarea name=""
+                cols="5"
                 rows="5"
                 class="field text-fields p-1 primary-color"
                 placeholder="Meddelande...."
@@ -23,12 +24,12 @@
         </div>
         <div class="d-flex justify-content-between flex-wrap">
 
-            <b-button 
-                class="gradient-animation-hover border-0" 
+            <b-button
+                class="gradient-animation-hover border-0"
                 @click="preview"
             >Förhandsgranska</b-button>
-            <b-button 
-                class="gradient-animation-hover border-0" 
+            <b-button
+                class="gradient-animation-hover border-0"
                 @click="send" :disabled="!canSend"
             >Skicka</b-button>
         </div>
@@ -76,10 +77,10 @@ export default {
         },
         send() {
             this.canSend = false;
-            this.$axios.post("/admin/event/notification/create", 
+            this.$axios.post("/admin/event/notification/create",
             {
                 ...this.form,
-                event_id: this.$store.state.event.details.id, 
+                event_id: this.$store.state.event.details.id,
             })
                 .then(res => {
                     this.form.title = '';

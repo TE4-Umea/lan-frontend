@@ -68,6 +68,11 @@ export default {
                     }
                 ).then(async res => {
                     await this.$store.commit('event/SET_REGISTRATION', res.data.data);
+                    this.$snack.success({
+                      text: "Du har skapat en notis!",
+                      button: "Stäng"
+
+                    })
                     this.$router.push({
                         path: '/event/ticket'
                     })

@@ -6,7 +6,6 @@
             <small v-text="timestamp"/>
         </div>
         <p class="mb-0" v-text="data.body"/>
-        <b-button @click="sendSnack">asdas</b-button>
     </div>
 </template>
 
@@ -26,12 +25,6 @@ export default {
         this.interval = setInterval(() => this.update_timestamp(), 60000);
     },
     methods: {
-        sendSnack() {
-            this.$snack.success({
-              text: 'Conversa arquivada',
-              button: 'stäng',
-            });
-        },
         clickAction() {
             console.log("the close button is clicked!")
         },
