@@ -1,3 +1,4 @@
+<!-- changed file names and git doesnt allow me to commit it -->
 <template>
 <div class="w-100">
     <div v-if="$store.state.event.notifications.length == 0">

@@ -1,3 +1,4 @@
+<!-- changed file names and git doesnt allow me to commit it -->
 <template>
     <div class="notification my-2 p-2 d-contrast bg-color--background w-100">
         <div class="d-flex justify-content-between align-items-center">
