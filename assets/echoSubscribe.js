@@ -13,6 +13,7 @@ function subscribe($auth, $echo, store, $router) {
             .listen('NewEventPublished', e => {
                 store.commit("event/SET", e.event);
                 $router.push({ path: "/event/"});
+                eventSubScribe($echo, store);
         });
         $echo.private('User.' + $auth.user.id)
             .listen('RegistrationUpdated', e => {

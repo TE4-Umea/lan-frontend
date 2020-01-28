@@ -14,7 +14,11 @@ import RoomCrud from '~/components/admin/placement/RoomCrud';
 export default {
     components: {
         RoomCrud,
-    }
+    },
+    mounted() {
+        this.$store.dispatch('admin/placement/GET_ROOMS');
+        this.$store.dispatch('admin/GET_REGISTRATIONS');
+    },
 }
 </script>
 

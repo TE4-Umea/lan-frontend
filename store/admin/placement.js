@@ -13,8 +13,8 @@ export const mutations = {
         state.notifications = data;
     },
 
-    ADD_NOTIFICATION(state, data) {
-        state.notifications.push(data);
+    ADD_ROOM(state, data) {
+        state.rooms.push(data);
     },
 }
 export const actions = {
