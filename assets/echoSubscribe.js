@@ -31,7 +31,8 @@ function hookProviderHeader($echo) {
         $echo.connector.pusher.config.auth.headers['Accept'] = 'application/json';
     }
 }
-export default [
+export {
+
     eventSubScribe,
     subscribe
-];
+};

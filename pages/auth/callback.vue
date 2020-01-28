@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import subscribe from '~/assets/echoSubscribe';
+import { subscribe } from '~/assets/echoSubscribe';
 export default {
     middleware: ['guest'],
     data() {
