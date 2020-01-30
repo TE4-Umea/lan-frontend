@@ -3,8 +3,8 @@ function eventSubScribe($echo, store, $snack) {
         .listen('NotificationCreated', e => {
             store.commit("event/ADD_NOTIFICATION", e.notification);
             $snack.success({
-                text: e.notification.title + ': ' + e.notification.body
-            })   
+                text: 'Notis: ' + e.notification.title + ', ' + e.notification.body
+            });   
         });
 }
 function subscribe($auth, $echo, store, $router, $snack) {
@@ -14,6 +14,10 @@ function subscribe($auth, $echo, store, $router, $snack) {
             .listen('NewEventPublished', e => {
                 store.commit("event/SET", e.event);
                 $router.push({ path: "/event/"});
+                $snack.success({
+                    text: 'Det har nu publicerats ett nytt event',
+                    button: 'Okej'
+                });
                 eventSubScribe($echo, store);
         });
         $echo.private('User.' + $auth.user.id)
@@ -21,6 +25,10 @@ function subscribe($auth, $echo, store, $router, $snack) {
                 const oldRegistration = store.state.event.registration;
                 store.commit("event/SET_REGISTRATION", e.registration);
                 if(!oldRegistration.checked_in && e.registration.checked_in) {
+                    $snack.success({
+                        text: 'Välkommen till lanet! du är nu inchekad!',
+                        button: 'Okej'
+                    });
                     $router.push({ path: "/event/"});
                 }
         });
