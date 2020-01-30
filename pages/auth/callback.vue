@@ -24,7 +24,7 @@ export default {
             
             await this.$store.dispatch('event/GET');
             await this.$store.dispatch('event/GET_REGISTRATION');
-            subscribe(this.$auth, this.$echo, this.$store, this.$router);
+            subscribe(this.$auth, this.$echo, this.$store, this.$router, this.$snack);
             this.$router.push({ path: "/event/"});
         }).catch(e => {
             console.log(e, "login error");
