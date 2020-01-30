@@ -17,8 +17,11 @@ function subscribe($auth, $echo, store, $router) {
         });
         $echo.private('User.' + $auth.user.id)
             .listen('RegistrationUpdated', e => {
+                const oldRegistration = store.state.event.registration;
                 store.commit("event/SET_REGISTRATION", e.registration);
-                $router.push({ path: "/event/"});
+                if(!oldRegistration.checked_in && e.registration.checked_in) {
+                    $router.push({ path: "/event/"});
+                }
         });
         if(store.state.event.details) {
             eventSubScribe($echo, store);
@@ -33,7 +36,6 @@ function hookProviderHeader($echo) {
     }
 }
 export {
-
     eventSubScribe,
     subscribe
 };

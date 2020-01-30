@@ -3,9 +3,16 @@ export const state = () => ({
 });
 export const mutations = {
     
+    SET_REGISTRATION(state, {index, registration}) {
+        Object.assign(state.registrations[index], registration);
+        const id = state.registrations[index].id;
+        this.$axios.patch(`/admin/event/registration/${id}/update`, registration);
+    },
+    
     SET_REGISTRATIONS(state, data) {
         state.registrations = data;
     },
+
     ADD_REGISTRATIONS(state, data) {
         state.rooms.push(data);
     },

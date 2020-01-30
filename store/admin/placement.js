@@ -1,18 +1,19 @@
 export const state = () => ({
     rooms: [],
 });
+
+export const getters = {
+    getRoomsStr(state) {
+        return state.rooms.filter(room => room.name);
+    },
+    getRoom(state, id) {
+        return state.rooms.find(index => index.id == id);
+    }
+}
 export const mutations = {
     SET_ROOMS(state, data) {
         state.rooms = data;
     },
-    SET_REGISTRATION(state, data) {
-        state.registration = data;
-    },
-
-    SET_NOTIFICATIONS(state, data) {
-        state.notifications = data;
-    },
-
     ADD_ROOM(state, data) {
         state.rooms.push(data);
     },
