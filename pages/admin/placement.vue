@@ -15,6 +15,7 @@
 import RegistrationsList from '~/components/admin/placement/RegistrationsList';
 import RoomCrud from '~/components/admin/placement/RoomCrud';
 export default {
+    middleware: 'auth-admin',
     components: {
         RoomCrud,
         RegistrationsList
