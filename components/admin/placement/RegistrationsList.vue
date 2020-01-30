@@ -10,12 +10,16 @@
         <template v-slot:cell(room_id)="row">
             <room-dropdown :row="row" />
         </template>
+        <template v-slot:cell(checked_in)="row">
+            <attending-cell :row="row" />
+        </template>
     </b-table>
 </div>
 </template>
 
 <script>
 import RoomDropdown from '~/components/admin/placement/registrationslist/RoomDropdown';
+import AttendingCell from '~/components/admin/placement/registrationslist/AttendingCell';
 export default {
     data() {
         return {
@@ -36,7 +40,8 @@ export default {
         }
     },
     components: {
-        RoomDropdown
+        RoomDropdown,
+        AttendingCell
     }
     
 }
