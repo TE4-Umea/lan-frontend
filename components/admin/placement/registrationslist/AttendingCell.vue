@@ -28,7 +28,6 @@ export default {
         }
     },
     mounted() {
-        console.log(!!+this.row.item.checked_in);
         this.selected = !!+this.row.item.checked_in;
     },
     data() {

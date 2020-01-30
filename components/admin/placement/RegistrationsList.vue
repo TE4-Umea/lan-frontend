@@ -7,8 +7,14 @@
         :items="$store.state.admin.registrations"
         :busy="$store.state.admin.registrations.length == 0"
     >
+        <template v-slot:cell(group_code)="row">
+            {{ row.item.group_code ? row.item.group_code  : '...' }}
+        </template>
         <template v-slot:cell(room_id)="row">
             <room-dropdown :row="row" />
+        </template>
+        <template v-slot:cell(student)="row">
+            {{row.item.student ? 'Elev' : 'Extern'}}
         </template>
         <template v-slot:cell(checked_in)="row">
             <attending-cell :row="row" />
@@ -28,7 +34,7 @@ export default {
                 {label: 'Email', key: 'email', sortable: true},
                 {label: 'Gruppkod', key: 'group_code', sortable: true},
                 {label: 'Platstyp', key: 'setup_type', sortable: true},
-                {label: 'Typ', key: 'user.', sortable: true},
+                {label: 'Typ', key: 'student', sortable: true},
                 {label: 'Klassrum', key: 'room_id', sortable: true},
                 {label: 'Närvarande', key: 'checked_in', sortable: true},
             ],

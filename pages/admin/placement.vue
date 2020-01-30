@@ -1,12 +1,14 @@
 <template>
-    <div class="container row">
-        <div class="col-md-8">
+<b-container fluid class="pt-5 px-5">
+    <b-row>
+        <b-col>
             <registrations-list />
-        </div>
-        <div class="col-md-4">
+        </b-col>
+        <b-col cols="3">
             <room-crud />
-        </div>
-    </div>
+        </b-col>
+    </b-row>
+</b-container>
 </template>
 
 <script>
