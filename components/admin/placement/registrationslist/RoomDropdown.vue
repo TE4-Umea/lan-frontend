@@ -5,6 +5,8 @@
         text-field="name"
         :options="$store.getters['admin/placement/getRoomsStr']"
         v-model="selected"
+        @change="onChange"
+        plain
     >  
     </b-form-select>
 </div>
@@ -23,9 +25,21 @@ export default {
     props: [
         'row'
     ],
+    methods: {
+        onChange(newVal) {
+            this.$store.commit('admin/SET_REGISTRATION', {
+                index: this.row.index,
+                registration: {
+                    room_id: newVal,
+                }
+            })
+        }
+    }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+select,select:focus {
+    background: unset;
+}
 </style>
