@@ -1,14 +1,15 @@
-function eventSubScribe($echo, store,) {
+function eventSubScribe($echo, store, $snack) {
     $echo.private('Event.' + store.state.event.details.id)
         .listen('NotificationCreated', e => {
             store.commit("event/ADD_NOTIFICATION", e.notification);
-            //TODO: Skicka snackbar.    
+            $snack.success({
+                text: e.notification.title + ': ' + e.notification.body
+            })   
         });
 }
-function subscribe($auth, $echo, store, $router) {
+function subscribe($auth, $echo, store, $router, $snack) {
     if ($auth.loggedIn) {
         hookProviderHeader($echo);
-
         $echo.channel('public')
             .listen('NewEventPublished', e => {
                 store.commit("event/SET", e.event);
@@ -25,7 +26,7 @@ function subscribe($auth, $echo, store, $router) {
                 }
         });
         if(store.state.event.details) {
-            eventSubScribe($echo, store);
+            eventSubScribe($echo, store, $snack);
         }
     }    
 }
