@@ -1,20 +1,22 @@
 <template>
 <div>
-    <navbar />
+    <admin-navbar />
     <nuxt />
     <snackbar />
 </div>
 </template>
+
 <script>
-import Navbar from '~/components/navbar/Navbar.vue';
+import AdminNavbar from '~/components/navbar/AdminNavbar.vue';
 import Snackbar from '~/components/notifications/Snackbar'
 export default {
     components: {
-        Navbar,
+        AdminNavbar,
         Snackbar
     }
 }
 </script>
-<style lang="scss">
+
+<style>
 
 </style>
