@@ -20,7 +20,6 @@ function subscribe($auth, $echo, store, $router, $snack) {
             .listen('RegistrationUpdated', e => {
                 const oldRegistration = store.state.event.registration;
                 store.commit("event/SET_REGISTRATION", e.registration);
-
                 if(!oldRegistration.checked_in && e.registration.checked_in) {
                     $router.push({ path: "/event/"});
                 }
@@ -38,7 +37,6 @@ function hookProviderHeader($echo) {
     }
 }
 export {
-
     eventSubScribe,
     subscribe
 };

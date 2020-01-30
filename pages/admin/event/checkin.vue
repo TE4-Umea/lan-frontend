@@ -3,8 +3,8 @@
         <wrapper>
           <h1> Check in </h1>
             <div class ="d-flex align-items-center">
-                <input 
-                    type="text" class="form-control" 
+                <input
+                    type="text" class="form-control"
                     placeholder="Lägg till ID manuellt...."
                     v-model="result"
                     @blur="sendRequest"
@@ -44,7 +44,7 @@ export default {
         if(code && code.length > 1) {
             this.result = code;
             this.sendRequest();
-        }  
+        }
     },
     components: {
         Wrapper,
@@ -79,6 +79,10 @@ export default {
             this.$axios.put('/admin/event/registration/' + this.result + '/update').then(res => {
                 this.turnCameraOn();
                 this.result = '';
+                this.$snack.success({
+                      text: "Incheckning lyckades!",
+                      button: "Stäng",
+                })
             }).catch(e => {
                 this.turnCameraOn();
                 this.result = '';
@@ -86,10 +90,13 @@ export default {
         },
         parseInput(input) {
             let x = input.split('?qr=');
-            console.log(x[1]);
             if(x.length > 1) {
                 return x[1];
             }
+            this.$snack.danger({
+                      text: "Något gick fel! Biljetten kunde inte läsas!",
+                      button: "Stäng",
+            });
             return '';
         }
     },

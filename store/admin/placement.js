@@ -1,6 +1,7 @@
 export const state = () => ({
     rooms: [],
 });
+
 export const getters = {
     getRoomsStr(state) {
         return state.rooms.filter(room => room.name);

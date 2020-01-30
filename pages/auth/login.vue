@@ -68,6 +68,11 @@ export default {
                 data: this.form
             }).then(res => {
                 this.$router.push({ path: "/event/"});
+            }).catch(err => {
+                this.$snack.danger({
+                    text: "Fel användarnamn / Lösenord.",
+                    button: "Stäng",
+                });
             });
         },
     }
