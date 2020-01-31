@@ -84,6 +84,7 @@ export default {
 }
 textarea,textarea:focus {
     background: unset;
+    resize: none;
 }
 .placement {
     position: absolute;
