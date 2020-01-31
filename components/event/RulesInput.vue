@@ -14,19 +14,30 @@
             />
         </div>
         <!-- TODO: Lägg till en loading spinner på v-else -->
-	    <textarea class="form-control input primary-color" rows="24" v-model="model.body" @input="onInput"> </textarea>
+	    <textarea 
+            class="form-control input primary-color" 
+            rows="24" 
+            v-model="model.body" 
+            @input="onInput" />
+        <b-button
+                class="gradient-animation-hover border-0 mt-2"
+                @click="openRulesModal"
+        >Förhandsgranska</b-button>
+        <modals-container/>
     </div>
 </template>
 
 <script>
 let _  = require('lodash');
+import RulesModal from '~/components/event/modal/RulesModal.vue';
+
 export default {
 	middleware: 'auth-admin',
 	data() {
 		return {
             debouncedDoneTyping: undefined,
             icon: 'thumb_up',
-            loading: false,
+            loading: true,
             model: {
                 id: 1,
                 body: ''  
@@ -45,13 +56,23 @@ export default {
 			return;
 		}
 		this.$axios.get('/event/rules/' + this.model.id + '/read').then(res => {
-			this.model = res.data;
+            this.model = res.data;
+            this.loading = false;
 		}).catch(err => {
             console.log(err);
 		});
 		
     },
     methods: {
+        openRulesModal() {
+            this.$modal.show(RulesModal, {}, {
+                draggable: false,
+                resizable: false,
+                width: '90%',
+                height: 'auto',
+                adaptive: false,
+            });
+        },
         onInput() {
             this.loading = true;
             this.debouncedDoneTyping();
