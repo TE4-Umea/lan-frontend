@@ -2,11 +2,7 @@
   	<div class="container pt-4">
         <div class="row">
             <div class="col-md-5">
-                <div class="gradient--background d-flex p-2">
-                    <p class="align-self-center m-0 ml-3 white">Statistik</p>
-                </div>
-                <div class="stats">
-                </div>
+                <statistics/>
             </div>
 
             <div class="col-md-3">
@@ -14,7 +10,7 @@
 
                     <create-notifications />
 
-                    <div class="notifications d-flex">
+                    <div class="notifications d-flex mt-3">
                         <notifications/>
                     </div>
                 </div>
@@ -39,6 +35,7 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import Notifications from '~/components/notifications/Notifications';
 import RulesInput from '~/components/event/RulesInput';
 import CreateNotifications from '~/components/notifications/CreateNotifications';
+import Statistics from '~/components/admin/statistics/Statistics';
 export default {
     layout: 'admin',
     middleware: 'auth-admin',
@@ -49,6 +46,7 @@ export default {
         Notifications,
         RulesInput,
         CreateNotifications,
+        Statistics,
     }
 }
 
@@ -60,11 +58,6 @@ export default {
         height: 50px;
         border-radius: 4px;
         box-sizing: border-box;
-    }
-    .stats {
-        background-color: #eee;
-        width: 100%;
-        height: 40vh;
     }
 
     textarea {
