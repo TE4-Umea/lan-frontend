@@ -2,7 +2,10 @@
   <div class="nav-wrapper d-contrast">
       <div class="line gradient--background"></div>
       <div class="content">
-            <logo class="logo"/>
+            <span>
+                <logo class="pr-3 logo d-inline"/>
+                <slot class="d-inline"/>
+            </span>
             <dropdown />
       </div>
   </div>

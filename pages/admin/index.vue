@@ -40,16 +40,16 @@ import Notifications from '~/components/notifications/Notifications';
 import RulesInput from '~/components/event/RulesInput';
 import CreateNotifications from '~/components/notifications/CreateNotifications';
 export default {
-  middleware: 'auth-admin',
+    layout: 'admin',
+    middleware: 'auth-admin',
 
-
-components: {
-    ActionButton,
-    Wrapper,
-    Notifications,
-    RulesInput,
-    CreateNotifications,
-  }
+    components: {
+        ActionButton,
+        Wrapper,
+        Notifications,
+        RulesInput,
+        CreateNotifications,
+    }
 }
 
 </script>

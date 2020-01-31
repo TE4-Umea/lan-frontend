@@ -15,6 +15,7 @@
         <b-dropdown-item v-if="$auth.loggedIn && $auth.user.admin">
             <nuxt-link
             to="/admin"
+            class="w-100"
             >
                 Admin
             </nuxt-link>

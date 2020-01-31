@@ -9,8 +9,8 @@
                     v-model="result"
                     @blur="sendRequest"
                 >
-                <div class="box gradient-animation-hover box-padding">
-                    <i class="icon material-icons clickable primary-color"
+                <div class="box box-padding">
+                    <i class="icon material-icons clickable gradient-animation-hover text-primary"
                         v-text="icon"
                         v-on:click= "handleClick"
                     />
@@ -26,6 +26,7 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 export default {
+    layout: 'admin',
     middleware: [
         'auth-admin',
         'event/none'
@@ -104,7 +105,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.text-primary {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .box {
     padding: 5px;
     margin-left: 10px;

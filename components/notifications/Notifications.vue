@@ -26,10 +26,11 @@ export default {
             }
         })
     },
-    mounted() {
+    async mounted() {
         if(this.$store.state.event.notifications.length == 0) {
-            this.$store.dispatch('event/GET_NOTIFICATIONS');
+            await this.$store.dispatch('event/GET_NOTIFICATIONS');
         }
+        this.notifications = this.$store.state.event.notifications.slice().reverse();
     },
     components: {
         Notification,

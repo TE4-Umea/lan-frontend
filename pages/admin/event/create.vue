@@ -68,6 +68,7 @@ import timePicker from 'vue2-timepicker'
 import RulesInput from '~/components/event/RulesInput'
 import ActionButton from '~/components/buttons/ActionButton'
 export default {
+    layout: 'admin',
     middleware: [
         'auth-admin',
         'event/exists'
