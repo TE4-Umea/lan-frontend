@@ -62,18 +62,20 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
 
-    ['@nuxtjs/laravel-echo', {
-      broadcaster: 'pusher',
-      key: process.env.MIX_PUSHER_APP_KEY,
-      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-      encrypted: false,
-      wsHost: process.env.WEBSOCKET_BASE_URL,
-      httpHost: process.env.WEBSOCKET_BASE_URL,
-      wsPort: process.env.WEBSOCKET_PORT,
-      disableStats: true,
-      authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
-      enabledTransports: ['ws', 'wss'],
-    }],
+    ['@nuxtjs/laravel-echo', 
+    { 
+        broadcaster: 'pusher',
+        key: process.env.MIX_PUSHER_APP_KEY,
+        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+        encrypted: false,
+        wsHost: process.env.WEBSOCKET_BASE_URL,
+        httpHost: process.env.WEBSOCKET_BASE_URL,
+        wsPort: process.env.WEBSOCKET_PORT,
+        disableStats: true,
+        authEndpoint: process.env.BACKEND_BASE_URL + '/broadcasting/auth',
+        enabledTransports: ['ws', 'wss'],
+      }
+  ],
     { handler: function() {
       this.nuxt.hook('builder:extendPlugins', (plugins) => {
         plugins.push('~/plugins/broadcasting')
