@@ -1,7 +1,7 @@
 <template>
     
 <div>
-    <b-dropdown text="dark" size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
+    <b-dropdown class="dropdown" text="dark" size="lg" right variant="link" toggle-class="text-decoration-none" no-caret>
         <template v-slot:button-content class="">
             <i class="material-icons primary-color">more_vert</i>
         </template>

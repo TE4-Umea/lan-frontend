@@ -9,10 +9,10 @@ $contrast: #1F1F1F;
     .v--modal {
         background:  $contrast;
     }
-    ul {
+    .dropdown ul {
         background: $bgColorDark
     }
-    h1, h2, h3, h4, p, small, a {
+    h1, h2, h3, h4, p, small, a, li {
         color: $primaryColorDark;
     }
     ::placeholder {

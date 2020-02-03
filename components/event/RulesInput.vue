@@ -1,22 +1,43 @@
 <template>
-    <div>
-        <i v-if="!loading" class='icon material-icons gradient-animation-hover text-primary'
-            v-text="icon"
-        />
+    <div style="position: relative;">
+        <div class="placement">
+            <div 
+                :class="{'text-light': $store.state.darkmode.value}"
+                class="spinner-border spinner-border-sm" 
+                v-if="loading"
+                role="status">
+                <span class="sr-only">Loading...</span>
+            </div>            
+            <i v-else 
+                class='icon material-icons gradient-animation-hover text-primary placement'
+                v-text="icon"
+            />
+        </div>
         <!-- TODO: Lägg till en loading spinner på v-else -->
-	    <textarea class="form-control input" rows="24" v-model="model.body" @input="onInput"> </textarea>
+	    <textarea 
+            class="form-control input primary-color" 
+            rows="24" 
+            v-model="model.body" 
+            @input="onInput" />
+        <b-button
+                class="gradient-animation-hover border-0 mt-2"
+                @click="openRulesModal"
+        >Förhandsgranska</b-button>
+        <modals-container/>
     </div>
 </template>
 
 <script>
 let _  = require('lodash');
+import RulesModal from '~/components/event/modal/RulesModal.vue';
+
 export default {
 	middleware: 'auth-admin',
 	data() {
 		return {
             debouncedDoneTyping: undefined,
-            icon: 'eco',
-            loading: false,
+            icon: 'thumb_up',
+            loading: true,
             model: {
                 id: 1,
                 body: ''  
@@ -35,15 +56,24 @@ export default {
 			return;
 		}
 		this.$axios.get('/event/rules/' + this.model.id + '/read').then(res => {
-			this.model = res.data;
+            this.model = res.data;
+            this.loading = false;
 		}).catch(err => {
             console.log(err);
 		});
 		
     },
     methods: {
+        openRulesModal() {
+            this.$modal.show(RulesModal, {}, {
+                draggable: false,
+                resizable: false,
+                width: '90%',
+                height: 'auto',
+                adaptive: false,
+            });
+        },
         onInput() {
-            this.icon = 'autorenew';
             this.loading = true;
             this.debouncedDoneTyping();
         },
@@ -72,5 +102,14 @@ export default {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+textarea,textarea:focus {
+    background: unset;
+    resize: none;
+}
+.placement {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 </style>

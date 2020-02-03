@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="loader"></div>
+    <div class="container ">
+        <b-spinner class="loader my-5" :variant="$store.state.darkmode.value ? 'light' : 'dark'" label="Spinning"></b-spinner>
         <p>Please wait while we're logging you in...</p>
     </div>
 </template>
@@ -36,5 +36,9 @@ export default {
 <style lang="scss" scoped>
 .container {
     text-align: center;
+}
+.loader {
+    width: 3rem; 
+    height: 3rem;
 }
 </style>

@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const getters = {
     getRoomsStr(state) {
-        return state.rooms.filter(room => room.name);
+        return state.rooms.filter(room => room.name);w
     },
     getRoom(state, id) {
         return state.rooms.find(index => index.id == id);
