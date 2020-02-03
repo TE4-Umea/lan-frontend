@@ -5,7 +5,13 @@
             <registrations-list />
         </b-col>
         <b-col cols="3">
-            <room-crud />
+            <b-row>
+
+                <room-crud />
+            </b-row>
+            <b-row class="mt-3">
+                <group-placement />
+            </b-row>
         </b-col>
     </b-row>
 </b-container>
@@ -14,12 +20,14 @@
 <script>
 import RegistrationsList from '~/components/admin/placement/RegistrationsList';
 import RoomCrud from '~/components/admin/placement/RoomCrud';
+import GroupPlacement from '~/components/admin/placement/GroupPlacement';
 export default {
     layout: 'admin',
     middleware: 'auth-admin',
     components: {
         RoomCrud,
-        RegistrationsList
+        RegistrationsList,
+        GroupPlacement
     },
     mounted() {
         this.$store.dispatch('admin/placement/GET_ROOMS');
