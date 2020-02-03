@@ -73,6 +73,7 @@ export default {
                     }
                 });
             }
+            // TODO: Make sure this is correct
             this.$axios.patch(`admin/placement/room/group/update`, {
                 group_code: group_members.id == 'Ingen Kod' ? null : group_members.id,
                 room_id: newVal,
