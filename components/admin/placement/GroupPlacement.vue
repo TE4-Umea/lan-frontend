@@ -32,7 +32,7 @@ export default {
         return {
             fields: [
                 {label: 'Gruppkod', key: 'name', sortable: true},
-                {label: 'Personer', key: 'group_members', sortable: false},
+                {label: 'Personer', key: 'group_members', sortable: true},
                 {label: 'Klassrum', key: 'room_id', sortable: true},
             ],
             groupCodes: [],
@@ -42,7 +42,7 @@ export default {
         filterData(rows) {
             let objectRows = {};
             for(let i = 0; i < rows.length; i++) {
-                const groupName = rows[i].groupName ? rows[i].groupName : 'Ingen Kod';
+                const groupName = rows[i].group_code ? rows[i].group_code : 'Ingen Kod';
                 if(!objectRows.hasOwnProperty(groupName)) {
                     objectRows[groupName] = {
                         group_members_index: [],
@@ -64,8 +64,7 @@ export default {
         },
         onDropdownChange({newVal, index}) {
             const group_members = this.groupCodes[index];
-            console.log(group_members);
-            for (let member_index in group_members.group_members_index) {
+            for (let member_index of group_members.group_members_index) {
                 this.$store.commit('admin/SET_REGISTRATION', {
                     index: member_index,
                     registration: {
@@ -73,8 +72,7 @@ export default {
                     }
                 });
             }
-            // TODO: Make sure this is correct
-            this.$axios.patch(`admin/placement/room/group/update`, {
+            this.$axios.patch(`admin/placement/room/update`, {
                 group_code: group_members.id == 'Ingen Kod' ? null : group_members.id,
                 room_id: newVal,
             });

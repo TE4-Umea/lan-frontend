@@ -6,7 +6,6 @@
         </b-col>
         <b-col cols="3">
             <b-row>
-
                 <room-crud />
             </b-row>
             <b-row class="mt-3">

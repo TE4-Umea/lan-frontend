@@ -44,7 +44,7 @@ export default {
                 {key: 'created_at', thClass: 'd-none', tdClass: 'd-none' },
                 {key: 'updated_at', thClass: 'd-none', tdClass: 'd-none' },
                 {label: 'Namn', key: 'name', sortable: true},
-                {label: 'Platser kvar', key: 'used_capcity', sortable: false},
+                {label: 'Platser kvar', key: 'used_capcity', sortable: true},
                 {label: 'Platser max', key: 'max_capacity', sortable: true},
             ],
             form: {
