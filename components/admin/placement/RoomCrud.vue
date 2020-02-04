@@ -8,9 +8,6 @@
         :items="rooms"
         :busy="$store.state.admin.placement.rooms.length == 0"
     >
-        <!-- <template v-slot:cell(used_capcity)="row">
-            {{count_used_capcity(row.item.id)}}
-        </template> -->
     </b-table>
     <div class="d-flex justify-content-between p-2">
         <input-field 
@@ -56,7 +53,6 @@ export default {
         }
     },
     created() {
-        // $store.state.admin.placement.rooms
         this.$store.subscribe((mutation, state) => {
             if (mutation.type === 'admin/placement/SET_ROOMS' || 
                 mutation.type === 'admin/SET_REGISTRATIONS' ||
