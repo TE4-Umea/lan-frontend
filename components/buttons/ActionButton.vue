@@ -12,7 +12,6 @@
             'box-padding': primary 
         }"
     >
-    <!-- <img :src="icon" alt="icon"> -->
     <p
         class="text"
         :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
