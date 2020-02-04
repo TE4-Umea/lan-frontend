@@ -70,7 +70,7 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
-            login(self, this.form);
+            login(this, this.form);
         },
     }
 }
