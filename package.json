@@ -1,7 +1,7 @@
 {
   "name": "lan_organizer",
   "version": "1.0.0",
-  "description": "Lan organizer frontend",
+  "description": "Lan organiseringsapp",
   "author": "Elias Renman, Emil Edberg, Ludvig Björkman",
   "private": true,
   "scripts": {

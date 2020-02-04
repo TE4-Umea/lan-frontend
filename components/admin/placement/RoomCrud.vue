@@ -5,12 +5,9 @@
         striped hover 
         :dark="$store.state.darkmode.value" 
         :fields="fields" 
-        :items="$store.state.admin.placement.rooms"
+        :items="rooms"
         :busy="$store.state.admin.placement.rooms.length == 0"
     >
-        <template v-slot:cell(used_capcity)="row">
-            {{count_used_capcity(row.item.id)}}
-        </template>
     </b-table>
     <div class="d-flex justify-content-between p-2">
         <input-field 
@@ -44,17 +41,33 @@ export default {
                 {key: 'created_at', thClass: 'd-none', tdClass: 'd-none' },
                 {key: 'updated_at', thClass: 'd-none', tdClass: 'd-none' },
                 {label: 'Namn', key: 'name', sortable: true},
-                {label: 'Platser kvar', key: 'used_capcity', sortable: false},
+                {label: 'Platser kvar', key: 'used_capcity', sortable: true},
                 {label: 'Platser max', key: 'max_capacity', sortable: true},
             ],
             form: {
                 name: '',
                 max_capacity: null
             },
-            validInput: false
+            validInput: false,
+            rooms: [],
         }
     },
+    created() {
+        this.$store.subscribe((mutation, state) => {
+            if (mutation.type === 'admin/placement/SET_ROOMS' || 
+                mutation.type === 'admin/SET_REGISTRATIONS' ||
+                mutation.type === 'admin/SET_REGISTRATION') {
+                this.rooms = this.filterData(state.admin.placement.rooms);
+            }
+        });
+    },
     methods: {
+        filterData(rooms) {
+            for (let i = 0; i < rooms.length; i++) {
+                rooms[i].used_capcity = this.count_used_capcity(rooms[i].id);
+            }
+            return rooms;
+        },
         submit() {
             this.canSend = false;
             this.$axios.post("/admin/placement/room/create", this.form)

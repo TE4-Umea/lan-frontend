@@ -27,12 +27,8 @@ export default {
     ],
     methods: {
         onChange(newVal) {
-            this.$store.commit('admin/SET_REGISTRATION', {
-                index: this.row.index,
-                registration: {
-                    room_id: newVal,
-                }
-            })
+            this.$emit('onChange', { newVal, index: this.row.index});
+            
         }
     }
 }
