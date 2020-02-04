@@ -37,6 +37,11 @@ import RulesInput from '~/components/event/RulesInput';
 import CreateNotifications from '~/components/notifications/CreateNotifications';
 import Statistics from '~/components/admin/statistics/Statistics';
 export default {
+    head () {
+        return {
+        titleTemplate: 'Eventöversikt %s',
+        }
+    },
     layout: 'admin',
     middleware: 'auth-admin',
 

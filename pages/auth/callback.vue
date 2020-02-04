@@ -8,6 +8,11 @@
 <script>
 import { subscribe } from '~/assets/echoSubscribe';
 export default {
+    head () {
+        return {
+        titleTemplate: 'Loggar in %s',
+        }
+    },
     middleware: ['guest'],
     data() {
         return {
