@@ -11,13 +11,13 @@
             {{ row.item.group_code ? row.item.group_code  : '...' }}
         </template>
         <template v-slot:cell(room_id)="row">
-            <room-dropdown :row="row" />
+            <room-dropdown :key="row.item.room_id" :row="row" @onChange="onDropdownChange" />
         </template>
         <template v-slot:cell(student)="row">
             {{row.item.student ? 'Elev' : 'Extern'}}
         </template>
         <template v-slot:cell(checked_in)="row">
-            <attending-cell :row="row" />
+            <attending-cell :key="row.item.checked_in" :row="row" />
         </template>
     </b-table>
 </div>
@@ -48,6 +48,18 @@ export default {
     components: {
         RoomDropdown,
         AttendingCell
+    },
+    methods: {
+        onDropdownChange({newVal, index}) {
+            this.$store.commit('admin/SET_REGISTRATION', {
+                index: index,
+                registration: {
+                    room_id: newVal,
+                }
+            });
+            const id = this.$store.state.admin.registrations[index].id;
+            this.$axios.patch(`/admin/event/registration/${id}/update`, {room_id: newVal});
+        }
     }
     
 }
