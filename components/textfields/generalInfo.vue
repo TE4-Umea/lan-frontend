@@ -11,7 +11,7 @@
 export default {
     methods: {
         formatDate(d) {
-            return new Date(d).toLocaleDateString('sv-SE');
+            return new Date(d + 'Z').toLocaleDateString('sv-SE');
         }
     },
     computed: {
