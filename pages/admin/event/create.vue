@@ -68,6 +68,11 @@ import timePicker from 'vue2-timepicker'
 import RulesInput from '~/components/event/RulesInput'
 import ActionButton from '~/components/buttons/ActionButton'
 export default {
+    head () {
+        return {
+        titleTemplate: 'Publicera event %s',
+        }
+    },
     layout: 'admin',
     middleware: [
         'auth-admin',

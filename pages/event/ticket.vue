@@ -37,6 +37,11 @@ import ImageLayout from '~/components/layouts/ImageLayout';
 import TicketModal from '../../components/event/modal/TicketModal.vue';
 import ActionButton from '~/components/buttons/ActionButton'
 export default {
+    head () {
+        return {
+        titleTemplate: 'Biljett %s',
+        }
+    },
     middleware: [
         'registration/none',
         'registration/checked-in',

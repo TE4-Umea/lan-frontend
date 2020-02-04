@@ -26,6 +26,11 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 export default {
+    head () {
+        return {
+        titleTemplate: 'Incheckning %s',
+        }
+    },
     layout: 'admin',
     middleware: [
         'auth-admin',

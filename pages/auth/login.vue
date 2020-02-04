@@ -45,6 +45,11 @@ import InputField from '~/components/form/InputField.vue';
 import ActionButton from '~/components/buttons/ActionButton.vue';
 
 export default {
+    head () {
+        return {
+        titleTemplate: 'Logga in %s',
+        }
+    },
     components: {
         Wrapper,
         CenterWrapper,
