@@ -27,10 +27,12 @@
             <b-button
                 class="gradient-animation-hover border-0"
                 @click="preview"
+                :disabled="!canSend"
             >Förhandsgranska</b-button>
             <b-button
                 class="gradient-animation-hover border-0"
-                @click="send" :disabled="!canSend"
+                @click="send" 
+                :disabled="!canSend"
             >Skicka</b-button>
         </div>
     </div>
