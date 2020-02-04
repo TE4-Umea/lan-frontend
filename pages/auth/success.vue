@@ -15,6 +15,11 @@
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
     export default {
+        head () {
+        return {
+        titleTemplate: 'Registreringen lyckades %s',
+        }
+    },
     components: {
             CenterWrapper,
             ImageLayout

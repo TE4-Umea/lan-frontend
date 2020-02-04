@@ -25,6 +25,11 @@ import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import Wrapper from '~/components/layouts/positioning/Wrapper';
 
 export default {
+    head () {
+        return {
+        titleTemplate: 'Hem %s',
+        }
+    },
     middleware: [
         'auth',
         'event/none',

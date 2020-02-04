@@ -32,6 +32,11 @@
     import ImageLayout from '~/components/layouts/ImageLayout'
     
     export default {
+        head () {
+            return {
+            titleTemplate: 'Hem %s',
+            }
+        },
         middleware: 'guest',
         components: {
             CenterWrapper,

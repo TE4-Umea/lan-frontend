@@ -6,8 +6,13 @@
 </template>
 
 <script>
-import { subscribe } from '~/assets/echoSubscribe';
+import { loginProvider } from '~/assets/login';
 export default {
+    head () {
+        return {
+        titleTemplate: 'Loggar in %s',
+        }
+    },
     middleware: ['guest'],
     data() {
         return {
@@ -16,19 +21,7 @@ export default {
         }
     },
     async mounted()  {
-        if(this.provider){
-            localStorage.setItem("provider", this.provider);
-        }
-        this.$auth.setUserToken(this.token)
-        .then(async res => {
-            
-            await this.$store.dispatch('event/GET');
-            await this.$store.dispatch('event/GET_REGISTRATION');
-            subscribe(this.$auth, this.$echo, this.$store, this.$router, this.$snack);
-            this.$router.push({ path: "/event/"});
-        }).catch(e => {
-            console.log(e, "login error");
-        })
+        loginProvider(this, this.provider, this.token);
     }
 }
 </script>
