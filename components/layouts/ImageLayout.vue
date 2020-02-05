@@ -1,8 +1,8 @@
 <template>
 <div class="wrap px-3 px-md-0">
     <div class="d-flex justify-content-center">
-        <img v-if="icon && icon != 'logo'" :src="url" :alt="alt" class="icon">
-        <logo-square v-else />
+        <logo-square v-if="icon && icon == 'logo'" />
+        <icon-none v-if="icon && icon == 'none'" />
     </div>
     <div class="text-wrap">
 
@@ -17,6 +17,7 @@
 
 <script>
 import LogoSquare from '~/components/logo/LogoSquare';
+import IconNone from '~/components/logo/IconNone';
 export default {
     props: {
         icon: String,
@@ -25,13 +26,9 @@ export default {
         paragraph: String,
     },
     components: {
-        LogoSquare
+        LogoSquare,
+        IconNone
     },
-    computed: {
-        url() {
-            return require('~/assets/images/' + this.icon);
-        }
-    }
 }
 </script>
 

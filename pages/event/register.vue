@@ -71,8 +71,8 @@ export default {
         format_two_digits(n) {
             return n < 10 ? '0' + n : n;
         },
-        formatDate(d) {
-            return new Date(d + 'Z').toLocaleDateString('sv-SE');
+        formatDate(d, options = {}) {
+            return new Date(d + 'Z').toLocaleDateString('sv-SE', );
         }
     },
     computed: {
@@ -82,14 +82,14 @@ export default {
             return closesAt.getTime() <= (new Date()).getTime();
         },
         opensAt() {
-            return new Date(this.$store.state.event.details.start_date + 'Z').toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
+            return this.formatDate(this.$store.state.event.details.start_date, {hour: '2-digit', minute:'2-digit'});
         },
         betweenDates() {
             return this.formatDate(this.$store.state.event.details.start_date) +
                 " - " + this.formatDate(this.$store.state.event.details.end_date);
         },
         closesAt() {
-            return new Date(this.$store.state.event.details.registration_closes_at + 'Z').toLocaleString('sv-SE', {dateStyle: 'short', timeStyle: 'short'});
+            return this.formatDate(this.$store.state.event.details.registration_closes_at, {dateStyle: 'short', timeStyle: 'short'});
         }
     }
 }

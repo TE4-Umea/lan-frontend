@@ -1,7 +1,6 @@
 <template>
 <svg class="svg primary-color" id="Layer_1" data-name="Layer 1"
 	xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 49">
-	<title>nti_small_white</title>
 	<g id="Logo">
 		<g id="Start">
 			<g id="NTI-Gymnasiet---Logotyp-_RGB_" data-name="NTI-Gymnasiet---Logotyp-(RGB)">
