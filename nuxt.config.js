@@ -41,6 +41,16 @@ export default {
     '~/plugins/darkmode',
     '~/plugins/snackbar'
   ],
+
+  pwa: {
+    manifest: {
+      "name": "Nti lan",
+      "short_name": "Nti lan",
+      "theme_color": "#121212",
+      "background_color": "#121212",
+      "display": "standalone"
+    },
+  },
   /*
   ** Nuxt.js dev-modules
   */
