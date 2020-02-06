@@ -1,51 +1,56 @@
-//TODO: Fix borked placements of forms.
 <template>
 <div class="container pt-4">
     <div class="row">
         <div class="col-md-4">
             <h1 class="pb-2">Tider</h1>
-            <p for="name" class="m-0 mb-1" >Namn på event </p>
-            <input type="text" v-model="form.title" placeholder="NTI Lan!">
-            <p for="lan-start" class="m-0">Lanet pågår: </p>
+            <div class="pb-2">
 
-            <div class="d-flex">
-                <v-date-picker
+                <p for="name" class="m-0" >Namn på event </p>
+                <input type="text" v-model="form.title" placeholder="NTI Lan!">
+            </div>
+            <div class="pb-2">
+                <p for="lan-start" class="m-0">Lanet pågår: </p>
+                <div class="d-flex">
+                    <v-date-picker
                         :min-date='new Date()'
                         v-model="eventDates.dates"
                         mode="range"
                         placeholder="Välj datum"
-
-                />
+                    />
+                </div>
             </div>
-            <p class="m-0"> lanet öppnar kl.</p>
-            <time-picker
-                    hide-disabled-items
-                    :minute-interval="5"
-                    hour-label="Timme" minute-label="Minut"
-                    v-model="eventDates.startTime"
-                />
-            <p for="last-registration-date">Sista anmälningsdatum.</p>
-            <div class="d-flex">
-
-                <v-date-picker id="last-registration-date"
-                    :min-date='new Date()'
-                    v-model="registerClosure.date"
-                    placeholder="Välj datum"
-
-                />
+            <div class="pb-2">
+                <p class="m-0"> lanet öppnar kl.</p>
                 <time-picker
                     hide-disabled-items
                     :minute-interval="5"
                     hour-label="Timme" minute-label="Minut"
-                    v-model="registerClosure.time"
-                />
+                    v-model="eventDates.startTime"
+                    />
+            </div>
+            <div class="pb-2">
+
+                <p for="last-registration-date" class="m-0">Sista anmälningsdatum.</p>
+                <div class="d-flex">
+                    <v-date-picker id="last-registration-date"
+                        class="pr-3"
+                        :min-date='new Date()'
+                        v-model="registerClosure.date"
+                        placeholder="Välj datum"
+
+                    />
+                    <time-picker
+                        hide-disabled-items
+                        :minute-interval="5"
+                        hour-label="Timme" minute-label="Minut"
+                        v-model="registerClosure.time"
+                    />
+                </div>
             </div>
         </div>
         <div class="col-md-4 order-md-last">
             <h1 class="pb-2">Regler</h1>
-            <div style="height:100%">
-                <rules-input> </rules-input>
-            </div>
+            <rules-input />
         </div>
         <div class="col-md-4">
             <h1 class="pb-2">Information </h1>
