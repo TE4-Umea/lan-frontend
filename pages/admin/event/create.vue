@@ -108,10 +108,10 @@ export default {
                         start: undefined,
                         end: undefined
                     },
-                startTime: {
+                    startTime: {
                         HH: '16',
                         mm: '30',
-                    }
+                    },
                 },
                 registerClosure: {
                     date: new Date(),
@@ -120,7 +120,7 @@ export default {
                         mm: '00'
                     }
                 }
-            },
+            }
         }
     },
     methods: {
@@ -150,10 +150,10 @@ export default {
                     this.form.title.length > 3 &&
                     this.form.eventDates.dates.start &&
                     this.form.eventDates.dates.end &&
-                    this.form.startTime.HH != '' &&
-                    this.form.startTime.mm != '' &&
-                    this.form.registerClosure.time.HH != '' &&
-                    this.form.registerClosure.time.mm != '' &&
+                    this.form.eventDates.startTime.HH.length > 1 &&
+                    this.form.eventDates.startTime.mm.length > 1 &&
+                    this.form.registerClosure.time.HH.length > 0 &&
+                    this.form.registerClosure.time.mm.length > 0 &&
                     this.form.registerClosure.date;
                     //If it looks stupid but works; it ain't stupid.
             },
