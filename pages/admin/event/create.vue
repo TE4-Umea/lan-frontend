@@ -5,22 +5,24 @@
             <h1 class="pb-2">Tider</h1>
             <div class="pb-2">
 
-                <p for="name" class="m-0" >Namn på event </p>
-                <input type="text" v-model="form.title" placeholder="NTI Lan!">
+                <p for="name" class="m-0" >Lanets namn:</p>
+                <input type="text" class="form-control primary-color name-input" v-model="form.title" placeholder="NTI Lan!" />
             </div>
             <div class="pb-2">
-                <p for="lan-start" class="m-0">Lanet pågår: </p>
+                <p for="lan-start" class="m-0">Lanet pågår:</p>
                 <div class="d-flex">
                     <v-date-picker
+                        is-dark
                         :min-date='new Date()'
                         v-model="eventDates.dates"
                         mode="range"
+                        :input='["L", "DD-MM-YYYY", "DD/MM/YYYY"]'
                         placeholder="Välj datum"
                     />
                 </div>
             </div>
             <div class="pb-2">
-                <p class="m-0"> lanet öppnar kl.</p>
+                <p class="m-0"> lanet öppnar:</p>
                 <time-picker
                     hide-disabled-items
                     :minute-interval="5"
@@ -29,10 +31,10 @@
                     />
             </div>
             <div class="pb-2">
-
-                <p for="last-registration-date" class="m-0">Sista anmälningsdatum.</p>
+                <p for="last-registration-date" class="m-0">Sista anmälningsdatum:</p>
                 <div class="d-flex">
                     <v-date-picker id="last-registration-date"
+                        is-dark
                         class="pr-3"
                         :min-date='new Date()'
                         v-model="registerClosure.date"
@@ -54,7 +56,7 @@
         </div>
         <div class="col-md-4">
             <h1 class="pb-2">Information </h1>
-            <textarea class="form-control" rows="10" v-model="form.short_info" ></textarea>
+            <textarea class="form-control primary-color" rows="10" v-model="form.short_info" ></textarea>
             <div class="m-0 py-4 d-flex justify-content-center">
                 <action-button
                     title="Publicera Event"
@@ -142,7 +144,16 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-textarea {
+
+.vue__time-picker.dropdown ul li {
+    // background: unset;
+    color: unset;
+} 
+.name-input {
+    max-width: 200px;
+}
+textarea,textarea:focus,input,input:focus {
   resize: none;
+  background: none !important;
 }
 </style>
