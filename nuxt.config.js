@@ -99,6 +99,7 @@ export default {
   auth: {
     plugins: [
       '~/plugins/event',
+      '~/plugins/axiosResponseHook',
     ],
     strategies: {
       local: {
