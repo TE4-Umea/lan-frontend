@@ -175,7 +175,6 @@ export default {
 <style lang="scss" scoped>
 
 .vue__time-picker.dropdown ul li {
-    // background: unset;
     color: unset;
 } 
 .name-input {
