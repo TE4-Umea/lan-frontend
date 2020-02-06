@@ -15,10 +15,12 @@ export function login(self, form) {
     });
 }
 
-export function loginProvider(self, provider, token) {
+export function loginProvider(self, provider, token, refreshToken) {
     if(provider){
         localStorage.setItem("provider", provider);
     }
+    localStorage.setItem("refreshToken", refreshToken);
+    // self.$auth.setRefreshToken(refreshToken);
     self.$auth.setUserToken(token)
         .then(async res => {
             await postLogin(self);
