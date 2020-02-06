@@ -6,7 +6,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: '- ' + process.env.npm_package_name || '',
+    title: '- Nti lan',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -27,7 +27,6 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/css/animations.scss',
     '@/assets/css/colors.scss',
     '@/assets/css/style.scss',
     '@/assets/css/darkmode.scss',
@@ -42,6 +41,16 @@ export default {
     '~/plugins/darkmode',
     '~/plugins/snackbar'
   ],
+
+  pwa: {
+    manifest: {
+      "name": "Nti lan",
+      "short_name": "Nti lan",
+      "theme_color": "#121212",
+      "background_color": "#121212",
+      "display": "standalone"
+    },
+  },
   /*
   ** Nuxt.js dev-modules
   */

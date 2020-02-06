@@ -11,6 +11,9 @@
                 <h4> Notiser </h4>
                 <notifications/>
             </div>
+            <div>
+                <stream/>
+            </div>
         </wrapper>
     <modals-container/>
     </center-wrapper>
@@ -23,6 +26,7 @@ import generalInfo from '~/components/textfields/generalInfo'
 import Notifications from '~/components/notifications/Notifications'
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import Wrapper from '~/components/layouts/positioning/Wrapper';
+import Stream from '~/components/event/Stream';
 
 export default {
     head () {
@@ -43,7 +47,7 @@ export default {
         Notifications,
         Wrapper,
         CenterWrapper,
-
+        Stream
     },
 }
 </script>

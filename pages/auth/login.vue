@@ -43,11 +43,12 @@ import Wrapper from '~/components/layouts/positioning/Wrapper.vue';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper.vue';
 import InputField from '~/components/form/InputField.vue';
 import ActionButton from '~/components/buttons/ActionButton.vue';
+import { login } from '~/assets/login';
 
 export default {
     head () {
         return {
-        titleTemplate: 'Logga in %s',
+            titleTemplate: 'Logga in %s',
         }
     },
     components: {
@@ -69,16 +70,7 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
-            this.$auth.loginWith('local', {
-                data: this.form
-            }).then(res => {
-                this.$router.push({ path: "/event/"});
-            }).catch(err => {
-                this.$snack.danger({
-                    text: "Fel användarnamn / Lösenord.",
-                    button: "Stäng",
-                });
-            });
+            login(this, this.form);
         },
     }
 }

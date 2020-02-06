@@ -74,6 +74,7 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import InputField from '~/components/form/InputField.vue';
 import ActionButton from '~/components/buttons/ActionButton.vue';
+import { login } from '~/assets/login';
 
 export default {
     head () {
@@ -100,12 +101,10 @@ export default {
             this.lastStep = false;
         },
         onSubmit() {
-            this.$axios.post('/auth/register', this.form).then(res => {
-                this.$auth.loginWith('local', {
-                    data: this.form
-                }).then(response => {
-                    this.$router.push({ path: "/event/"});
-                });
+            this.$axios.post('/auth/register', this.form).then(async res => {
+                login(this, this.form);
+            }).catch(err => {
+                console.log(err);
             });
         }
     },
