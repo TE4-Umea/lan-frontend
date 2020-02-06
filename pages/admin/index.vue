@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 pt-3 pt-md-0">
+            <div class="col-md-4 pt-3 pt-md-0 pb-3 pb-md-0">
                 <div class="gradient--background d-flex p-2">
                     <p class="align-self-center m-0 ml-3 white">Regler</p>
                 </div>
