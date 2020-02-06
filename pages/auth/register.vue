@@ -11,7 +11,8 @@
                     placeholder="John doe"
                     v-model="form.name"
                     name="name"
-                    id="name"
+                    minlength="3"
+                    maxlength="64"
                 />
                 <input-field
                     :tabIndex="1"
@@ -20,7 +21,8 @@
                     placeholder="john.doe@example.com"
                     v-model="form.email"
                     name="email"
-                    id="email"
+                    minlength="8"
+                    maxlength="64"
                 />
             </div>
             <div class="">
@@ -28,6 +30,7 @@
                     tabIndex="1"
                     @onAction="next"
                     title="Nästa"
+                    :disabled="!valid  && !sending"
                 />
             </div>
         </div>
@@ -43,7 +46,8 @@
                     placeholder=""
                     v-model="form.password"
                     name="password"
-                    id="password"
+                    minlength="8"
+                    maxlength="128"
                 />
                 <input-field
                     :tabIndex="1"
@@ -52,7 +56,8 @@
                     placeholder=""
                     v-model="form.password_confirmation"
                     name="password_confirm"
-                    id="password_confirm"
+                    minlength="8"
+                    maxlength="128"
                 />
             </div>
             <div class="">
@@ -62,6 +67,7 @@
                     title="REGISTRERA DIG"
                     icon="meeting_room"
                     primary="true"
+                    :disabled="!passwordvalid  && !sending"
                 />
             </div>
         </div>
@@ -91,6 +97,9 @@ export default {
                 password: '',
                 password_confirmation: ''
             },
+            sending: false,
+            valid: false,
+            passwordvalid: false,
         }
     },
     methods: {
@@ -106,6 +115,23 @@ export default {
             }).catch(err => {
                 console.log(err);
             });
+            this.sending="true";
+        }
+    },
+    watch: {
+        form: {
+            handler(oldVal, newVal) {
+                this.valid =
+                newVal.email.length >= 8 &&
+                newVal.name.length >= 3;
+
+                this.passwordvalid =
+                newVal.password.length >=8 &&
+                newVal.password_confirmation.length >=8;
+                console.log("körs detta");
+
+            },
+        deep: true
         }
     },
     components: {
