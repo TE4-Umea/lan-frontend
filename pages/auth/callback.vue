@@ -17,11 +17,12 @@ export default {
     data() {
         return {
             token: this.$route.query.token ? this.$route.query.token : null,
-            provider: this.$route.query.provider ? this.$route.query.provider : null
+            provider: this.$route.query.provider ? this.$route.query.provider : null,
+            refreshToken: this.$route.query.provider ? this.$route.query.refreshToken : null
         }
     },
     async mounted()  {
-        loginProvider(this, this.provider, this.token);
+        loginProvider(this, this.provider, this.token, this.refreshToken);
     }
 }
 </script>
