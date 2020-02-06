@@ -3,6 +3,7 @@
     <div class="d-flex justify-content-center">
         <logo-square v-if="icon && icon == 'logo'" />
         <icon-none v-if="icon && icon == 'none'" />
+        <icon-success v-if="icon && icon == 'success'" />
     </div>
     <div class="text-wrap">
 
@@ -18,6 +19,7 @@
 <script>
 import LogoSquare from '~/components/logo/LogoSquare';
 import IconNone from '~/components/logo/IconNone';
+import IconSuccess from '~/components/logo/IconSuccess';
 export default {
     props: {
         icon: String,
@@ -27,7 +29,8 @@ export default {
     },
     components: {
         LogoSquare,
-        IconNone
+        IconNone,
+        IconSuccess
     },
 }
 </script>
