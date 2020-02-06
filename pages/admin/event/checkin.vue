@@ -26,9 +26,9 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Incheckning %s',
+            titleTemplate: 'Incheckning %s',
         }
     },
     layout: 'admin',
@@ -46,8 +46,7 @@ export default {
         }
     },
     created() {
-        let code = this.$route.query.qr;
-        console.log("is ", code)
+        const code = this.$route.query.qr;
         if(code && code.length > 1) {
             this.result = code;
             this.sendRequest();
