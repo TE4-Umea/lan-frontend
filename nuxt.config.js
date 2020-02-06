@@ -99,6 +99,7 @@ export default {
   auth: {
     plugins: [
       '~/plugins/event',
+      '~/plugins/pushSubscribe',
     ],
     strategies: {
       local: {
