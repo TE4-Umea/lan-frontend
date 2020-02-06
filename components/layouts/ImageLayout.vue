@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import LogoSquare from '~/components/logo/LogoSquare';
-import IconNone from '~/components/logo/IconNone';
-import IconSuccess from '~/components/logo/IconSuccess';
+import LogoSquare from '~/components/icon/LogoSquare';
+import IconNone from '~/components/icon/IconNone';
+import IconSuccess from '~/components/icon/IconSuccess';
 export default {
     props: {
         icon: String,

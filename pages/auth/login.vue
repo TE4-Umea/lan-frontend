@@ -79,7 +79,7 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
-            this.sending=true;
+            this.sending = true;
             login(this, this.form);
         },
     },

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Logo from '~/components/logo/Logo.vue';
+import Logo from '~/components/icon/Logo.vue';
 export default {
     components: {
         Logo,
