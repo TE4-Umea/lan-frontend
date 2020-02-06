@@ -20,7 +20,7 @@ export function loginProvider(self, provider, token, refreshToken) {
         localStorage.setItem("provider", provider);
     }
     localStorage.setItem("refreshToken", refreshToken);
-    // self.$auth.setRefreshToken(refreshToken);
+    
     self.$auth.setUserToken(token)
         .then(async res => {
             await postLogin(self);
