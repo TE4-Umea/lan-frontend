@@ -128,7 +128,6 @@ export default {
                 this.passwordvalid =
                 newVal.password.length >=8 &&
                 newVal.password_confirmation.length >=8;
-                console.log("körs detta");
 
             },
         deep: true
