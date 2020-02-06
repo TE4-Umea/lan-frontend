@@ -1,11 +1,11 @@
 <template>
   	<div class="container pt-4">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5 pt-3 pt-md-0">
                 <statistics/>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 pt-3 pt-md-0">
                 <div>
 
                     <create-notifications />
@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 pt-3 pt-md-0">
                 <div class="gradient--background d-flex p-2">
                     <p class="align-self-center m-0 ml-3 white">Regler</p>
                 </div>
