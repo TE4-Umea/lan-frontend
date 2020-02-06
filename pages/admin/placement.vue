@@ -2,14 +2,15 @@
 <b-container fluid class="pt-5 px-5">
     <b-row>
         <b-col>
-            <registrations-list />
+            <registrations-list v-if="$store.state.admin.registrations.length != 0" />
+            <h2 v-else>Det finns för nuvarande inte några anmälningar, titta tillbaka senare!</h2>
         </b-col>
         <b-col cols="3">
             <b-row>
                 <room-crud />
             </b-row>
             <b-row class="mt-3">
-                <group-placement />
+                <group-placement v-if="$store.state.admin.registrations.length != 0" />
             </b-row>
         </b-col>
     </b-row>
