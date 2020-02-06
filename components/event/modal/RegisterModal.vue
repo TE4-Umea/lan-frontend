@@ -1,7 +1,11 @@
 <template>
     <div>
-        <div class="shadow" :class="{'fadein': showRegister}" @click="$emit('close')"/>
-        <div class="main bg-color--background register-event" :class="{'slideup': showRegister}">
+        <div class="shadow" :class="{'fadein': showRegister}" @click="close"/>
+        <div class="loading-wrapper" v-if="sending && showRegister">
+            <b-spinner class="loading-spinner loader my-5" variant="light" label="Spinning"></b-spinner>
+        </div>
+        
+        <div class="main bg-color--background register-event" :class="{'slideup': showRegister && !sending}">
             <div class="py-4 d-flex justify-content-center">
                 <div>
                     <h1>ANMÄLAN</h1>
@@ -9,11 +13,17 @@
                         title="Gruppkod"
                         placeholder="Jörgens änglar"
                         v-model="form.group_code"
+                        minlength="3"
+                        maxlength="24"
                     />
                     <input-field
                         v-if="!$auth.user.student"
                         title="Ansvarig elev"
+                        placeholder="Anders jörgensson"
                         v-model="form.guardian"
+                        minlength="3"
+                        maxlength="24"
+                        required
                     />
 
                     <input-select
@@ -22,12 +32,14 @@
                         :options="['Stationär', 'Laptop', 'Ingen']"
                     />
                     <small>Härmed har jag läst och förstått <small class="clickable underline" @click="$emit('openRules')">reglerna.</small></small>
+                    
                     <action-button
                         class="mt-1"
                         primary="true"
                         title="ANMÄL"
                         icon="done"
                         @onAction="onSubmit"
+                        :disabled="!valid  && !sending"
                     />
                 </div>
             </div>
@@ -53,10 +65,15 @@ export default {
                 group_code: '',
                 guardian: '',
                 setup_type: 'Stationär'
-            }
+            },
+            valid: false,
         }
     },
     methods: {
+        close() {
+            if(!this.sending)
+                this.$emit('close');
+        },
         onSubmit() {
             if (!this.sending) {
                 this.sending = true;
@@ -75,14 +92,26 @@ export default {
                     this.$router.push({
                         path: '/event/ticket'
                     });
-                    this.sending = false;
                 }).catch(err => {
                     this.$snack.danger({
                       text: "Något gick fel!",
                       button: "Stäng",
                     })
                 });
+                this.sending = false;
             }
+        }
+    },
+    watch: {
+        form: {
+            handler(oldVal, newVal) {
+                if(!this.$auth.user.student) {
+                    this.valid = this.form.guardian.length >= 3 && this.form.setup_type.length >= 3;
+                } else {
+                    this.valid = this.form.setup_type.length >= 3;
+                }
+            },
+            deep: true
         }
     },
     components: {
@@ -94,6 +123,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.loading-spinner {
+    width: 3rem; 
+    height: 3rem;
+}
+
+.loading-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .shadow {
     position: absolute;

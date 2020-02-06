@@ -27,7 +27,6 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/css/animations.scss',
     '@/assets/css/colors.scss',
     '@/assets/css/style.scss',
     '@/assets/css/darkmode.scss',
@@ -42,6 +41,16 @@ export default {
     '~/plugins/darkmode',
     '~/plugins/snackbar'
   ],
+
+  pwa: {
+    manifest: {
+      "name": "Nti lan",
+      "short_name": "Nti lan",
+      "theme_color": "#121212",
+      "background_color": "#121212",
+      "display": "standalone"
+    },
+  },
   /*
   ** Nuxt.js dev-modules
   */
@@ -90,6 +99,7 @@ export default {
   auth: {
     plugins: [
       '~/plugins/event',
+      '~/plugins/axiosResponseHook',
     ],
     strategies: {
       local: {

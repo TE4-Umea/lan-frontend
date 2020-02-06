@@ -11,9 +11,9 @@
             Du är anmäld till lanet som</p>
             <p class="d-inline font-weight-bold" v-text="account_type_str" />
             <p class="d-inline"> mellan </p>
-            <p class="d-inline font-weight-bold">{{betweenDates}}</p>
-            <p class="d-inline">, lanet börjar </p>
-            <p class="d-inline font-weight-bold">{{ 'kl ' + opensAt}}</p>
+            <p class="d-inline font-weight-bold">{{betweenDates + ','}}</p>
+            <p class="d-inline"> lanet börjar </p>
+            <p class="d-inline font-weight-bold">{{ 'kl ' + opensAt + '.'}}</p>
 
 
             </image-layout>
@@ -37,6 +37,11 @@ import ImageLayout from '~/components/layouts/ImageLayout';
 import TicketModal from '../../components/event/modal/TicketModal.vue';
 import ActionButton from '~/components/buttons/ActionButton'
 export default {
+    head () {
+        return {
+        titleTemplate: 'Biljett %s',
+        }
+    },
     middleware: [
         'registration/none',
         'registration/checked-in',
@@ -69,7 +74,7 @@ export default {
             // this.$modal.close(TicketModal);
         },
         formatDate(d) {
-            return new Date(d).toLocaleDateString('sv-SE');
+            return new Date(d + 'Z').toLocaleDateString('sv-SE');
         }
     },
     computed: {
@@ -80,7 +85,7 @@ export default {
             return this.$auth.$state.user.name;
         },
         opensAt() {
-            return new Date(this.$store.state.event.details.start_date).toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
+            return new Date(this.$store.state.event.details.start_date + 'Z').toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
         },
         betweenDates() {
             return this.formatDate(this.$store.state.event.details.start_date) +

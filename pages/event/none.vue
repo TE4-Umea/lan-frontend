@@ -2,7 +2,7 @@
     <center-wrapper>
     <div>
       <image-layout
-      icon="404_image.svg"
+      icon="none"
       alt="Inget event hittades."
       title="Här var det tomt!"
       paragraph="För nuvarande finns det inget event. Kolla tillbaka senare!"
@@ -15,9 +15,14 @@
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import ImageLayout from '~/components/layouts/ImageLayout'
 export default {
+  head () {
+      return {
+      titleTemplate: 'Inga event %s',
+      }
+  },
   middleware: [
       'auth',
-      'event/exists'
+      // 'event/exists'
   ],
   components: {
       CenterWrapper,

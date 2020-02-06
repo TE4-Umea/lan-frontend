@@ -7,7 +7,9 @@
             :tabindex="tabIndex"
             :type="type"
             :placeholder="placeholder"
+            :required="required"
             :maxlength="maxlength"
+            :minlength="minlength"
             v-on:focus="setActive(true)"
             v-on:blur="setActive(false)"
             @input="handleInput"
@@ -16,7 +18,7 @@
             :id="id"
             :key="id"
         >
-        <div :class='{"gradient-animation-active": active}' class="line gradient-animation" />
+        <div :class='{"gradient-animation-active": active, "invalid": required == "" && (data.length < minlength || data.length > maxlength)}' class="line gradient-animation" />
       </div>
   </div>
 </template>
@@ -30,9 +32,11 @@ export default {
         'type',
         'placeholder',
         'maxlength',
+        'minlength',
         'tabIndex',
         'name',
-        'id'
+        'id',
+        'required'
     ],
     data() {
         return {
@@ -48,7 +52,6 @@ export default {
             this.active = bool;
         },
         handleInput(e) {
-            // console.log(e);
             this.$emit('input', this.data);
         }
     }
@@ -56,6 +59,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.invalid {
+    background: #cc0227;
+}
+
 .y-margin {
     padding: 10px 0;
 }

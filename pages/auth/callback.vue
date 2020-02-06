@@ -6,29 +6,23 @@
 </template>
 
 <script>
-import { subscribe } from '~/assets/echoSubscribe';
+import { loginProvider } from '~/assets/login';
 export default {
+    head () {
+        return {
+        titleTemplate: 'Loggar in %s',
+        }
+    },
     middleware: ['guest'],
     data() {
         return {
             token: this.$route.query.token ? this.$route.query.token : null,
-            provider: this.$route.query.provider ? this.$route.query.provider : null
+            provider: this.$route.query.provider ? this.$route.query.provider : null,
+            refreshToken: this.$route.query.provider ? this.$route.query.refreshToken : null
         }
     },
     async mounted()  {
-        if(this.provider){
-            localStorage.setItem("provider", this.provider);
-        }
-        this.$auth.setUserToken(this.token)
-        .then(async res => {
-            
-            await this.$store.dispatch('event/GET');
-            await this.$store.dispatch('event/GET_REGISTRATION');
-            subscribe(this.$auth, this.$echo, this.$store, this.$router, this.$snack);
-            this.$router.push({ path: "/event/"});
-        }).catch(e => {
-            console.log(e, "login error");
-        })
+        loginProvider(this, this.provider, this.token, this.refreshToken);
     }
 }
 </script>

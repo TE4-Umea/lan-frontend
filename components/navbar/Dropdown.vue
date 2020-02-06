@@ -27,12 +27,11 @@
 </template>
 
 <script>
+import { logout } from '~/assets/login';
 export default {
     methods: {
         async authLogout() {
-            localStorage.removeItem('provider');
-            await this.$auth.logout();
-            this.$router.push({ path: "/"});
+            logout(this);
         },
         toggleDarkmode() {
             this.$store.commit('darkmode/toggle');
