@@ -1,22 +1,20 @@
 <template>
-    <center-wrapper>
-        <wrapper>
-            <div>
-                <generalInfo/>
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col-md-6 pt-3 pt-md-0">
+                <div>
+                    <generalInfo/>
+                    <personalInfo/>
+                    <h4> Notiser </h4>
+                    <notifications/>
+                </div>
             </div>
-            <div>
-                <personalInfo/>
-            </div>
-            <div>
-                <h4> Notiser </h4>
-                <notifications/>
-            </div>
-            <div>
+
+            <div class="col-md-6 pt-3 pt-md-0">
                 <stream/>
             </div>
-        </wrapper>
-    <modals-container/>
-    </center-wrapper>
+        </div>
+  	</div>
 </template>
 
 <script>
