@@ -7,6 +7,7 @@
         :fields="fields" 
         :items="rooms"
         :busy="$store.state.admin.placement.rooms.length == 0"
+        :key="rooms.length"
     >
     <template v-slot:cell(action)="row">
         <i :key="row.item.id" @click="onDeleteRow(row.item.id)" class="clickable text-danger material-icons">delete_forever</i>
@@ -18,12 +19,14 @@
             class="mx-2"
             v-model="form.name"
             type="text"
+            :key="rooms.length+1"
         />
         <input-field 
             placeholder="antal platser" 
             class="mx-2"
             v-model="form.max_capacity"
             type="number"
+            :key="rooms.length+2"
         />
         <b-button
             :disabled="!validInput"
@@ -73,12 +76,11 @@ export default {
             return rooms;
         },
         submit() {
-            this.canSend = false;
             this.$axios.post("/admin/placement/room/create", this.form)
                 .then(res => {
                     this.$store.commit('admin/placement/ADD_ROOM', res.data.data);
                     this.$snack.success({
-                        text: 'Ett Rum har lagts till!',
+                        text: 'Ett rum har lagts till!',
                         button: 'OK',
                     });
                     this.form.name = '';
@@ -102,7 +104,19 @@ export default {
             return counter;
         },
         onDeleteRow(id) {
-            alert("tar bort rum " + id);
+            if(!confirm("Är du säker att du vill ta bort detta rum?")) return;
+            this.$axios.delete(`/admin/placement/room/${id}/delete`)
+                .then(res => {
+                    this.$store.commit('admin/placement/DELETE_ROOM');
+                    this.$snack.success({
+                        text: 'Ett rum har tagits bort!',
+                        button: 'OK',
+                    });
+                }).catch(err => {
+                    this.$snack.error({
+                        text: 'Något gick fel!',
+                    });
+                });
         }
     },
     watch: {
