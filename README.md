@@ -21,6 +21,10 @@
 * Run `~$ composer install`
 * Run `~$ php artisan key:generate`
 * Configure .env file.
+  * Set credentials to mysql database
+  * Set pusher id / secrets
+  * Set passport client id / secret gained from passport:install
+  * Set Google tokens.
 * run `~$ php artisan Websockets:serve`
 * If you want Websockets to be run as a background service, follow this [guide](https://docs.beyondco.de/laravel-websockets/1.0/basic-usage/starting.html#keeping-the-socket-server-running-with-supervisord)
 
