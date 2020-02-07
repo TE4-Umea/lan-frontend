@@ -6,7 +6,7 @@
             Dashboard
         </p>
         </nuxt-link>
-        <nuxt-link to="/admin/placement" class="primrary-color">
+        <nuxt-link to="/admin/placement" class="primrary-color d-none d-md-inline-block">
         <p class="d-inline p-0">
             Placering
         </p>

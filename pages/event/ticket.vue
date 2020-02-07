@@ -2,7 +2,7 @@
     <center-wrapper >
         <div>
             <image-layout
-                icon="checkmark.svg"
+                icon="success"
                 alt="Lyckades!"
                 title="Lyckades!"
                 paragraph=""

@@ -1,6 +1,6 @@
 <template>
-<div class="">
-    <h4> lanets stream </h4>
+<div>
+    <h4>lanets stream</h4>
     <div class="iframe-container">
 
         <iframe

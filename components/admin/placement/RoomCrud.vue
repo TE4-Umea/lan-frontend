@@ -8,6 +8,9 @@
         :items="rooms"
         :busy="$store.state.admin.placement.rooms.length == 0"
     >
+    <template v-slot:cell(action)="row">
+        <i :key="row.item.id" @click="onDeleteRow(row.item.id)" class="clickable text-danger material-icons">delete_forever</i>
+    </template>
     </b-table>
     <div class="d-flex justify-content-between p-2">
         <input-field 
@@ -43,6 +46,7 @@ export default {
                 {label: 'Namn', key: 'name', sortable: true},
                 {label: 'Platser kvar', key: 'used_capcity', sortable: true},
                 {label: 'Platser max', key: 'max_capacity', sortable: true},
+                {label: ' ', key: 'action', sortable: false},
             ],
             form: {
                 name: '',
@@ -96,6 +100,9 @@ export default {
                 }
             }
             return counter;
+        },
+        onDeleteRow(id) {
+            alert("tar bort rum " + id);
         }
     },
     watch: {
@@ -112,6 +119,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.delete-icon {
+    color : red;
+}
 .box {
     border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

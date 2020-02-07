@@ -13,7 +13,6 @@
                 v-text="icon"
             />
         </div>
-        <!-- TODO: Lägg till en loading spinner på v-else -->
 	    <textarea 
             class="form-control input primary-color" 
             rows="24" 
