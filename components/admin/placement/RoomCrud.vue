@@ -6,8 +6,8 @@
         :dark="$store.state.darkmode.value" 
         :fields="fields" 
         :items="rooms"
-        :busy="$store.state.admin.placement.rooms.length == 0"
-        :key="rooms.length"
+        :busy="!rooms && rooms.length == 0"
+        :key="'roomTable=' + tableKey"
     >
     <template v-slot:cell(action)="row">
         <i :key="row.item.id" @click="onDeleteRow(row.item.id)" class="clickable text-danger material-icons">delete_forever</i>
@@ -19,14 +19,12 @@
             class="mx-2"
             v-model="form.name"
             type="text"
-            :key="rooms.length+1"
         />
         <input-field 
             placeholder="antal platser" 
             class="mx-2"
             v-model="form.max_capacity"
             type="number"
-            :key="rooms.length+2"
         />
         <b-button
             :disabled="!validInput"
@@ -57,6 +55,7 @@ export default {
             },
             validInput: false,
             rooms: [],
+            tableKey: 0
         }
     },
     created() {
@@ -64,7 +63,9 @@ export default {
             if (mutation.type === 'admin/placement/SET_ROOMS' || 
                 mutation.type === 'admin/SET_REGISTRATIONS' ||
                 mutation.type === 'admin/SET_REGISTRATION') {
+
                 this.rooms = this.filterData(state.admin.placement.rooms);
+                this.tableKey++;
             }
         });
     },
