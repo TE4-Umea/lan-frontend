@@ -4,8 +4,11 @@
         <h1>Farliga zonen</h1>
     </div>
     <div>
+        <p>Här kan du lägga till och ta bort administratörer</p>
+        <hr>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate minima vel iusto tempora ut. Vitae enim explicabo eligendi sit nisi magnam odit facilis veniam ab quidem, quis aliquid aut!</p>
-        <b-button variant="danger" @click="onEventDelete">Ta bort nuvarande event</b-button>
+        <b-button :disabled="!$store.state.event.details" variant="danger" @click="onEventDelete">Ta bort nuvarande event</b-button>
+        
     </div>
 </div>
 </template>
@@ -14,7 +17,12 @@
 export default {
     methods: {
         onEventDelete() {
-            alert("Knappen klickades, titta tillbaka senare för funktionalitet");
+            if(!confirm("Är du säker att du vill ta bort detta event?")) return;
+            if(!confirm("Är du HELT säker på att du är medveten om vad det betyder?")) return;
+            if(!confirm("Är du HEEEELT säker?")) return;
+            const id = this.$store.state.event.details.id;
+            this.$axios.delete(`/admin/event/${id}/delete`).then(res => {
+            });
         }
     }
 }
