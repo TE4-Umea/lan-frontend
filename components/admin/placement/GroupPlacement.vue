@@ -73,7 +73,7 @@ export default {
                 });
             }
             this.$axios.patch(`admin/placement/room/update`, {
-                group_code: group_members.id == 'Ingen Kod' ? null : group_members.id,
+                group_code: group_members.id == 'Ingen Kod' ? '' : group_members.id,
                 room_id: newVal,
             });
         }
