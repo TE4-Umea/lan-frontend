@@ -100,19 +100,25 @@ export default {
                 });
                 this.sending = false;
             }
+        },
+        validateInput() {
+            if(!this.$auth.user.student) {
+                this.valid = this.form.guardian.length >= 3 && this.form.setup_type.length >= 3;
+            } else {
+                this.valid = this.form.setup_type.length >= 3;
+            }
         }
     },
     watch: {
         form: {
             handler(oldVal, newVal) {
-                if(!this.$auth.user.student) {
-                    this.valid = this.form.guardian.length >= 3 && this.form.setup_type.length >= 3;
-                } else {
-                    this.valid = this.form.setup_type.length >= 3;
-                }
+                this.validateInput();
             },
             deep: true
         }
+    },
+    mounted() {
+        this.validateInput();
     },
     components: {
         ActionButton,
