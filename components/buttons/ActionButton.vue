@@ -12,16 +12,28 @@
             'box-padding': primary 
         }"
     >
-    <p
-        class="text"
-        :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
-    >
-    <i class="icon material-icons"
-        :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
-        v-text="icon"
-    />
-    {{title}}
-    </p>
+        <div class="d-flex justify-content-center py-2">
+            
+            <div>
+                <div 
+                    :class="primary ? 'white' : 'pink'"
+                    class="spinner-border spinner" 
+                    v-if="loading"
+                    role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <i v-else class="icon material-icons"
+                    :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
+                    v-text="icon"
+                />
+                <p
+                    class="text d-inline"
+                    :class="primary ? 'white' : 'gradient-animation-hover text-primary'"
+                >
+                {{title}}
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -40,6 +52,9 @@ export default {
         },
         'disabled': {
             default: false,
+        },
+        'loading': {
+            default: false,
         }
     },
     methods: {
@@ -51,6 +66,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.pink {
+    color: #D2078F;
+}
+
+.pink.hover {
+    color: #330B9B;
+}
+.spinner {
+    height: 24px;
+    width: 24px;
+}
 .disabled {
     opacity: 0.65;
 }

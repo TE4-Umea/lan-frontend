@@ -1,11 +1,8 @@
 <template>
     <div>
         <div class="shadow" :class="{'fadein': showRegister}" @click="close"/>
-        <div class="loading-wrapper" v-if="sending && showRegister">
-            <b-spinner class="loading-spinner loader my-5" variant="light" label="Spinning"></b-spinner>
-        </div>
         
-        <div class="main bg-color--background register-event" :class="{'slideup': showRegister && !sending}">
+        <div class="main bg-color--background register-event" :class="{'slideup': showRegister}">
             <div class="py-4 d-flex justify-content-center">
                 <div>
                     <h1>ANMÄLAN</h1>
@@ -19,7 +16,7 @@
                     <input-field
                         v-if="!$auth.user.student"
                         title="Ansvarig elev"
-                        placeholder="Anders jörgensson"
+                        placeholder="Anders Jörgensson"
                         v-model="form.guardian"
                         minlength="3"
                         maxlength="24"
@@ -40,6 +37,7 @@
                         icon="done"
                         @onAction="onSubmit"
                         :disabled="!valid  && !sending"
+                        :loading="sending"
                     />
                 </div>
             </div>
@@ -86,19 +84,21 @@ export default {
                 ).then(async res => {
                     await this.$store.commit('event/SET_REGISTRATION', res.data.data);
                     this.$snack.success({
-                      text: "Du är nu anmäld!",
-                      button: "Stäng",
+                        text: "Du är nu anmäld!",
+                        button: "Stäng",
                     });
                     this.$router.push({
                         path: '/event/ticket'
                     });
+                    // this.sending = false;
                 }).catch(err => {
+                    this.sending = false;
                     this.$snack.danger({
                       text: "Något gick fel!",
                       button: "Stäng",
                     })
                 });
-                this.sending = false;
+               
             }
         },
         validateInput() {

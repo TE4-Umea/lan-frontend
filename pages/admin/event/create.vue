@@ -75,6 +75,7 @@
                     primary="true"
                     @onAction="submit"
                     :disabled="!isValid"
+                    :loading="sending"
                 />
             </div>
         </div>
@@ -100,6 +101,7 @@ export default {
     data() {
         return {
             isValid: false,
+            sending: false,
             form: {
                 short_info:'',
                 title:'',
@@ -135,8 +137,13 @@ export default {
 
             };
             this.$axios.post('/admin/event/create', payload)
-                .then(res => {})
-                .catch(err => console.log(err));
+                .then(res => {
+                    this.sending = false;
+                })
+                .catch(err => {
+                    this.sending = false;    
+                    console.log(err)
+                });
         },
         parseDateTime(date, time) {
             date.setHours(time.HH, time.mm);
