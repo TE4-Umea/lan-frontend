@@ -27,7 +27,7 @@
 </template>
 
 <script>
-let _  = require('lodash');
+import { debounce } from 'lodash';
 import RulesModal from '~/components/event/modal/RulesModal.vue';
 
 export default {
@@ -48,7 +48,7 @@ export default {
     	}
     },
     created() {
-        this.debouncedDoneTyping = _.debounce(this.doneTyping, 500);
+        this.debouncedDoneTyping = debounce(this.doneTyping, 500);
     },
 	mounted() {
 		if(!this.model.id) {
