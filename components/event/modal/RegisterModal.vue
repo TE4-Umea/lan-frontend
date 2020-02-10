@@ -19,7 +19,7 @@
                     <input-field
                         v-if="!$auth.user.student"
                         title="Ansvarig elev"
-                        placeholder="Anders jörgensson"
+                        placeholder="Anders Jörgensson"
                         v-model="form.guardian"
                         minlength="3"
                         maxlength="24"
