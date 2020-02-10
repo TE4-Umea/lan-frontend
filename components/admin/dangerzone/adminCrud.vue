@@ -5,11 +5,15 @@
             class="w-75"
             @search="debouncedfetchOptions"
             :filterable="false"
+            :options="options" 
+            label="email"
+            v-model="vSelected"
             />
         <b-button
             class="ml-1 gradient-animation-hover border-0"
-            :disabled="true"
-        >Lägg till</b-button>
+            :disabled="vSelected == null"
+            @click="onAddAdmin"
+            >Lägg till</b-button>
     </div>
     <div class="mx-2 pt-3">
 
@@ -17,11 +21,15 @@
             striped hover 
             :dark="$store.state.darkmode.value"
             :fields="fields"
-            :items="data"
-            :busy="data.length == 0"
+            :items="users"
+            :busy="users.length == 0"
         >
         <template v-slot:cell(action)="row">
-            <i v-if="shouldBeEnabled(row.item.id)" :key="row.item.id" @click="onDeleteRow(row.index,row.item.id)" class="clickable text-danger material-icons ">delete_forever</i>
+            <i  v-if="shouldBeEnabled(row.item.id)" 
+                :key="row.item.id" 
+                @click="onDeleteRow(row.index,row.item.id)" 
+                class="clickable text-danger material-icons"
+                >delete_forever</i>
         </template>
         </b-table>
     </div>
@@ -34,45 +42,56 @@ import vSelect from 'vue-select';
 export default {
     data() {
         return {
-            data: [],
-
+            users: [],
+            
             fields: [
                 {label: 'Namn', key: 'name', sortable: true},
                 {label: 'Email', key: 'email', sortable: true},
                 {label: ' ', key: 'action', sortable: false},
             ],
-            form: {
-                name: '',
-                max_capacity: null
-            },
+            
+            options: [],
+            vSelected: null,
             debouncedfetchOptions: undefined,
         }
     },
     created() {
         this.$axios.get('/admins/read').then(res => {
-            this.data = res.data;
+            this.users = res.data;
         });
         this.debouncedfetchOptions = debounce(this.fetchOptions, 250);
     },
-    
     methods: {
         fetchOptions(search, loading) {
+            if(search.length == 0) return;
             loading(true);
-            console.log(search);
-            this.$axios.get('/admin/search', { query: search })
+            this.$axios.get(`/admin/search?query=${search}`)
                 .then(res => {
-                    console.log(res);
+                    this.options = res.data;
                     loading(false);
                 });
         },
         onDeleteRow(index, id) {
-            alert(`admin with id ${id} and index ${index} removed `);
+            if((prompt(`Är du säker att du vill ta bort ${this.users[index].name} som administratör?\n För att fortsätta skriv \"ja\"`))
+                .toLowerCase() != "ja") return;
+            this.$axios.patch(`/admin/${id}/update`, {admin: 0}).then(res => {
+                this.users.splice(index, 1);
 
+            });
         },
         shouldBeEnabled(id) {
-            const user = this.$auth.user;
-            return !(user.id == id);
+            return !(this.$auth.user.id == id);
         },
+
+        onAddAdmin() {
+            if((prompt(`Är du säker att du vill lägga till ${this.vSelected.name} som administratör?
+                \n För att fortsätta skriv \"ja\"`)).toLowerCase() != "ja") return;
+            this.$axios.patch(`/admin/${this.vSelected.id}/update`, {admin: 1}).then(res => {
+                this.users.push(this.vSelected);
+                this.vSelected = null;
+                this.options = [];
+            });
+        }
     },
     components: {
         vSelect

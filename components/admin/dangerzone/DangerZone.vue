@@ -4,11 +4,15 @@
         <h1>Farliga zonen</h1>
     </div>
     <div>
-        <p>Här kan du lägga till och ta bort administratörer</p>
+        <p>Här kan du lägga till och ta bort administratörer.</p>
         <admin-crud/>
         <hr>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate minima vel iusto tempora ut. Vitae enim explicabo eligendi sit nisi magnam odit facilis veniam ab quidem, quis aliquid aut!</p>
-        <b-button :disabled="!$store.state.event.details" variant="danger" @click="onEventDelete">Ta bort nuvarande event</b-button>
+        <p>Klicka på denna knapp när eventet är över, detta möjliggör skapelsen av ett nytt event.</p>
+        <b-button 
+            :disabled="!$store.state.event.details"
+            variant="danger"
+            @click="onEventDelete"
+            >Ta bort nuvarande event</b-button>
         
     </div>
 </div>
