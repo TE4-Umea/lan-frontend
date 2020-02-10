@@ -14,7 +14,8 @@
             <p class="d-inline font-weight-bold">{{betweenDates + ','}}</p>
             <p class="d-inline"> lanet börjar </p>
             <p class="d-inline font-weight-bold">{{ 'kl ' + opensAt + '.'}}</p>
-
+            <p class="d-inline">här har du </p>
+            <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
 
             </image-layout>
             <div class="pt-4 d-flex justify-content-center">
@@ -35,11 +36,13 @@
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import ImageLayout from '~/components/layouts/ImageLayout';
 import TicketModal from '../../components/event/modal/TicketModal.vue';
-import ActionButton from '~/components/buttons/ActionButton'
+import ActionButton from '~/components/buttons/ActionButton';
+import RulesModal from '~/components/event/modal/RulesModal.vue';
+
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Biljett %s',
+            titleTemplate: 'Biljett %s',
         }
     },
     middleware: [
@@ -60,13 +63,22 @@ export default {
     methods: {
         openTicket() {
             this.modal = this.$modal.show(TicketModal, {}, {
-                draggable: true,
+                draggable: false,
                 resizable: false,
                 width: '90%',
                 height: 'auto',
                 maxWidth: 350,
                 maxHeight: 500,
-                adaptive: true,
+                adaptive: false,
+            });
+        },
+        openRulesModal() {
+            this.$modal.show(RulesModal, {}, {
+                draggable: false,
+                resizable: false,
+                width: '90%',
+                height: 'auto',
+                adaptive: false,
             });
         },
         closeTicket() {

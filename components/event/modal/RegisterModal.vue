@@ -1,11 +1,8 @@
 <template>
     <div>
         <div class="shadow" :class="{'fadein': showRegister}" @click="close"/>
-        <div class="loading-wrapper" v-if="sending && showRegister">
-            <b-spinner class="loading-spinner loader my-5" variant="light" label="Spinning"></b-spinner>
-        </div>
         
-        <div class="main bg-color--background register-event" :class="{'slideup': showRegister && !sending}">
+        <div class="main bg-color--background register-event" :class="{'slideup': showRegister}">
             <div class="py-4 d-flex justify-content-center">
                 <div>
                     <h1>ANMÄLAN</h1>
@@ -86,14 +83,14 @@ export default {
                     }
                 ).then(async res => {
                     await this.$store.commit('event/SET_REGISTRATION', res.data.data);
-                    this.sending = false;
                     this.$snack.success({
-                      text: "Du är nu anmäld!",
-                      button: "Stäng",
+                        text: "Du är nu anmäld!",
+                        button: "Stäng",
                     });
                     this.$router.push({
                         path: '/event/ticket'
                     });
+                    // this.sending = false;
                 }).catch(err => {
                     this.sending = false;
                     this.$snack.danger({
