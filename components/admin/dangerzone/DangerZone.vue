@@ -5,6 +5,7 @@
     </div>
     <div>
         <p>Här kan du lägga till och ta bort administratörer</p>
+        <admin-crud/>
         <hr>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate minima vel iusto tempora ut. Vitae enim explicabo eligendi sit nisi magnam odit facilis veniam ab quidem, quis aliquid aut!</p>
         <b-button :disabled="!$store.state.event.details" variant="danger" @click="onEventDelete">Ta bort nuvarande event</b-button>
@@ -14,19 +15,21 @@
 </template>
 
 <script>
+import adminCrud from "~/components/admin/dangerzone/adminCrud";
 export default {
     methods: {
         onEventDelete() {
-            if(!confirm("Är du säker att du vill ta bort detta event?")) return;
-            if(!confirm("Är du HELT säker på att du är medveten om vad det betyder?")) return;
-            if(!confirm("Är du HEEEELT säker?")) return;
+            if((prompt("Är du säker att du vill ta bort detta event?\n För att fortsätta skriv \"ja\"")).toLowerCase() != "ja") return;
             const id = this.$store.state.event.details.id;
-            this.$axios.delete(`/admin/event/${id}/delete`).then(res => {
-            });
+            this.$axios.delete(`/admin/event/${id}/delete`).then(res => {});
         }
+    },
+    components: {
+        adminCrud
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .danger-zone {
     background: unset;
