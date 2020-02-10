@@ -42,7 +42,7 @@ function subscribe($auth, $echo, store, $router, $snack) {
                 store.commit("event/SET_REGISTRATION", e.registration);
                 if(!oldRegistration.checked_in && e.registration.checked_in) {
                     $snack.success({
-                        text: 'Välkommen till lanet! Du är nu inchekad!',
+                        text: 'Välkommen till lanet! Du är nu incheckad!',
                         button: 'Okej'
                     });
                     $router.push({ path: "/event/"});
