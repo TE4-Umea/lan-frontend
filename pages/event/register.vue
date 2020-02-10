@@ -83,7 +83,6 @@ export default {
     computed: {
         registrationClosed() {
             const closesAt = new Date(this.$store.state.event.details.registration_closes_at + 'Z');
-            console.log("registration closes at", closesAt);
             return closesAt.getTime() <= (new Date()).getTime();
         },
         opensAt() {
