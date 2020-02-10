@@ -30,7 +30,7 @@
                     tabIndex="1"
                     @onAction="next"
                     title="Nästa"
-                    :disabled="!valid  && !sending"
+                    :disabled="!valid && !sending"
                 />
             </div>
         </div>
@@ -68,6 +68,7 @@
                     icon="meeting_room"
                     primary="true"
                     :disabled="!passwordvalid  && !sending"
+                    :loading="sending"
                 />
             </div>
         </div>

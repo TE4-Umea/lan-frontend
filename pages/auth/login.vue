@@ -39,6 +39,7 @@
                 title="Logga in"
                 primary="true"
                 :disabled="!valid  && !sending"
+                :loading="sending"
             />
         </div>
     </wrapper>

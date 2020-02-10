@@ -40,6 +40,7 @@
                         icon="done"
                         @onAction="onSubmit"
                         :disabled="!valid  && !sending"
+                        :loading="sending"
                     />
                 </div>
             </div>

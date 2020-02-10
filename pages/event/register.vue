@@ -11,7 +11,11 @@
                 <p class="d-inline">Se till att du läser </p>
                 <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
                 <p class="d-inline">innan du anmäler dig, reglerna går även att läsa efter du anmält dig.</p>
-                <action-button class="mt-3" title="TILL ANMÄLAN" @onAction="showRegister=true"></action-button>
+                <action-button 
+                    class="mt-3" 
+                    title="TILL ANMÄLAN" 
+                    @onAction="showRegister=true"
+                    />
             </div>
             <div class="pt-3" v-else>
                 <h1>Anmälan stängd</h1>
