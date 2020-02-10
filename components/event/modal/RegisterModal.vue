@@ -86,6 +86,7 @@ export default {
                     }
                 ).then(async res => {
                     await this.$store.commit('event/SET_REGISTRATION', res.data.data);
+                    this.sending = false;
                     this.$snack.success({
                       text: "Du är nu anmäld!",
                       button: "Stäng",
@@ -94,12 +95,13 @@ export default {
                         path: '/event/ticket'
                     });
                 }).catch(err => {
+                    this.sending = false;
                     this.$snack.danger({
                       text: "Något gick fel!",
                       button: "Stäng",
                     })
                 });
-                this.sending = false;
+               
             }
         },
         validateInput() {

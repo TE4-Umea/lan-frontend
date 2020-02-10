@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex">
-      <p v-text="title" class="my-1 mr-2"/>
-      <p class="font-weight-bold my-1 ">
+  <div >
+      <p v-text="title" class="d-inline my-1 mr-2"/>
+      <p class="d-inline font-weight-bold my-1 ">
           <slot/>
       </p>
   </div>
