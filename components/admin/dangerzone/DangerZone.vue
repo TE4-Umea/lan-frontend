@@ -4,21 +4,36 @@
         <h1>Farliga zonen</h1>
     </div>
     <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate minima vel iusto tempora ut. Vitae enim explicabo eligendi sit nisi magnam odit facilis veniam ab quidem, quis aliquid aut!</p>
-        <b-button variant="danger" @click="onEventDelete">Ta bort nuvarande event</b-button>
+        <p>Här kan du lägga till och ta bort administratörer.</p>
+        <admin-crud/>
+        <hr>
+        <p>Klicka på denna knapp när eventet är över, detta möjliggör skapelsen av ett nytt event.</p>
+        <b-button 
+            :disabled="!$store.state.event.details"
+            variant="danger"
+            @click="onEventDelete"
+            >Ta bort nuvarande event</b-button>
+        
     </div>
 </div>
 </template>
 
 <script>
+import adminCrud from "~/components/admin/dangerzone/adminCrud";
 export default {
     methods: {
         onEventDelete() {
-            alert("Knappen klickades, titta tillbaka senare för funktionalitet");
+            if((prompt("Är du säker att du vill ta bort detta event?\n För att fortsätta skriv \"ja\"")).toLowerCase() != "ja") return;
+            const id = this.$store.state.event.details.id;
+            this.$axios.delete(`/admin/event/${id}/delete`).then(res => {});
         }
+    },
+    components: {
+        adminCrud
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .danger-zone {
     background: unset;
