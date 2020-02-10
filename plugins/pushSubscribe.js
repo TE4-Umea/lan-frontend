@@ -8,21 +8,23 @@ export default function ({$auth, $axios, redirect }) {
             // Push isn't supported on this browser, disable or hide UI.
             return;
         }else{
-            var permission = askPermission();
-            console.log([
-                "1",
-                permission]
-                );
+            askPermission().then(function(){
+                subscribeUserToPush().then(function(value){
+                    storePushSubscription(value, $axios);
+                });
+            });
+            //storePushSubscription(something, $axios);
+
         }
 
     }       
 }
+
 function askPermission() {
     return new Promise(function(resolve, reject) {
-        const permissionResult = Notification.requestPermission(function(result) {
+        const permissionResult = Notification.requestPermission().then(function(result) {
             resolve(result);
         });
-        console.log(permissionResult);
   
         if (permissionResult) {
             permissionResult.then(resolve, reject);
@@ -32,9 +34,11 @@ function askPermission() {
         if (permissionResult !== 'granted') {
             throw new Error('We weren\'t granted permission.');
         }
-        if (permissionResult == 'granted') {
-            subscribeUserToPush();
-        }
+        // if (permissionResult == 'granted') {
+        //      var pushSubscription = subscribeUserToPush();
+        //     console.log(pushSubscription)
+        //      //storePushSubscription(pushSubscription);
+        // }
     });
 }
 
@@ -55,3 +59,32 @@ function subscribeUserToPush() {
       return pushSubscription;
     });
   }
+  function urlBase64ToUint8Array(base64String) {
+    var padding = '='.repeat((4 - base64String.length % 4) % 4);
+    var base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+
+    var rawData = window.atob(base64);
+    var outputArray = new Uint8Array(rawData.length);
+
+    for (var i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+}
+
+function storePushSubscription(pushSubscription, $axios) {
+    console.log(pushSubscription)
+
+    $axios.post('/push-notification/subscribe', pushSubscription)
+        .then((res) => {
+            return res.json();
+        })
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+}
