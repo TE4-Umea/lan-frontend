@@ -37,7 +37,8 @@ export async function logout(self) {
     localStorage.removeItem('provider');
     await self.$auth.logout();
     self.$router.push({ path: "/"});
-    self.$store.commit('event/SET_REGISTRATION', []);
+    self.$store.commit('event/SET_REGISTRATION', undefined);
+    self.$store.commit('event/SET_NOTIFICATIONS', []);
 }
 
 async function postLogin(self) {

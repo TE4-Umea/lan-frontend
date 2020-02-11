@@ -6,7 +6,7 @@
             <important title="Lanet öppnar:">{{opensAt}}</important>
             <important title="När:">{{betweenDates}}</important>
             <important title="Anmälan stänger:">{{closesAt}}</important>
-            <important v-if="!$auth.$state.user.student" title="Notera att inträdeskonstader kan tillkoma som">Extern</important>
+            <important v-if="!$auth.$state.user.student" title="Notera att inträdeskonstader kan tillkoma som">Extern.</important>
             <div v-if="!registrationClosed">
                 <h3>Innan du anmäler dig</h3>
                 <p class="d-inline">Se till att du läser </p>

@@ -87,7 +87,7 @@ export default {
                     this.form.name = '';
                     this.form.max_capacity = null;
                 }).catch(err => {
-                    this.$snack.error({
+                    this.$snack.danger({
                         text: 'Något gick fel!',
                         button: 'Försök igen',
                         action: this.submit(),
@@ -114,7 +114,7 @@ export default {
                         button: 'OK',
                     });
                 }).catch(err => {
-                    this.$snack.error({
+                    this.$snack.danger({
                         text: 'Något gick fel!',
                     });
                 });
