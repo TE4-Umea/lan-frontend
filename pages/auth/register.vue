@@ -13,6 +13,7 @@
                     name="name"
                     minlength="3"
                     maxlength="64"
+                    @onAction="onSubmit"
                 />
                 <input-field
                     :tabIndex="1"
@@ -23,6 +24,7 @@
                     name="email"
                     minlength="8"
                     maxlength="64"
+                    @onAction="onSubmit"
                 />
             </div>
             <div class="">
@@ -48,6 +50,7 @@
                     name="password"
                     minlength="8"
                     maxlength="128"
+                    @onAction="onSubmit"
                 />
                 <input-field
                     :tabIndex="1"
@@ -58,6 +61,7 @@
                     name="password_confirm"
                     minlength="8"
                     maxlength="128"
+                    @onAction="onSubmit"
                 />
             </div>
             <div class="">
@@ -111,12 +115,20 @@ export default {
             this.lastStep = false;
         },
         onSubmit() {
-            this.$axios.post('/auth/register', this.form).then(async res => {
-                login(this, this.form);
-            }).catch(err => {
-                console.log(err);
-            });
-            this.sending="true";
+            if(!this.valid) return;
+            this.sending = true;
+            this.$axios.post('/auth/register', this.form)
+                .then(res => {
+                    login(this, this.form);
+                    this.sending = false;
+                }).catch(err => {
+                    console.log(err);
+                    this.$snack.danger({
+                      text: err,
+
+                    })
+                    this.sending = false;
+                });
         }
     },
     watch: {

@@ -12,8 +12,7 @@
                 minlength="8"
                 maxlength="64"
                 required
-
-
+                @onAction="onSubmit"
             />
             <input-field
                 :tabIndex="1"
@@ -23,6 +22,7 @@
                 placeholder="********"
                 minlength="8"
                 maxlength="128"
+                @onAction="onSubmit"
             />
         </div>
         <div class="">
