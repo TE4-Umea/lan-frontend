@@ -117,16 +117,30 @@ export default {
         onSubmit() {
             if(!this.valid) return;
             this.sending = true;
+            if(this.form.password !== this.form.passwordvalid) {
+
+            }
             this.$axios.post('/auth/register', this.form)
                 .then(res => {
                     login(this, this.form);
                     this.sending = false;
                 }).catch(err => {
-                    console.log(err);
+                    console.log(err.response.data.errors);
+                    const keys = Object.keys(err.response.data.errors);
+                    let text = 'Något gick fel!';
+                    if(keys.length > 0) {
+                        switch(keys[0]) {
+                            case 'email':
+                                text = "Denna mejladress används redan!";
+                                break;
+                            case 'password':
+                                text = "Det valda lösenordet är ogiltigt!";
+                                break;
+                        }
+                    }
                     this.$snack.danger({
-                      text: err,
-
-                    })
+                        text: text,
+                    });
                     this.sending = false;
                 });
         }
