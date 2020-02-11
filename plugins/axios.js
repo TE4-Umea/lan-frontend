@@ -7,6 +7,9 @@ export default function ({ $axios, redirect }) {
             if(provider) {
                 config.headers.common['Provider'] = provider;
                 config.headers.common['RefreshToken'] = refreshToken;
+            } else {
+                config.headers.common['Provider'] = null;
+                config.headers.common['RefreshToken'] = null;
             }
           }
     });
