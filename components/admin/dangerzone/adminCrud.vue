@@ -8,7 +8,10 @@
             :options="options" 
             label="email"
             v-model="vSelected"
-            />
+            placeholder="skriv..."
+            >
+            <div slot="no-options">Tyvärr så finns det inga resultat.</div>
+            </v-select>
         <b-button
             class="ml-1 gradient-animation-hover border-0"
             :disabled="vSelected == null"

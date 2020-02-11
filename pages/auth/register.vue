@@ -84,9 +84,9 @@ import ActionButton from '~/components/buttons/ActionButton.vue';
 import { login } from '~/assets/login';
 
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Registrera dig %s',
+            titleTemplate: 'Registrera dig %s',
         }
     },
     data() {
