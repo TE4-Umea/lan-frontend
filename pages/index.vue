@@ -8,7 +8,7 @@
         >
             <div class="justify-content-center d-flex">
                 <div>
-                    <div class="google-button d-contrast">
+                    <div class="google-button d-contrast" tabindex="1">
                         <a :href="$axios.defaults.baseURL + '/auth/google/redirect'" class="text-decoration-none">
                             <span class="google-inner">
                             <img src="~/assets/images/google_button.svg" class="image"/>
@@ -30,7 +30,7 @@
 <script>
     import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
     import ImageLayout from '~/components/layouts/ImageLayout'
-    
+
     export default {
         head () {
             return {

@@ -5,7 +5,7 @@
             <div class="form">
                 <input-field
                     class="form--short"
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Fullständigt namn"
                     type="fullname"
                     placeholder="John doe"
@@ -13,10 +13,10 @@
                     name="name"
                     minlength="3"
                     maxlength="64"
-                    @onAction="onSubmit"
+                    @onAction="next"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="E-post"
                     type="email"
                     placeholder="john.doe@example.com"
@@ -24,12 +24,12 @@
                     name="email"
                     minlength="8"
                     maxlength="64"
-                    @onAction="onSubmit"
+                    @onAction="next"
                 />
             </div>
-            <div class="">
+            <div>
                 <action-button
-                    tabIndex="1"
+                    :tabIndex="3"
                     @onAction="next"
                     title="Nästa"
                     :disabled="!valid && !sending"
@@ -42,7 +42,7 @@
             <small @click="previous" class="clickable underline">Redigera</small>
             <div class="form">
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Lösenord"
                     type="password"
                     placeholder=""
@@ -53,7 +53,7 @@
                     @onAction="onSubmit"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="Bekräfta lösenord"
                     type="password"
                     placeholder=""
@@ -66,7 +66,7 @@
             </div>
             <div class="">
                 <action-button
-                    tabIndex="1"
+                    tabIndex="3"
                     @onAction="onSubmit"
                     title="REGISTRERA DIG"
                     icon="meeting_room"
