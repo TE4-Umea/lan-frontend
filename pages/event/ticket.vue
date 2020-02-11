@@ -69,7 +69,7 @@ export default {
                 height: 'auto',
                 maxWidth: 350,
                 maxHeight: 500,
-                adaptive: false,
+                adaptive: true,
             });
         },
         openRulesModal() {
