@@ -5,7 +5,7 @@
             <div class="form">
                 <input-field
                     class="form--short"
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Fullständigt namn"
                     type="fullname"
                     placeholder="John doe"
@@ -13,9 +13,10 @@
                     name="name"
                     minlength="3"
                     maxlength="64"
+                    @onAction="next"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="E-post"
                     type="email"
                     placeholder="john.doe@example.com"
@@ -23,11 +24,12 @@
                     name="email"
                     minlength="8"
                     maxlength="64"
+                    @onAction="next"
                 />
             </div>
-            <div class="">
+            <div>
                 <action-button
-                    tabIndex="1"
+                    :tabIndex="3"
                     @onAction="next"
                     title="Nästa"
                     :disabled="!valid && !sending"
@@ -40,7 +42,7 @@
             <small @click="previous" class="clickable underline">Redigera</small>
             <div class="form">
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Lösenord"
                     type="password"
                     placeholder=""
@@ -48,9 +50,10 @@
                     name="password"
                     minlength="8"
                     maxlength="128"
+                    @onAction="onSubmit"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="Bekräfta lösenord"
                     type="password"
                     placeholder=""
@@ -58,11 +61,12 @@
                     name="password_confirm"
                     minlength="8"
                     maxlength="128"
+                    @onAction="onSubmit"
                 />
             </div>
             <div class="">
                 <action-button
-                    tabIndex="1"
+                    tabIndex="3"
                     @onAction="onSubmit"
                     title="REGISTRERA DIG"
                     icon="meeting_room"
@@ -111,12 +115,34 @@ export default {
             this.lastStep = false;
         },
         onSubmit() {
-            this.$axios.post('/auth/register', this.form).then(async res => {
-                login(this, this.form);
-            }).catch(err => {
-                console.log(err);
-            });
-            this.sending="true";
+            if(!this.valid) return;
+            this.sending = true;
+            if(this.form.password !== this.form.passwordvalid) {
+
+            }
+            this.$axios.post('/auth/register', this.form)
+                .then(res => {
+                    login(this, this.form);
+                    this.sending = false;
+                }).catch(err => {
+                    console.log(err.response.data.errors);
+                    const keys = Object.keys(err.response.data.errors);
+                    let text = 'Något gick fel!';
+                    if(keys.length > 0) {
+                        switch(keys[0]) {
+                            case 'email':
+                                text = "Denna mejladress används redan!";
+                                break;
+                            case 'password':
+                                text = "Det valda lösenordet är ogiltigt!";
+                                break;
+                        }
+                    }
+                    this.$snack.danger({
+                        text: text,
+                    });
+                    this.sending = false;
+                });
         }
     },
     watch: {

@@ -4,7 +4,7 @@
         <div class="form">
 
             <input-field
-                :tabIndex="1"
+                tabIndex="1"
                 title="E-post"
                 type="email"
                 placeholder="john.doe@example.com"
@@ -12,28 +12,28 @@
                 minlength="8"
                 maxlength="64"
                 required
-
-
+                @onAction="onSubmit"
             />
             <input-field
-                :tabIndex="1"
+                tabIndex="2"
                 title="Lösenord"
                 type="password"
                 v-model="form.password"
                 placeholder="********"
                 minlength="8"
                 maxlength="128"
+                @onAction="onSubmit"
             />
         </div>
-        <div class="">
+        <div>
             <p>Har du ingen användare?
 
-                <nuxt-link class="underline" tabindex=2 to="/auth/register">
+                <nuxt-link class="underline" tabindex=3 to="/auth/register">
                     Registrera dig.
                 </nuxt-link>
             </p>
             <action-button
-                tabIndex="1"
+                tabIndex="4"
                 @onAction="onSubmit"
                 icon="meeting_room"
                 title="Logga in"
