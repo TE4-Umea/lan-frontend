@@ -43,6 +43,7 @@ export default {
     props: ['registrations'],
     methods: {
         countOccurences(key, value) {
+            if(this.registrations.length == 0) return 0;
             return this.registrations.filter(index => {
                 return index[key] == value;
             }).length;

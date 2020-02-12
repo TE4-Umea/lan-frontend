@@ -50,6 +50,7 @@ export default {
       "background_color": "#121212",
       "display": "standalone"
     },
+    
   },
   /*
   ** Nuxt.js dev-modules
@@ -66,7 +67,7 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    ['@nuxtjs/pwa', { workbox: false }],
     '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',

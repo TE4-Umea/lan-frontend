@@ -18,7 +18,6 @@ function subscribe($auth, $echo, store, $router, $snack) {
                     text: 'Det har nu publicerats ett nytt event',
                     button: 'Okej'
                 });
-                eventSubScribe($echo, store);
         });
         $echo.private('User.' + $auth.user.id)
             .listen('RegistrationUpdated', e => {
@@ -32,8 +31,8 @@ function subscribe($auth, $echo, store, $router, $snack) {
                     $router.push({ path: "/event/"});
                 }
         });
-        if(store.state.event.details) {
-            eventSubScribe($echo, store, $snack);
+        if(store.state.event.registration && store.state.event.registration.checked_in) { 
+            eventSubScribe($echo, store);
         }
     }    
 }
