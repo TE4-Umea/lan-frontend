@@ -33,9 +33,7 @@ export const actions = {
             try {
                 const { data } = await this.$axios.get('/event/' + state.details.id + '/registration');
                 commit('SET_REGISTRATION', data);
-            } catch(e){
-                console.log("no registration found");
-            }
+            } catch(e) {}
         }
     },
     async GET_NOTIFICATIONS({ commit, state}) {

@@ -77,7 +77,7 @@ export default {
             this.debouncedDoneTyping();
         },
         doneTyping() {
-            this.$axios.put('/admin/event/rules/update', {
+            this.$axios.patch('/admin/event/rules/update', {
                 id: this.model.id,
                 body: this.model.body,
             }).then(res => {

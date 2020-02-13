@@ -136,6 +136,7 @@ export default {
                 registration_closes_at: this.parseDateTime(this.form.eventDates.dates.start, this.form.eventDates.startTime)
 
             };
+            this.sending = true;
             this.$axios.post('/admin/event/create', payload)
                 .then(res => {
                     this.sending = false;
