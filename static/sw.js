@@ -1,8 +1,6 @@
 const cacheName = 'static-shell-v1';
 const resourcesToPrecache = [
     '/',
-    'components',
-    'pages'
 ];
 
 self.addEventListener('install', (event) => {
