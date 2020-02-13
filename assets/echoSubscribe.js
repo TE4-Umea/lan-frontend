@@ -7,6 +7,10 @@ function eventSubScribe($echo, store, $snack) {
             });   
         });
 }
+function eventUnsubScribe($echo, store) {
+    $echo.private('Event.' + store.state.event.details.id)
+        .stopListening('NotificationCreated');
+}
 function subscribe($auth, $echo, store, $router, $snack) {
     if ($auth.loggedIn) {
         hookProviderHeader($echo);
@@ -18,14 +22,27 @@ function subscribe($auth, $echo, store, $router, $snack) {
                     text: 'Det har nu publicerats ett nytt event',
                     button: 'Okej'
                 });
-        });
+                eventSubScribe($echo, store, $snack);
+            })
+            .listen('EventDeleted', () => {
+                eventUnsubScribe($echo, store);
+                
+                store.commit("event/SET", undefined);
+                store.commit("event/SET_REGISTRATION", undefined);
+                store.commit("event/SET_NOTIFICATIONS", []);
+                $router.push({ path: "/event/"});
+                $snack.success({
+                    text: 'Lanet är nu över, Tack för att du närvarade!',
+                    button: 'Okej'
+                });
+            });
         $echo.private('User.' + $auth.user.id)
             .listen('RegistrationUpdated', e => {
                 const oldRegistration = store.state.event.registration;
                 store.commit("event/SET_REGISTRATION", e.registration);
                 if(!oldRegistration.checked_in && e.registration.checked_in) {
                     $snack.success({
-                        text: 'Välkommen till lanet! du är nu inchekad!',
+                        text: 'Välkommen till lanet! Du är nu incheckad!',
                         button: 'Okej'
                     });
                     $router.push({ path: "/event/"});

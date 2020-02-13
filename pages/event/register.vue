@@ -3,15 +3,20 @@
     <wrapper :title="$store.state.event.details.title">
         <div>
             <p v-text="$store.state.event.details.short_info"/>
-            <important title="Lanet öppnar: ">{{opensAt}}</important>
+            <important title="Lanet öppnar:">{{opensAt}}</important>
             <important title="När:">{{betweenDates}}</important>
-            <important title="Anmälan stänger: ">{{closesAt}}</important>
+            <important title="Anmälan stänger:">{{closesAt}}</important>
+            <important v-if="!$auth.$state.user.student" title="Notera att inträdeskonstader kan tillkoma som">Extern.</important>
             <div v-if="!registrationClosed">
                 <h3>Innan du anmäler dig</h3>
                 <p class="d-inline">Se till att du läser </p>
                 <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
                 <p class="d-inline">innan du anmäler dig, reglerna går även att läsa efter du anmält dig.</p>
-                <action-button class="mt-3" title="TILL ANMÄLAN" @onAction="showRegister=true"></action-button>
+                <action-button 
+                    class="mt-3" 
+                    title="TILL ANMÄLAN" 
+                    @onAction="showRegister=true"
+                    />
             </div>
             <div class="pt-3" v-else>
                 <h1>Anmälan stängd</h1>
@@ -78,7 +83,6 @@ export default {
     computed: {
         registrationClosed() {
             const closesAt = new Date(this.$store.state.event.details.registration_closes_at + 'Z');
-            console.log("registration closes at", closesAt);
             return closesAt.getTime() <= (new Date()).getTime();
         },
         opensAt() {

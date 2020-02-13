@@ -4,34 +4,42 @@
         <div class="form">
 
             <input-field
-                :tabIndex="1"
+                tabIndex="1"
                 title="E-post"
                 type="email"
                 placeholder="john.doe@example.com"
                 v-model="form.email"
-
+                minlength="8"
+                maxlength="64"
+                required
+                @onAction="onSubmit"
             />
             <input-field
-                :tabIndex="1"
+                tabIndex="2"
                 title="Lösenord"
                 type="password"
-                placeholder="********"
                 v-model="form.password"
+                placeholder="********"
+                minlength="8"
+                maxlength="128"
+                @onAction="onSubmit"
             />
         </div>
-        <div class="">
+        <div>
             <p>Har du ingen användare?
 
-                <nuxt-link class="underline" tabindex=2 to="/auth/register">
+                <nuxt-link class="underline" tabindex=3 to="/auth/register">
                     Registrera dig.
                 </nuxt-link>
             </p>
             <action-button
-                tabIndex="1"
+                tabIndex="4"
                 @onAction="onSubmit"
                 icon="meeting_room"
                 title="Logga in"
                 primary="true"
+                :disabled="!valid  && !sending"
+                :loading="sending"
             />
         </div>
     </wrapper>
@@ -61,8 +69,10 @@ export default {
         return {
             form: {
                 email: '',
-                password: ''
-            }
+                password: '',
+            },
+            sending: false,
+            valid: false,
         }
     },
     methods: {
@@ -70,10 +80,21 @@ export default {
             if(!(this.form.email.length > 0 && this.form.password.length > 0)) {
                 return;
             }
+            this.sending = true;
             login(this, this.form);
         },
+    },
+    watch: {
+        form: {
+            handler(oldVal, newVal) {
+              this.valid = newVal.email.length >= 8 && newVal.password.length >= 8;
+            },
+        deep: true
+        }
     }
 }
+
+
 </script>
 
 <style lang="scss" scoped>

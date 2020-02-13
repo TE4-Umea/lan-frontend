@@ -17,6 +17,7 @@
             :name="name"
             :id="id"
             :key="id"
+            @keyup.enter="$emit('onAction')"
         >
         <div :class='{"gradient-animation-active": active, "invalid": required == "" && (data.length < minlength || data.length > maxlength)}' class="line gradient-animation" />
       </div>

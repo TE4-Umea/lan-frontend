@@ -6,8 +6,12 @@
         :dark="$store.state.darkmode.value" 
         :fields="fields" 
         :items="rooms"
-        :busy="$store.state.admin.placement.rooms.length == 0"
+        :busy="!rooms && rooms.length == 0"
+        :key="'roomTable=' + tableKey"
     >
+    <template v-slot:cell(action)="row">
+        <i :key="row.item.id" @click="onDeleteRow(row.item.id)" class="clickable text-danger material-icons">delete_forever</i>
+    </template>
     </b-table>
     <div class="d-flex justify-content-between p-2">
         <input-field 
@@ -43,6 +47,7 @@ export default {
                 {label: 'Namn', key: 'name', sortable: true},
                 {label: 'Platser kvar', key: 'used_capcity', sortable: true},
                 {label: 'Platser max', key: 'max_capacity', sortable: true},
+                {label: ' ', key: 'action', sortable: false},
             ],
             form: {
                 name: '',
@@ -50,6 +55,7 @@ export default {
             },
             validInput: false,
             rooms: [],
+            tableKey: 0
         }
     },
     created() {
@@ -57,7 +63,9 @@ export default {
             if (mutation.type === 'admin/placement/SET_ROOMS' || 
                 mutation.type === 'admin/SET_REGISTRATIONS' ||
                 mutation.type === 'admin/SET_REGISTRATION') {
+
                 this.rooms = this.filterData(state.admin.placement.rooms);
+                this.tableKey++;
             }
         });
     },
@@ -69,18 +77,17 @@ export default {
             return rooms;
         },
         submit() {
-            this.canSend = false;
             this.$axios.post("/admin/placement/room/create", this.form)
                 .then(res => {
                     this.$store.commit('admin/placement/ADD_ROOM', res.data.data);
                     this.$snack.success({
-                        text: 'Ett Rum har lagts till!',
+                        text: 'Ett rum har lagts till!',
                         button: 'OK',
                     });
                     this.form.name = '';
                     this.form.max_capacity = null;
                 }).catch(err => {
-                    this.$snack.error({
+                    this.$snack.danger({
                         text: 'Något gick fel!',
                         button: 'Försök igen',
                         action: this.submit(),
@@ -96,6 +103,21 @@ export default {
                 }
             }
             return counter;
+        },
+        onDeleteRow(id) {
+            if(!confirm("Är du säker att du vill ta bort detta rum?")) return;
+            this.$axios.delete(`/admin/placement/room/${id}/delete`)
+                .then(res => {
+                    this.$store.commit('admin/placement/DELETE_ROOM');
+                    this.$snack.success({
+                        text: 'Ett rum har tagits bort!',
+                        button: 'OK',
+                    });
+                }).catch(err => {
+                    this.$snack.danger({
+                        text: 'Något gick fel!',
+                    });
+                });
         }
     },
     watch: {
@@ -112,6 +134,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.delete-icon {
+    color : red;
+}
 .box {
     border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

@@ -6,7 +6,8 @@
         :dark="$store.state.darkmode.value" 
         :fields="fields" 
         :items="groupCodes"
-        :busy="$store.state.admin.placement.rooms.length == 0"
+        :busy="groupCodes.length == 0"
+        :key="'group' + groupCodes.length"
     >
         <template v-slot:cell(group_members)="row">
             {{ row.item.group_members_index.length }}
@@ -23,7 +24,10 @@ import RoomDropdown from '~/components/admin/placement/registrationslist/RoomDro
 export default {
     created() {
         this.$store.subscribe((mutation, state) => {
-            if (mutation.type === 'admin/SET_REGISTRATIONS') {
+            if (mutation.type === 'admin/placement/SET_ROOMS' || 
+                mutation.type === 'admin/SET_REGISTRATIONS' ||
+                mutation.type === 'admin/SET_REGISTRATION') {
+                
                 this.groupCodes = this.filterData(state.admin.registrations);
             }
         });
@@ -73,7 +77,7 @@ export default {
                 });
             }
             this.$axios.patch(`admin/placement/room/update`, {
-                group_code: group_members.id == 'Ingen Kod' ? null : group_members.id,
+                group_code: group_members.id == 'Ingen Kod' ? '' : group_members.id,
                 room_id: newVal,
             });
         }

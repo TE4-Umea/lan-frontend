@@ -11,6 +11,10 @@ export const getters = {
     }
 }
 export const mutations = {
+    DELETE_ROOM(state, id) {
+        const index = state.rooms.findIndex(index => index.id == id);
+        state.rooms.splice(index, 1);
+    },
     SET_ROOMS(state, data) {
         state.rooms = data;
     },

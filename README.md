@@ -1,61 +1,89 @@
+
 # Lan organizer
 
-## Priority list
-### Core features
-#### Slutkund
-* Inloggning
-    * man är extern om du inte verifierar dig med en skolmail
+## Installation
 
-* Anmälan till lan
-* Incheckning till lanet
-    * Något sorts QR kods callback system.
+## Pre-requisites 
+* PHP
+* Mysql / SQLite / MariaDB
+* Apache / Nginx
+* Composer
+* NPM
 
-* samlingsplats för relevant information Tex.
-    * Din placering
-    * Schema
-    * Städtider
-    * Låsta dörrar tider
-    * Event
-* Dynamisk flytande Information om Event under lanet
-#### Langruppen
-* Administrativa kapaciteter Tex.
-    * Utplacering i rum av personer.
-    * Ska kunna skriva statisk information angående lanet
-    * Status kring antal personer i byggnaden
-    * Dynamisk spridning av information kring tex turneringar
-    * Manuella pushnotiser till webbläsaren
-### Backlog features
-* Twitch embed av streams under lanet
-* Auto publicering av information på skolans informations medier(discord) vid ny information angående lan. 
-* Sponsor länkar länkar i appen samt om möjligt i mail.
-* Strawpoll då det inte finns event
-* Streamlined Turneringsverktyg
-    * Skapelse av turnering
-    * Anmälan till turnering (solo & lag)
-    * Brackets för turneringar
-    * Sorting features (Vid för små lag)
-    * Randomisers för brackets
-    * live information kring brackets (som slutkund)
-
-### Koola idéer
-
-* Koppla swish för externer att betala
-* Intern realtime chatt.
-* Social media integration
-    * Autopublisering av nya event eller lan på sociala medier samt publisering av vinnare av turneringar/ matcher
+### Frontend:
+* Clone the lan-frontend repository
+* Run npm install
+* npm run generate OR npm run dev.
 
 
-## Technologies
-### Proposed
-#### Frontend
-* NUXT (contains the following)
-    * VUE
-    * VUEX
-    * VUE Router
-    * Small & good
-#### Backend
-* Laravel
-    * Laravel passport 
-    * Laravel Echo
-### Decided on
-N/A
+### Backend
+* Clone the lan-backend repository
+* Run `~$ composer install`
+* Run `~$ php artisan key:generate`
+* Configure .env file.
+  * Set credentials to mysql database
+  * Set pusher id / secrets
+  * Set passport client id / secret gained from passport:install
+  * Set Google tokens.
+* run `~$ php artisan Websockets:serve`
+* If you want Websockets to be run as a background service, follow this [guide](https://docs.beyondco.de/laravel-websockets/1.0/basic-usage/starting.html#keeping-the-socket-server-running-with-supervisord)
+
+## Setting up the database
+* Configure .env file.
+* Run php artisan passport:install
+* Run php artisan migrate:fresh
+
+
+## What is NTI LAN?
+ 
+Lan-organizer is a PWA (Progressive Web App) designed to make organizing LAN parties simpler and more fun. Among the features includes event creation, registration, checkin and more. The app is designed for NTI Gymnasiet Umeå but can easily be reskinned to fit other event organizers.
+
+The app was developed using VueJS and NUXT, and it uses Laravel for it's backend.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

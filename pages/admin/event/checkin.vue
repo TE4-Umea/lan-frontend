@@ -26,9 +26,9 @@ import Wrapper from '~/components/layouts/positioning/Wrapper';
 import CenterWrapper from '~/components/layouts/positioning/CenterWrapper';
 import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Incheckning %s',
+            titleTemplate: 'Incheckning %s',
         }
     },
     layout: 'admin',
@@ -46,7 +46,7 @@ export default {
         }
     },
     created() {
-        let code = this.$route.query.qr;
+        const code = this.$route.query.qr;
         if(code && code.length > 1) {
             this.result = code;
             this.sendRequest();
@@ -60,12 +60,8 @@ export default {
         QrcodeCapture,
     },
     methods: {
-        turnCameraOn () {
-            this.camera = 'auto'
-        },
-
-        turnCameraOff () {
-            this.camera = 'off'
+        toggleCamera() {
+            this.camera = this.camera == 'auto' ? 'off': 'auto'; 
         },
         onDecode (result) {
             this.result = this.parseInput(result);
@@ -74,23 +70,25 @@ export default {
             }
         },
         handleClick(event) {
-            if(!this.showCamera)  {
-                this.showCamera = true;
-            }else {
-              this.showCamera = false;
-            }
+            this.showCamera = !this.showCamera;
         },
         sendRequest() {
-            this.turnCameraOff();
+            if(!this.result) {
+                return;
+            }
+
+            this.toggleCamera();
+            
             this.$axios.put('/admin/event/registration/' + this.result + '/update').then(res => {
-                this.turnCameraOn();
+                this.toggleCamera();
                 this.result = '';
                 this.$snack.success({
-                      text: "Incheckning lyckades!",
-                      button: "Stäng",
-                })
+                    text: "Incheckning lyckades!",
+                    button: "Stäng",
+                });
+                
             }).catch(e => {
-                this.turnCameraOn();
+                this.toggleCamera();
                 this.result = '';
             })
         },
@@ -100,8 +98,8 @@ export default {
                 return x[1];
             }
             this.$snack.danger({
-                      text: "Något gick fel! Biljetten kunde inte läsas!",
-                      button: "Stäng",
+                text: "Något gick fel! Biljetten kunde inte läsas!",
+                button: "Stäng",
             });
             return '';
         }
@@ -128,6 +126,4 @@ export default {
 .icon {
   color: white;
 }
-
-
 </style>

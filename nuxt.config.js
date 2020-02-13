@@ -101,6 +101,7 @@ export default {
     plugins: [
       '~/plugins/event',
       '~/plugins/pushSubscribe',
+      '~/plugins/axiosResponseHook',
     ],
     strategies: {
       local: {
@@ -137,6 +138,7 @@ export default {
   */
   axios: {
     baseURL: process.env.BACKEND_BASE_URL,
+    progress: false,
   },
   /*
   ** Build configuration

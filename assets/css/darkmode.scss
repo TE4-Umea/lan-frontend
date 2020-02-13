@@ -13,7 +13,7 @@ $contrast: #1F1F1F;
         background: $bgColorDark
     }
     h1, h2, h3, h4, p, small, a, li {
-        color: $primaryColorDark;
+        color: $primaryColorDark !important;
     }
     ::placeholder {
         color: $primaryColorDark !important;

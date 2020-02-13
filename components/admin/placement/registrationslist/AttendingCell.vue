@@ -24,7 +24,9 @@ export default {
                 registration: {
                     checked_in: newVal,
                 }
-            })
+            });
+            const id = this.row.item.id;
+            this.$axios.patch(`/admin/event/registration/${id}/update`, {checked_in: newVal});
         }
     },
     mounted() {

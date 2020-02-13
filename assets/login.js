@@ -15,10 +15,12 @@ export function login(self, form) {
     });
 }
 
-export function loginProvider(self, provider, token) {
+export function loginProvider(self, provider, token, refreshToken) {
     if(provider){
         localStorage.setItem("provider", provider);
     }
+    localStorage.setItem("refreshToken", refreshToken);
+    
     self.$auth.setUserToken(token)
         .then(async res => {
             await postLogin(self);
@@ -35,7 +37,8 @@ export async function logout(self) {
     localStorage.removeItem('provider');
     await self.$auth.logout();
     self.$router.push({ path: "/"});
-    self.$store.commit('event/SET_REGISTRATION', []);
+    self.$store.commit('event/SET_REGISTRATION', undefined);
+    self.$store.commit('event/SET_NOTIFICATIONS', []);
 }
 
 async function postLogin(self) {

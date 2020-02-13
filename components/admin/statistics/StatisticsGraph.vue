@@ -16,11 +16,14 @@
             </g>
         </svg>
         <hr class="m-0">
-        <div class="d-flex align-item-center" 
-            v-for="(value, i) in chartData"
-            :key="i">
-            <i class="pt-1 material-icons" :style="{color: value.color}">label_important</i>
-            <p class="mb-0">{{ value.name }}</p>
+        <div class="py-2">
+
+            <div class="d-flex align-item-center" 
+                v-for="(value, i) in chartData"
+                :key="i">
+                <i class="pt-1 material-icons" :style="{color: value.color}">label_important</i>
+                <p class="mb-0">{{ value.name }}</p>
+            </div>
         </div>
     </div>
     <div>

@@ -8,17 +8,17 @@
             <b-row>
                 <b-col>
                     <statistics-graph v-if="registrations.length > 0" :registrations="registrations" />
-                        <div v-else 
-                            class="d-flex justify-content-center">
-                            <div 
-                                :class="{'text-light': $store.state.darkmode.value}"
-                                class="spinner-border" 
-                                role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
+                    <div v-else 
+                        class="d-flex justify-content-center">
+                        <div 
+                            :class="{'text-light': $store.state.darkmode.value}"
+                            class="spinner-border my-3" 
+                            role="status">
+                            <span class="sr-only ">Loading...</span>
                         </div>
+                    </div>
                 </b-col>
-                <b-col cols="6">
+                <b-col cols="6" class="d-none d-md-inline-block">
                     <statistics-table :registrations="registrations" />
                 </b-col>
             </b-row>

@@ -5,29 +5,34 @@
             <div class="form">
                 <input-field
                     class="form--short"
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Fullständigt namn"
                     type="fullname"
                     placeholder="John doe"
                     v-model="form.name"
                     name="name"
-                    id="name"
+                    minlength="3"
+                    maxlength="64"
+                    @onAction="next"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="E-post"
                     type="email"
                     placeholder="john.doe@example.com"
                     v-model="form.email"
                     name="email"
-                    id="email"
+                    minlength="8"
+                    maxlength="64"
+                    @onAction="next"
                 />
             </div>
-            <div class="">
+            <div>
                 <action-button
-                    tabIndex="1"
+                    :tabIndex="3"
                     @onAction="next"
                     title="Nästa"
+                    :disabled="!valid && !sending"
                 />
             </div>
         </div>
@@ -37,31 +42,37 @@
             <small @click="previous" class="clickable underline">Redigera</small>
             <div class="form">
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="1"
                     title="Lösenord"
                     type="password"
                     placeholder=""
                     v-model="form.password"
                     name="password"
-                    id="password"
+                    minlength="8"
+                    maxlength="128"
+                    @onAction="onSubmit"
                 />
                 <input-field
-                    :tabIndex="1"
+                    tabIndex="2"
                     title="Bekräfta lösenord"
                     type="password"
                     placeholder=""
                     v-model="form.password_confirmation"
                     name="password_confirm"
-                    id="password_confirm"
+                    minlength="8"
+                    maxlength="128"
+                    @onAction="onSubmit"
                 />
             </div>
             <div class="">
                 <action-button
-                    tabIndex="1"
+                    tabIndex="3"
                     @onAction="onSubmit"
                     title="REGISTRERA DIG"
                     icon="meeting_room"
                     primary="true"
+                    :disabled="!passwordvalid  && !sending"
+                    :loading="sending"
                 />
             </div>
         </div>
@@ -77,9 +88,9 @@ import ActionButton from '~/components/buttons/ActionButton.vue';
 import { login } from '~/assets/login';
 
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Registrera dig %s',
+            titleTemplate: 'Registrera dig %s',
         }
     },
     data() {
@@ -91,6 +102,9 @@ export default {
                 password: '',
                 password_confirmation: ''
             },
+            sending: false,
+            valid: false,
+            passwordvalid: false,
         }
     },
     methods: {
@@ -101,11 +115,49 @@ export default {
             this.lastStep = false;
         },
         onSubmit() {
-            this.$axios.post('/auth/register', this.form).then(async res => {
-                login(this, this.form);
-            }).catch(err => {
-                console.log(err);
-            });
+            if(!this.valid) return;
+            this.sending = true;
+            if(this.form.password !== this.form.passwordvalid) {
+
+            }
+            this.$axios.post('/auth/register', this.form)
+                .then(res => {
+                    login(this, this.form);
+                    this.sending = false;
+                }).catch(err => {
+                    console.log(err.response.data.errors);
+                    const keys = Object.keys(err.response.data.errors);
+                    let text = 'Något gick fel!';
+                    if(keys.length > 0) {
+                        switch(keys[0]) {
+                            case 'email':
+                                text = "Denna mejladress används redan!";
+                                break;
+                            case 'password':
+                                text = "Det valda lösenordet är ogiltigt!";
+                                break;
+                        }
+                    }
+                    this.$snack.danger({
+                        text: text,
+                    });
+                    this.sending = false;
+                });
+        }
+    },
+    watch: {
+        form: {
+            handler(oldVal, newVal) {
+                this.valid =
+                newVal.email.length >= 8 &&
+                newVal.name.length >= 3;
+
+                this.passwordvalid =
+                newVal.password.length >=8 &&
+                newVal.password_confirmation.length >=8;
+
+            },
+        deep: true
         }
     },
     components: {
