@@ -8,9 +8,9 @@
 <script>
 import { loginProvider } from '~/assets/login';
 export default {
-    head () {
+    head() {
         return {
-        titleTemplate: 'Loggar in %s',
+            titleTemplate: 'Loggar in %s',
         }
     },
     middleware: ['guest'],

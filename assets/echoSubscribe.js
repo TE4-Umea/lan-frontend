@@ -49,7 +49,7 @@ function subscribe($auth, $echo, store, $router, $snack) {
                 }
         });
         if(store.state.event.registration && store.state.event.registration.checked_in) { 
-            eventSubScribe($echo, store);
+            eventSubScribe($echo, store, $snack);
         }
     }    
 }
