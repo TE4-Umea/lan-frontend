@@ -24,9 +24,7 @@ export const actions = {
         try {
             const { data } = await this.$axios.get('/event/latest')
             commit('SET', data);
-        } catch(e) {
-            console.log('There are currently no events found');
-        }
+        } catch(e) {}
     },
     async GET_REGISTRATION ({ commit, state }) {
         if(state.details) {
@@ -41,9 +39,7 @@ export const actions = {
             try {
                 const { data } = await this.$axios.get(`/event/${state.details.id}/notifications/read`)
                 commit('SET_NOTIFICATIONS', data);
-            } catch(e) {
-                console.log("no notifications found");
-            }
+            } catch(e) {}
         }
     }
   }
