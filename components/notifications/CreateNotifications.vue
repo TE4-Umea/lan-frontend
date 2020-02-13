@@ -41,11 +41,13 @@
                 class="gradient-animation-hover border-0"
                 @click="preview"
                 :disabled="!canSend"
+                @keyup.enter="preview()"
             >Förhandsgranska</b-button>
             <b-button
                 class="gradient-animation-hover border-0"
-                @click="send" 
+                @click="onSubmit" 
                 :disabled="!canSend"
+                @keyup.enter="onSubmit()"
             >Skicka</b-button>
         </div>
     </div>
@@ -91,7 +93,8 @@ export default {
                 adaptive: false,
             });
         },
-        send() {
+        onSubmit() {
+            if(!this.canSend) return;
             this.canSend = false;
             this.sending = true;
 
