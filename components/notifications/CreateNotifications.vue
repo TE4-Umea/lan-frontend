@@ -8,11 +8,24 @@
     <div class="p-2">
 
         <div>
-            <input type="text"
-                class="field mb-1 p-1 text-fields primary-color"
-                placeholder="Titel...."
-                v-model="form.title"
-            >
+            <div style="position: relative;"> 
+
+                <input type="text"
+                    class="field mb-1 p-1 text-fields primary-color"
+                    placeholder="Titel...."
+                    v-model="form.title"
+                >
+                <div class="placement">
+
+                    <div
+                        v-if="sending"
+                        :class="{'text-light': $store.state.darkmode.value}"
+                        class="spinner-border spinner-border-sm" 
+                        role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
             <textarea name=""
                 cols="5"
                 rows="5"
@@ -49,6 +62,7 @@ export default {
                 title: '',
                 body: '',
             },
+            sending: false,
             canSend: false,
         }
     },
@@ -79,6 +93,8 @@ export default {
         },
         send() {
             this.canSend = false;
+            this.sending = true;
+
             this.$axios.post("/admin/event/notification/create",
             {
                 ...this.form,
@@ -87,6 +103,7 @@ export default {
                 .then(res => {
                     this.form.title = '';
                     this.form.body = '';
+                    this.sending = false;
                     //TODO: Send snackbar success message
                 }).catch(err => {
                     //TODO: Send error snackbar message
@@ -112,5 +129,10 @@ export default {
 }
 textarea {
   resize: none;
+}
+.placement {
+    position: absolute;
+    right: 7px;
+    top: 2px;
 }
 </style>

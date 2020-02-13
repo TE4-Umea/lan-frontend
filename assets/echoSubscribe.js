@@ -22,7 +22,7 @@ function subscribe($auth, $echo, store, $router, $snack) {
                     text: 'Det har nu publicerats ett nytt event',
                     button: 'Okej'
                 });
-                eventSubScribe($echo, store, $snack);
+               
             })
             .listen('EventDeleted', () => {
                 eventUnsubScribe($echo, store);

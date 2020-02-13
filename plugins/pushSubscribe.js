@@ -1,15 +1,16 @@
 export default function ({$auth, $axios, redirect }) {
-    // Temporary solution
     if($auth.loggedIn) {
         if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
             return;
         }
+        navigator.serviceWorker.register('/sw.js').then(() => {
 
-        askPermission().then(() => {
-            subscribeUserToPush().then((value) => {
-                storePushSubscription(value, $axios);
+            askPermission().then(() => {
+                subscribeUserToPush().then((value) => {
+                    storePushSubscription(value, $axios);
+                });
             });
-        });
+        })
     }       
 }
 
@@ -27,7 +28,7 @@ function askPermission() {
 }
 
 function subscribeUserToPush() {
-    return navigator.serviceWorker.register('/pushSw.js')
+    return navigator.serviceWorker.register('/sw.js')
         .then((registration) => {
             return registration.pushManager.subscribe({
                 userVisibleOnly: true,
@@ -54,10 +55,6 @@ function urlBase64ToUint8Array(base64String) {
 
 function storePushSubscription(pushSubscription, $axios) {
     $axios.post('/push-notification/subscribe', pushSubscription)
-        .then((res) => {
-            // console.log(res)
-        })
-        .catch((err) => {
-            // console.log(err)
-        });
+        .then((res) => {})
+        .catch((err) => {});
 }
