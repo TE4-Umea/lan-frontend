@@ -27,7 +27,7 @@ export default {
     name: 'circle',
     color: '#3B8070',
     background: 'white',
-    template: '~/components/loading.html'
+    name: '~/components/loading.html'
   },
   /*
   ** Global CSS
