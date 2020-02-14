@@ -19,16 +19,18 @@
             class="mx-2"
             v-model="form.name"
             type="text"
+            @onAction="onSubmit"
         />
         <input-field 
             placeholder="antal platser" 
             class="mx-2"
             v-model="form.max_capacity"
             type="number"
+            @onAction="onSubmit"
         />
         <b-button
             :disabled="!validInput"
-            @click="submit" 
+            @click="onSubmit" 
             class="gradient-animation-hover border-0"
         >Lägg till</b-button>
     </div>
@@ -76,7 +78,8 @@ export default {
             }
             return rooms;
         },
-        submit() {
+        onSubmit() {
+            if(!this.validInput) return;
             this.$axios.post("/admin/placement/room/create", this.form)
                 .then(res => {
                     this.$store.commit('admin/placement/ADD_ROOM', res.data.data);
@@ -106,6 +109,7 @@ export default {
         },
         onDeleteRow(id) {
             if(!confirm("Är du säker att du vill ta bort detta rum?")) return;
+            this.validInput = false;
             this.$axios.delete(`/admin/placement/room/${id}/delete`)
                 .then(res => {
                     this.$store.commit('admin/placement/DELETE_ROOM');
@@ -123,7 +127,7 @@ export default {
     watch: {
         form: {
             handler(oldVal, newVal) {
-                this.validInput = (newVal.name.length > 3 && newVal.max_capacity != null)
+                this.validInput = (newVal.name.length > 3 && newVal.max_capacity != null);
             },
             deep: true
         }
@@ -134,11 +138,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.delete-icon {
-    color : red;
-}
+
 .box {
     border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 </style>
