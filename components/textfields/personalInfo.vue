@@ -19,6 +19,7 @@
             <p v-if="$store.state.event.registration.room" class="mb-0" v-text="'Din plats är i ' + $store.state.event.registration.room.name + '.'"/>
             <p class="d-inline clickable underline" @click="openRulesModal()">Här kommer du åt reglerna!</p>
         </div>
+        <modals-container/>
     </div>
 
 </template>
