@@ -3,7 +3,6 @@
 <div class="w-100 notifications">
     <div v-if="$store.state.event.notifications.length == 0">
         <h4>Laddar..</h4>
-        <div class="spinner" />
     </div>
     <notification v-for="(row, i) in notifications" :key="i" :data="row"/>
 </div>

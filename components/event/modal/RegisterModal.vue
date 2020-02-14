@@ -130,10 +130,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.loading-spinner {
-    width: 3rem; 
-    height: 3rem;
-}
 
 .loading-wrapper {
     position: absolute;

@@ -27,7 +27,7 @@ export default {
     name: 'circle',
     color: '#DB0890',
     background: 'white',
-    name: '~/components/loading.html'
+    name: '~/components/loading.vue'
   },
   /*
   ** Global CSS

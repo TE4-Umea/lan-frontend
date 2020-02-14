@@ -1,9 +1,35 @@
+
+<template>
+  
+<div class="placement">
+
+  <div 
+    :class="{'text-light': $store.state.darkmode.value}"
+    class="spinner-border spinner" 
+    role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <p>
+    Tar det lång tid att ladda? testa ladda om hemsidan genom att 
+  </p>
+  <a href="javascript:history.go(0)">klicka här</a>
+</div>
+</template>
+
 <style>
+
 .placement {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 50vh;
+}
+.spinner {
+  width: 3rem; 
+  height: 3rem;
+  animation: nuxtLoadingIn 10s ease;
+  -webkit-animation: nuxtLoadingIn 10s ease;
+  animation-fill-mode: forwards;
 }
 
 #nuxt-loading {
@@ -18,9 +44,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  animation: nuxtLoadingIn 10s ease;
-  -webkit-animation: nuxtLoadingIn 10s ease;
-  animation-fill-mode: forwards;
+
   overflow: hidden;
 }
 
@@ -110,12 +134,3 @@ window.addEventListener('error', function () {
   }
 });
 </script>
-<div class="placement">
-
-  <div id="nuxt-loading" aria-live="polite" role="status"><div><%= options.loading %></div></div>
-  <p>Tar det lång tid att ladda? testa ladda om hemsidan genom att 
-    <a href="javascript:history.go(0)">klicka här</a>
-  </p>
-</div>
-
-<%= options.dev ? '<!-- https://projects.lukehaas.me/css-loaders -->' : '' %>
