@@ -33,7 +33,7 @@ export default {
         },
         calculate_timestamp() {
             let now = Math.ceil(Date.now() / 1000);
-            let past = (new Date(this.data.created_at + 'Z')).getTime() / 1000;
+            let past = (new Date((this.data.created_at.replace(/ /g, 'T')) + 'Z')).getTime() / 1000;
             let diff = Math.floor((now - past) / 60);
             if(diff > 1441) {
               let days = Math.floor(diff / 1440);

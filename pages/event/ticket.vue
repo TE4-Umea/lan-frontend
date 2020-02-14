@@ -86,7 +86,7 @@ export default {
             // this.$modal.close(TicketModal);
         },
         formatDate(d) {
-            return new Date(d + 'Z').toLocaleDateString('sv-SE');
+            return new Date(d.replace(/ /g, 'T') + 'Z').toLocaleDateString('sv-SE');
         }
     },
     computed: {
@@ -97,7 +97,7 @@ export default {
             return this.$auth.$state.user.name;
         },
         opensAt() {
-            return new Date(this.$store.state.event.details.start_date + 'Z').toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
+            return new Date(this.$store.state.event.details.start_date.replace(/ /g, 'T') + 'Z').toLocaleTimeString('sv-SE',{hour: '2-digit', minute:'2-digit'});
         },
         betweenDates() {
             return this.formatDate(this.$store.state.event.details.start_date) +

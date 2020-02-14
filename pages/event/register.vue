@@ -77,12 +77,12 @@ export default {
             return n < 10 ? '0' + n : n;
         },
         formatDate(d, options = {}) {
-            return new Date(d + 'Z').toLocaleDateString('sv-SE', );
+            return new Date(d.replace(/ /g, 'T') + 'Z').toLocaleDateString('sv-SE', );
         }
     },
     computed: {
         registrationClosed() {
-            const closesAt = new Date(this.$store.state.event.details.registration_closes_at + 'Z');
+            const closesAt = new Date(((this.$store.state.event.details.registration_closes_at).replace(/ /g, 'T')) + 'Z');
             return closesAt.getTime() <= (new Date()).getTime();
         },
         opensAt() {
