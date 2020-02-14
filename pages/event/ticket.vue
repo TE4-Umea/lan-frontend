@@ -15,7 +15,7 @@
             <p class="d-inline"> lanet börjar </p>
             <p class="d-inline font-weight-bold">{{ 'kl ' + opensAt + '.'}}</p>
             <p class="d-inline">här har du </p>
-            <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
+            <p class="d-inline clickable underline" @click="openRulesModal">lanets regler och info</p>
 
             </image-layout>
             <div class="pt-4 d-flex justify-content-center">

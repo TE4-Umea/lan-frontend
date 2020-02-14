@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col-md-4 order-md-last">
-            <h1 class="pb-2">Regler</h1>
+            <h1 class="pb-2">Regler och info</h1>
             <rules-input />
         </div>
         <div class="col-md-4">

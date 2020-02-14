@@ -10,7 +10,7 @@
             <div v-if="!registrationClosed">
                 <h3>Innan du anmäler dig</h3>
                 <p class="d-inline">Se till att du läser </p>
-                <p class="d-inline clickable underline" @click="openRulesModal">lanets regler</p>
+                <p class="d-inline clickable underline" @click="openRulesModal">lanets regler och info</p>
                 <p class="d-inline">innan du anmäler dig, reglerna går även att läsa efter du anmält dig.</p>
                 <action-button 
                     class="mt-3" 
