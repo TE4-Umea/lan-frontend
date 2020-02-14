@@ -64,6 +64,7 @@
             <h1 class="pb-2">Information</h1>
             <textarea 
                 min="3"
+                maxlength="512"
                 class="form-control primary-color" 
                 rows="10" 
                 v-model="form.short_info"
