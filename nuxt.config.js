@@ -22,10 +22,10 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#DB0890' },
   loadingIndicator: {
     name: 'circle',
-    color: '#3B8070',
+    color: '#DB0890',
     background: 'white',
     name: '~/components/loading.html'
   },
