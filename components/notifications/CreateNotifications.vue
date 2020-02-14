@@ -1,6 +1,9 @@
 
 <template>
-<div class="d-contrast outline-border">
+<div 
+    class="d-contrast outline-border" 
+    :class="{'disabled': $store.state.event.details == undefined}"
+    >
 
     <div class=" header gradient--background d-flex  p-2">
         <p class="align-self-center m-0 ml-3 title white">Skapa ny pushnotis</p>
@@ -14,6 +17,7 @@
                     class="field mb-1 p-1 text-fields primary-color"
                     placeholder="Titel...."
                     v-model="form.title"
+                    :disabled="$store.state.event.details == undefined"
                 >
                 <div class="placement">
 
@@ -32,6 +36,7 @@
                 class="field text-fields p-1 primary-color"
                 placeholder="Meddelande...."
                 v-model="form.body"
+                :disabled="$store.state.event.details == undefined"
                 maxlength="255"
             />
         </div>
@@ -117,6 +122,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.disabled {
+    opacity: 0.65;
+}
+
 .outline-border {
     border-radius: 4px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
