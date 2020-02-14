@@ -1,4 +1,11 @@
 <style>
+.placement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50vh;
+}
+
 #nuxt-loading {
   visibility: hidden;
   opacity: 0;
@@ -103,10 +110,12 @@ window.addEventListener('error', function () {
   }
 });
 </script>
+<div class="placement">
 
-<div id="nuxt-loading" aria-live="polite" role="status"><div><%= options.loading %></div></div>
-<p>Tar det lång tid att ladda? testa ladda om hemsidan genom att 
-  <a href="javascript:history.go(0)">klicka här</a>
-</p>
+  <div id="nuxt-loading" aria-live="polite" role="status"><div><%= options.loading %></div></div>
+  <p>Tar det lång tid att ladda? testa ladda om hemsidan genom att 
+    <a href="javascript:history.go(0)">klicka här</a>
+  </p>
+</div>
 
 <%= options.dev ? '<!-- https://projects.lukehaas.me/css-loaders -->' : '' %>
