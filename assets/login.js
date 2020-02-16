@@ -26,7 +26,7 @@ export function loginProvider(self, provider, token, refreshToken) {
             await postLogin(self);
         }).catch(e => {
             console.log(e, "login error");
-            self.$snack.error({
+            self.$snack.danger({
                 text: 'Något gick fel!',    
             });
             self.$router.push({ path: "/"});
