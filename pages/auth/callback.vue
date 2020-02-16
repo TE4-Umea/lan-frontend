@@ -1,7 +1,7 @@
 <template>
     <div class="container ">
         <b-spinner class="loader my-5" :variant="$store.state.darkmode.value ? 'light' : 'dark'" label="Spinning"></b-spinner>
-        <p>Vänligen vänta medans vi loggar in dig...</p>
+        <p>Vänligen vänta medan vi loggar in dig...</p>
     </div>
 </template>
 
