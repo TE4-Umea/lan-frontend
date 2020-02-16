@@ -77,7 +77,7 @@ export default {
             return n < 10 ? '0' + n : n;
         },
         formatDate(d, options = {}) {
-            return new Date(d.replace(/ /g, 'T') + 'Z').toLocaleDateString('sv-SE', );
+            return new Date(d.replace(/ /g, 'T') + 'Z').toLocaleDateString('sv-SE', options);
         }
     },
     computed: {
