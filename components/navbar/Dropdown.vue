@@ -12,7 +12,7 @@
            Toggle Lightmode
         </b-dropdown-item>
         
-        <b-dropdown-item v-if="$auth.loggedIn && $auth.user.admin">
+        <b-dropdown-item v-if="$auth.loggedIn && $auth.user.admin == 1">
             <nuxt-link
             to="/admin"
             class="w-100"
